@@ -19,7 +19,7 @@ export default function TopTreks() {
     useEffect(() => {
       const fetchData = async () => {
         try {
-          const response = await axios.get("https://mountaintrekkingnepal.com/api/home"); //  in object
+          const response = await axios.get("https://mountaintrekkingnepal.com/api/home", { cache: 'force-cache' }); //  in object
           setTreks(response?.data?.top_treks); 
           
         } catch (error) {
@@ -34,7 +34,7 @@ export default function TopTreks() {
     useEffect(() => {
         const fetchData = async () => {
           try {
-            const response = await axios.get("https://mountaintrekkingnepal.com/api/home"); //  in object
+            const response = await axios.get("https://mountaintrekkingnepal.com/api/home", { cache: 'force-cache' }); //  in object
             setTitle(response?.data?.top_treks_title); 
             
           } catch (error) {
@@ -49,7 +49,7 @@ export default function TopTreks() {
     useEffect(() => {
         const fetchData = async () => {
           try {
-            const response = await axios.get("https://mountaintrekkingnepal.com/api/home"); //  in object
+            const response = await axios.get("https://mountaintrekkingnepal.com/api/home", { cache: 'force-cache' }); //  in object
             setDesc(response?.data?.top_treks_short_description); 
             
           } catch (error) {

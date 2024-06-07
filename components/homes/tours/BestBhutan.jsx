@@ -19,7 +19,7 @@ export default function BestBhutan() {
     useEffect(() => {
       const fetchData = async () => {
         try {
-          const response = await axios.get("https://mountaintrekkingnepal.com/api/home"); //  in object
+          const response = await axios.get("https://mountaintrekkingnepal.com/api/home", { cache: 'force-cache' }); //  in object
           setBhutan(response?.data?.best_of_bhutans); 
           
         } catch (error) {
@@ -34,7 +34,7 @@ export default function BestBhutan() {
     useEffect(() => {
         const fetchData = async () => {
           try {
-            const response = await axios.get("https://mountaintrekkingnepal.com/api/home"); //  in object
+            const response = await axios.get("https://mountaintrekkingnepal.com/api/home", { cache: 'force-cache' }); //  in object
             setTitle(response?.data?.bhutan_title); 
             
           } catch (error) {
@@ -86,7 +86,7 @@ export default function BestBhutan() {
       <div className="container">
         <div className="row y-gap-10 justify-between items-end y-gap-10">
           <div className="col-auto">
-            <h2 data-aos="fade-up" data-aos-delay="" className="text-30">   
+            <h2 data-aos="fade-up" data-aos-delay="400" className="text-30">   
               {title}
             </h2>   
             <p>{desc}</p>

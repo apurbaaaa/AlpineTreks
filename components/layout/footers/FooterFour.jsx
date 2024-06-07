@@ -22,9 +22,7 @@ export default function FooterFour() {
         // setFooterImage(response?.data?.whatever)
       }
       catch(error){
-        console.log(error)
-        
-
+        // console.log(error)
       }
       
     }

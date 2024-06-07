@@ -19,7 +19,7 @@ export default function Welcome(){
                         </p>
                         <div className="col-md-4 mt-20">
                         <Link href="/" >
-                            <button className="button -md -dark-1 bg-accent-1 text-white">
+                            <button className="button -md -dark-1 bg-accent-1 text-white col-12">
                                 Read More
                             </button>
                         </Link>
