@@ -5,7 +5,7 @@ import React, { useEffect, useState } from "react";
 export default function FAQ() {
     const [datas, setDatas] = useState([]);
     const [error, setError] = useState(null);
-    const [openIndex, setOpenIndex] = useState(null);  // State to track the open accordion item
+    const [openIndex, setOpenStreet] = useState(null);  // State to track the open accordion item
 
     useEffect(() => {
         const fetchData = async () => {
@@ -13,17 +13,16 @@ export default function FAQ() {
                 const response = await axios.get("https://mountaintrekkingnepal.com/api/settings");
                 setDatas(response?.data?.traveller_faq);
             } catch (error) {
-                console.log(error);
-                setError(error);
+                console.error("Error fetching data: ", error);
+                setError("Failed to fetch data. Please try again later.");
             }
         };
         fetchData();
     }, []);
 
     const toggleAccordion = (index) => {
-        // Toggle between current index and null
-        setOpenIndex (openIndex === index ? null : index);
-        console.log(index)
+        console.log("Hello")
+        setOpenStreet(openIndex === index ? null : index);
     };
 
     return (
@@ -35,19 +34,24 @@ export default function FAQ() {
                         <p>Join us on our trending adventure this year.</p>
                     </div>
                 </div>
-
+                {error && <p className="text-error">{error}</p>}
                 {datas.map((data, i) => (
                     <div key={i} className="accordion -simple row y-gap-20 mt-30 js-accordion justify-content-center">
                         <div className="col-lg-8 col-12">
                             <div className="accordion__item px-20 py-15 border-1 rounded-12">
-                                <div className="accordion__button d-flex items-center justify-between" onClick={() => toggleAccordion(i)}>
+                                <div 
+                                    className="accordion__button d-flex items-center justify-between" 
+                                    onClick={() => toggleAccordion(i)}
+                                    aria-expanded={openIndex === i}
+                                    aria-controls={`faq-answer-${i}`}
+                                >
                                     <div className="button text-16 text-dark-1">{data.question}</div>
                                     <div className="accordion__icon size-30 flex-center bg-light-2 rounded-full">
                                         <i className={`icon-${openIndex === i ? 'minus' : 'plus'} text-13`}></i>
                                     </div>
                                 </div>
                                 {openIndex === i && (
-                                    <div className="accordion__content">
+                                    <div className="accordion__content" id={`faq-answer-${i}`}>
                                         <div className="pt-20">
                                             <p>{data.answer}</p>
                                         </div>

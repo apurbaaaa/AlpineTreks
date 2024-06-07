@@ -17,7 +17,7 @@ export default function Hero6() {
   const [tourType, setTourType] = useState("");
   const [firstTitle, setFirstTitle] = useState("");
   const [secondTitle, setSecondTitle] = useState("");
-  const [bannerImage , setBannerImage] = useState("");
+  const [bannerImage , getBannerImage] = useState("");
   const [error, setError] = useState(null)
 
   useEffect(() => {
@@ -29,7 +29,7 @@ export default function Hero6() {
         updatedHtmlString = DOMPurify.sanitize(updatedHtmlString);
         setFirstTitle(updatedHtmlString);
         setSecondTitle(response?.data?.banner_second_title);
-        setBannerImage(response?.data?.banner_image);
+        getBannerImage(response?.data?.banner_image);
       } catch (error) {
         console.log(error);
         setError(error);

@@ -1,54 +1,74 @@
-import { weatherData } from "@/data/weather";
-import MyComponent from "./Map";
+"use client"
 import Image from "next/image";
 import Link from "next/link";
+import { useEffect, useState } from "react";
+import axios from "axios";
 
 export default function DestInfo() {
+  const [data, setData] = useState([]);
+  const [error, setError] = useState(null);
+  useEffect(()=>{
+    const fetchData = async () => {
+      try{
+        const response = await axios.get("https://mountaintrekkingnepal.com/api/destination")
+        setData(response.data)
+      }
+      catch(error){
+        console.log(error)
+        setError(error);
+      }
+    }
+    fetchData();
+  })
   return (
     <div>
         <section>
-                <div data-anim="fade" class="container is-in-view">
-                <div class="row justify-between py-30 mt-80">
-                <div class="col-auto">
-                <div class="text-14 breadcrumb-text">
+                <div data-anim="fade" className="container is-in-view">
+                <div className="row justify-between py-30 mt-80">
+                <div className="col-auto">
+                <div className="text-14 breadcrumb-text">
                 <a href="https://mountaintrekkingnepal.com">Home</a>
                 <Link
               href={"/bhutan-list-1"}
               data-aos="fade-up"
               data-aos-delay=""
-              className="buttonArrow d-flex items-center "
+              classNameName="buttonArrow d-flex items-center "
             >
               <span>See all</span>
-              <i className="icon-arrow-top-right text-16 ml-10"></i>
+              <i classNameName="icon-arrow-top-right text-16 ml-10"></i>
             </Link>
                 <span>Destination</span>
                 </div>
                 </div>
                 </div>
-                <h1 class="text-30">Destination</h1>
+                <h1 className="text-30">Destination</h1>
                 </div>
         </section>
    
-        <section class="layout-pt-lg layout-pb-lg  about-section">
-            <div data-anim-wrap="" class="container animated">
-            <div class="row y-gap-20 justify-between">
-            <div data-anim-child="slide-up" class="col-lg-6 is-in-view">
-            <h2>Nepal</h2>
-            <p>Nepal has many different landscapes, cultures, and faiths. Eight of the world's ten tallest mountains are in the hilly north. The tallest is Sagarmatha, also known as Mount Everest. The south is lush and humid, and there are many cities there. Over 240 of its peaks are higher than 20,000 feet (6,096 meters).</p>
-            <a class="button -md -dark-1 bg-accent-1 text-white col-lg-4 col-12" href="https://mountaintrekkingnepal.com/destination/nepal">
-            View More
-            <i class="icon-arrow-top-right text-16 ml-10"></i>
-            </a>
+        <section className="layout-pt-lg layout-pb-lg  about-section">
+            <div data-anim-wrap="" className="container animated">
+            {data.map((elm, i ) => (
+              <div className="row y-gap-20 justify-between">
+              <div data-aos="fade-up" className="col-lg-6 is-in-view">
+                <h2>{elm.title}</h2>
+                <p>{elm.description}</p>
+                <br />
+                <a className="button -md -dark-1 bg-accent-1 text-white col-lg-4 col-12" href="https://mountaintrekkingnepal.com/destination/nepal">
+                  View More
+                <i className="icon-arrow-top-right text-16 ml-10"></i>
+                </a>
+              </div>
+            <div data-aos="fade-up" data-aos-delay="400" className="col-lg-5 is-in-view">
+            <div className="video relative container">
+            <div className="video__bg">
+            <Image src={elm.image} alt="Nepal" className="rounded-12" width={800} height={500}/>
             </div>
-            <div data-anim-child="slide-up delay-2" class="col-lg-5 is-in-view">
-            <div class="video relative container">
-            <div class="video__bg">
-            <Image src="https://mountaintrekkingnepal.com/storage/t2tapp3CUuqIIjdWatKvrd1tsUESwWuvadyokegF.jpg" alt="Nepal" class="rounded-12" width={800} height={500}/>
             </div>
             </div>
             </div>
+            ))}
             </div>
-            </div>
+            <br />
         </section>
     </div>
     
