@@ -4,6 +4,7 @@ import { useEffect, useState } from "react"
 import Axios from "axios";
 import { setupCache } from "axios-cache-interceptor";
 import Image from "next/image";
+import FooterFour from "@/components/layout/footers/FooterFour";
 
 const instance = Axios.create(); 
 const axios = setupCache(instance);
@@ -19,7 +20,6 @@ export default function NewsBlog(){
             try{
                 const response = await axios.get("https://mountaintrekkingnepal.com/api/home")
                 setBlogs(response?.data?.blogs)
-                console.log(response?.data?.blogs)
 
             }
             catch(error){
@@ -53,7 +53,7 @@ export default function NewsBlog(){
 
                 <div data-anim-child="delay-2" data-aos = "fade-up" className="row y-gap-30 pt-40 sm:pt-20"> {/* <div data-anim-child="slide-up delay-2" className="row y-gap-30 pt-40 sm:pt-20"> */}
                 {blogs.map((elm, i) => (
-                <div className="col-lg-4 col-md-6">
+                <div key = {i} className="col-lg-4 col-md-6">
                     
                         <Link href = {`/blog/${elm.slug}`} key = {elm.slug} className="blogCard -type-1">
                         <div className="blogCard__image ratio ratio-41:30"> 
@@ -78,6 +78,7 @@ export default function NewsBlog(){
                 ))}
                 </div>
             </div>
+            <FooterFour />
         </section>
     )
 }
