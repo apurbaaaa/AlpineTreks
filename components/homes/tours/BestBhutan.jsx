@@ -15,27 +15,14 @@ export default function BestBhutan() {
     const [error, setError] = useState(null);
     const [title, setTitle] = useState("");
     const [desc, setDesc] = useState("");
-  
-    useEffect(() => {
-      const fetchData = async () => {
-        try {
-          const response = await axios.get("https://mountaintrekkingnepal.com/api/home", { cache: 'force-cache' }); //  in object
-          setBhutan(response?.data?.best_of_bhutans); 
-          
-        } catch (error) {
-          console.error("Error fetching data:", error);
-          setError(error);
-        }
-      };
-  
-      fetchData();
-    }, []);
 
     useEffect(() => {
         const fetchData = async () => {
           try {
             const response = await axios.get("https://mountaintrekkingnepal.com/api/home", { cache: 'force-cache' }); //  in object
             setTitle(response?.data?.bhutan_title); 
+            setDesc(response?.data?.bhutan_short_description); 
+            setBhutan(response?.data?.best_of_bhutans); 
             
           } catch (error) {
             console.error("Error fetching data:", error);
@@ -45,21 +32,6 @@ export default function BestBhutan() {
     
         fetchData();
       }, []);
-      
-    useEffect(() => {
-        const fetchData = async () => {
-          try {
-            const response = await axios.get("https://mountaintrekkingnepal.com/api/home"); //  in object
-            setDesc(response?.data?.bhutan_short_description); 
-            
-          } catch (error) {
-            console.error("Error fetching data:", error);
-            setError(error);
-          }
-        };
-    
-        fetchData();
-    }, []);
 
 
   const dropDownContainer = useRef();

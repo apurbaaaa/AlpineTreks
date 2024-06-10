@@ -51,7 +51,7 @@ export default function TourSlider3() {
       <div className="container">
         <div className="row y-gap-10 justify-between items-end y-gap-10">
           <div className="col-auto">
-            <h2 data-aos="fade-up" data-aos-delay="" className="text-30">   
+            <h2 data-aos="fade-up" data-aos-delay="400" className="text-30">   
               Our Best Sellers for 2024
             </h2>   
             <p>Join us on our trending adventure this year.</p>
@@ -61,7 +61,7 @@ export default function TourSlider3() {
             <Link
               href={"/tour-list-1"}
               data-aos="fade-up"
-              data-aos-delay=""
+              data-aos-delay="400"
               className="buttonArrow d-flex items-center "
             >
               <span>See all</span>

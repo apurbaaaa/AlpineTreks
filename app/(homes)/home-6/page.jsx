@@ -1,9 +1,6 @@
 import ArticlesOne from "@/components/homes/articles/ArticlesOne";
-import Banner10 from "@/components/homes/banners/Banner10";
-import BrandsThree from "@/components/homes/brands/BrandsThree";
 import FeaturesOne from "@/components/homes/features/FeaturesOne";
 import Hero6 from "@/components/homes/heros/Hero6";
-import SpacialOffer from "@/components/homes/others/SpacialOffer";
 import TestimonialOne from "@/components/homes/testimonials/TestimonialOne";
 import TourTypes3 from "@/components/homes/tourTypes/TourTypes3";
 import BestBhutan from "@/components/homes/tours/BestBhutan";
@@ -16,6 +13,7 @@ import React from "react";
 import FAQ from "@/components/layout/components/FAQ";
 import NewsBlog from "@/components/homes/articles/NewsBlog";
 import Welcome from "@/components/homes/banners/Welcome";
+import HotSelling from "@/components/layout/components/HotSelling";
 
 export const metadata = {
   title: "Home-6 || ViaTour - Travel & Tour React NextJS Template",
@@ -30,7 +28,7 @@ export default function page() {
         <Hero6 />
         <Welcome />
         <TourSlider3 />
-        <FeaturesOne />
+        <FeaturesOne /> 
         <TourTypes3 />
         <TestimonialOne />
         <div className=" bg-light-1">
@@ -41,8 +39,7 @@ export default function page() {
         <NewsBlog />
         <BestBhutan />
         <BestTibet />
-        {/* <BrandsThree /> */}
-        {/* <Banner10 /> */}
+        <HotSelling />
         <FooterFour />
       </main>
     </>
