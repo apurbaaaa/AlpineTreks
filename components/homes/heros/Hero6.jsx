@@ -1,12 +1,16 @@
 "use client"
 import { useEffect, useState, useRef } from "react";
-import axios from "axios";
+import Axios from "axios";
 import DOMPurify from "dompurify";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
 import Calender from "@/components/common/dropdownSearch/Calender";
 import Location from "@/components/common/dropdownSearch/Location";
 import TourType from "@/components/common/dropdownSearch/TourType";
+import { setupCache } from "axios-cache-interceptor";
+
+const instance = Axios.create(); 
+const axios = setupCache(instance);
 
 export default function Hero6() {
   const router = useRouter();
@@ -17,19 +21,19 @@ export default function Hero6() {
   const [tourType, setTourType] = useState("");
   const [firstTitle, setFirstTitle] = useState("");
   const [secondTitle, setSecondTitle] = useState("");
-  const [bannerImage , getBannerImage] = useState("");
+  const [bannerImage , setBannerImage] = useState("");
   const [error, setError] = useState(null)
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get("https://mountaintrekkingnepal.com/api/home", { cache: 'force-cache' });
+        const response = await axios.get("https://mountaintrekkingnepal.com/api/home");
         let htmlString = response.data.banner_first_title;
         let updatedHtmlString = htmlString.replace(/class=/g, 'className=');
         updatedHtmlString = DOMPurify.sanitize(updatedHtmlString);
         setFirstTitle(updatedHtmlString);
         setSecondTitle(response?.data?.banner_second_title);
-        getBannerImage(response?.data?.banner_image);
+        setBannerImage(response?.data?.banner_image);
       } catch (error) {
         console.log(error);
         setError(error);
