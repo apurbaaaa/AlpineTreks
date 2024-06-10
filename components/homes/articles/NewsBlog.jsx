@@ -1,7 +1,34 @@
 "use client"
 import Link from "next/link"
+import { useEffect, useState } from "react"
+import Axios from "axios";
+import { setupCache } from "axios-cache-interceptor";
+import Image from "next/image";
+
+const instance = Axios.create(); 
+const axios = setupCache(instance);
+
 
 export default function NewsBlog(){
+    const [blogs, setBlogs] = useState([]);
+    const [error, setError] = useState(null);
+
+
+    useEffect(()=> {
+        const fetchData = async () => {
+            try{
+                const response = await axios.get("https://mountaintrekkingnepal.com/api/home")
+                setBlogs(response?.data?.blogs)
+                console.log(response?.data?.blogs)
+
+            }
+            catch(error){
+                setError(error);
+                console.log(error);
+            }
+        }   
+        fetchData()
+    },[])
 
     return(
         <section className="layout-pt-lg  bg-light-1">
@@ -25,64 +52,30 @@ export default function NewsBlog(){
                 </div>
 
                 <div data-anim-child="delay-2" data-aos = "fade-up" className="row y-gap-30 pt-40 sm:pt-20"> {/* <div data-anim-child="slide-up delay-2" className="row y-gap-30 pt-40 sm:pt-20"> */}
-
+                {blogs.map((elm, i) => (
                 <div className="col-lg-4 col-md-6">
-                    <a href="#" className="blogCard -type-1">
-                    <div className="blogCard__image ratio ratio-41:30">
-                        <img src="img/tibet.jpg" alt="image" className="img-ratio rounded-12"/>
-
-                        <div className="blogCard__badge">News</div>
-                    </div>
-
-                    <div className="blogCard__content mt-30">
-                        <div className="blogCard__info text-14">
-                        <div className="lh-13">April 06 2023</div>
-                        
+                    
+                        <Link href = {`/blog/${elm.slug}`} key = {elm.slug} className="blogCard -type-1">
+                        <div className="blogCard__image ratio ratio-41:30"> 
+                            <Image src={elm.image} alt={elm.image} className="img-ratio rounded-12" width={616} height={451}/>
+    
+                            <div className="blogCard__badge">Blog</div> {/* Data not in API, "Blog" used as default*/}
                         </div>
-
-                        <h3 className="blogCard__title text-18 fw-500 mt-10">Kenya vs Tanzania Safari: The Better African Safari Experience</h3>
-                    </div>
-                    </a>
-                </div>
-
-                <div className="col-lg-4 col-md-6">
-                    <a href="#" className="blogCard -type-1">
-                    <div className="blogCard__image ratio ratio-41:30">
-                        <img src="img/feature-trip-bhutan.jpg" alt="image" className="img-ratio rounded-12"/>
-
-                        <div className="blogCard__badge">Blog</div>
-                    </div>
-
-                    <div className="blogCard__content mt-30">
-                        <div className="blogCard__info text-14">
-                        <div className="lh-13">April 06 2023</div>
-                        
+    
+                        <div className="blogCard__content mt-30">       
+                            <div className="blogCard__info text-14">
+                            <div className="lh-13">{elm.created_at}</div>
+                            
+                            </div>
+    
+                            <h3 className="blogCard__title text-18 fw-500 mt-10">{elm.title}</h3>
                         </div>
+                        </Link>
 
-                        <h3 className="blogCard__title text-18 fw-500 mt-10">Kenya vs Tanzania Safari: The Better African Safari Experience</h3>
-                    </div>
-                    </a>
+                    
+                    
                 </div>
-
-                <div className="col-lg-4 col-md-6">
-                    <a href="#" className="blogCard -type-1">
-                    <div className="blogCard__image ratio ratio-41:30">
-                        <img src="img/nepal.jpg" alt="image" className="img-ratio rounded-12"/>
-
-                        <div className="blogCard__badge">News</div>
-                    </div>
-
-                    <div className="blogCard__content mt-30">
-                        <div className="blogCard__info text-14">
-                        <div className="lh-13">April 06 2023</div>
-                        
-                        </div>
-
-                        <h3 className="blogCard__title text-18 fw-500 mt-10">Kenya vs Tanzania Safari: The Better African Safari Experience</h3>
-                    </div>
-                    </a>
-                </div>
-
+                ))}
                 </div>
             </div>
         </section>

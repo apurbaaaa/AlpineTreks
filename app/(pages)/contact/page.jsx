@@ -1,3 +1,4 @@
+import NavInfo from "@/components/common/Contactpages/NavInfo";
 import SideInfo from "@/components/common/Contactpages/SideInfo";
 import FooterFour from "@/components/layout/footers/FooterFour";
 import Header4 from "@/components/layout/header/Header4";
@@ -19,6 +20,7 @@ export default function page() {
         {/* <Map /> */}
         {/* <Locations /> */}
         {/* <ContactForm /> */}
+        <NavInfo />
         <SideInfo />
 
         <FooterFour />
