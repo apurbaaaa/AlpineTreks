@@ -8,6 +8,7 @@ import Calender from "@/components/common/dropdownSearch/Calender";
 import Location from "@/components/common/dropdownSearch/Location";
 import TourType from "@/components/common/dropdownSearch/TourType";
 import { setupCache } from "axios-cache-interceptor";
+import Header4 from "@/components/layout/header/Header4";
 
 const instance = Axios.create(); 
 const axios = setupCache(instance);
@@ -34,6 +35,7 @@ export default function Hero6() {
         setFirstTitle(updatedHtmlString);
         setSecondTitle(response?.data?.banner_second_title);
         setBannerImage(response?.data?.banner_image);
+
       } catch (error) {
         console.log(error);
         setError(error);
@@ -62,6 +64,8 @@ export default function Hero6() {
   }, []);
 
   return (
+    <div>
+      <Header4 />
     <section className="hero -type-6">
       <div className="hero__bg">  
         <Image
@@ -198,5 +202,6 @@ export default function Hero6() {
         </div>
       </div>
     </section>
+    </div>
   );
 }

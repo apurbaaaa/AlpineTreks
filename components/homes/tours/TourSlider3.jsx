@@ -13,15 +13,18 @@ export default function TourSlider3() {
 
   const [tours, setTours] = useState([]);
   const [ddActive, setDdActive] = useState(false);
+
   
   useEffect(() => {
     axios.get('https://mountaintrekkingnepal.com/api/home')
       .then(response => {
         setTours(response.data.best_selling_tours || []);
+
       })
       .catch(error => {
         console.error('Error fetching tours:', error);
         setTours([]);
+
       });
   }, []);
 
