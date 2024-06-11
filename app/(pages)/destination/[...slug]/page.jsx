@@ -2,10 +2,11 @@
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { useParams } from "next/navigation";
-import axios from "axios"; // Ensure axios is imported
+import axios from "axios"; 
 import Header4 from "@/components/layout/header/Header4";
 import FooterFour from "@/components/layout/footers/FooterFour";
-import Image from "next/image"; // Ensure next/image is imported for Image component
+import Image from "next/image"; 
+import DOMPurify from "dompurify";
 
 export default function Slug({params}) {
     console.log(params,'dd');
@@ -24,7 +25,10 @@ export default function Slug({params}) {
         console.log(response);
         setPosts(response?.data?.posts);
         setTitle(response?.data?.title); 
-        setDesc(response?.data?.description);
+        const unpurified_desc = response?.data?.description;
+        let updatedHtmlString = DOMPurify.sanitize(unpurified_desc);
+        setDesc(updatedHtmlString)
+        console.log(updatedHtmlString)
         console.log(slug);
       } catch (error) {
         setError(error);
@@ -123,7 +127,7 @@ export default function Slug({params}) {
           <div className="row pt-30">
             <div className="col-auto text-collapse">
               <h1 className="pageHeader__title">{title}</h1>
-              <p>{desc}</p>
+              <span dangerouslySetInnerHTML={{ __html: desc}}></span>
               <Link href="#" id="readMore">Read More</Link>
             </div>
           </div>
