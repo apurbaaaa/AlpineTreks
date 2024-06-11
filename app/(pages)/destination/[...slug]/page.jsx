@@ -7,7 +7,8 @@ import Header4 from "@/components/layout/header/Header4";
 import FooterFour from "@/components/layout/footers/FooterFour";
 import Image from "next/image"; // Ensure next/image is imported for Image component
 
-export default function SlugPage() {
+export default function Slug({params}) {
+    console.log(params,'dd');
   const { slug } = useParams();
   const [posts, setPosts] = useState([]);
   const [error, setError] = useState(null);
@@ -21,9 +22,9 @@ export default function SlugPage() {
           `https://mountaintrekkingnepal.com/api/destination/${slug}`
         );
         console.log(response);
-        setPosts(response?.data?.posts || []);
-        setTitle(response?.data?.title || ""); // Fallback for title
-        setDesc(response?.data?.description || ""); // Fallback for description
+        setPosts(response?.data?.posts);
+        setTitle(response?.data?.title); 
+        setDesc(response?.data?.description);
         console.log(slug);
       } catch (error) {
         setError(error);
@@ -33,9 +34,9 @@ export default function SlugPage() {
     if (slug) {
       fetchData();
     }
-  }, [slug]); // Add slug as dependency
+  }, [slug]); 
 
-  if (error) return <div>Error loading data</div>; // Handle error state
+  if (error) return <div>Error loading data</div>; 
 
   return (
     <div>
@@ -52,25 +53,24 @@ export default function SlugPage() {
           <div className="menu__content">
             <ul className="menuNav js-navList">
               <li className="menuNav__item">
-                <Link href="/"> {/* Add href */}
+                <Link href="/"> 
                   Home
                 </Link>
               </li>
               <li className="menuNav__item -has-submenu js-has-submenu">
-                <Link href="/nepal"> {/* Add href */}
+                <Link href="/nepal">
                   Nepal
                   <i className="icon-chevron-right"></i>
                 </Link>
                 <ul className="submenu">
                   <li className="submenu__item js-nav-list-back">
-                    <Link href="#">Back</Link> {/* Add href */}
+                    <Link href="/">Back</Link> 
                   </li>
                   <li className="submenu__item">
                     <Link href="/tour-list-1.html">Nepal Trekking</Link>
                   </li>
                 </ul>
               </li>
-              {/* Other menu items */}
             </ul>
           </div>
           <div className="menu__footer">
@@ -103,36 +103,9 @@ export default function SlugPage() {
             </div>
           </div>
         </div>
-      </div>
+      </div>    
 
-      <section id="details">
-        <div className="over-view-menu">
-          <div className="container">
-            <div className="row">
-              <div className="header-menu">
-                <div className="bottom-menu regular-svg" />
-                <ul>
-                  <li>
-                    <Link href="#overview">
-                      <Image src="/Image/square-list.svg" alt="Overview" width={20} height={20} />
-                      <h4>Overview</h4>
-                    </Link>
-                  </li>
-                  <li>
-                    <Link href="#itinery">
-                      <Image src="/Image/map-location-dot.svg" alt="Itinerary" width={20} height={20} />
-                      <h4>Itinerary</h4>
-                    </Link>
-                  </li>
-                  {/* Other links */}
-                </ul>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section data-anim="fade" className="pageHeader -type-3">
+      <section data-aos="fade-up" className="pageHeader -type-3">
         <div className="container">
           <div className="row justify-between">
             <div className="col-auto">
@@ -158,25 +131,29 @@ export default function SlugPage() {
       </section>
 
       <section className="layout-pt-md bg-light-1">
-        {posts.map((post, index) => (
-          <div className="container" key={index}>
-            <div className="row y-gap-30">
-              <div className="col-lg-4 col-md-6 d-flex">
+        
+    <div className="container">
+        <div className="row y-gap-30">
+            {posts.map((post, index) => (
+            <div className="col-lg-4 col-md-6 d-flex" key={index}>
                 <div className="w-100">
                 <Link href={`/destination/${slug}/${post.slug}`}>
                     <div className="featureCard -type-8 -hover-image-scale">
-                      <div className="featureCard__image -hover-image-scale__image">
-                        <Image src={post.image} alt="feature" width={300} height={200} />
-                      </div>
-                      <div className="featureCard__content">
-                        <h3 className="text-18 fw-500">{post.title}</h3>
-                      </div>
+                    <div className="featureCard__image -hover-image-scale__image">
+                        <Image src={post.image} alt="feature" width={750} height={563} />
                     </div>
-                  </Link>
+                    <div className="featureCard__content">
+                        <h3 className="text-18 fw-500">{post.title}</h3>
+                    </div>
+                    </div>
+                </Link>
                 </div>
-              </div>
-              {/* More columns */}
             </div>
+            ))}
+        </div>
+    </div>
+
+            
             <div className="d-flex justify-center flex-column mt-60">
               <div className="pagination justify-center">
                 <button className="pagination__button button -accent-1 mr-15 -prev">
@@ -196,10 +173,10 @@ export default function SlugPage() {
                 </button>
               </div>
             </div>
-          </div>
-        ))}
+        
       </section>
       <FooterFour />
     </div>
   );
 }
+

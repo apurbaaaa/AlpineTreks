@@ -27,13 +27,13 @@ export default function DestInfo() {
                 <div className="row justify-between py-30 mt-80">
                 <div className="col-auto">
                 <div className="text-14 breadcrumb-text">
-                <a href="https://mountaintrekkingnepal.com">Home</a>
+                <Link href="/destination">Home</Link>
                 <Link
               href={"/bhutan-list-1"}
               data-aos="fade-up"
               data-aos-delay=""
               className="buttonArrow d-flex items-center "
-            >
+            >ç
               <span>See all</span>
               <i className="icon-arrow-top-right text-16 ml-10"></i>
             </Link>
