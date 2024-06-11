@@ -112,7 +112,7 @@ export default function TripDetails() {
                     </div>
                 </div>
             </div>
-            <section className=" js-pin-container layout-pb-md ">
+            <section className=" js-pin-container layout-pb-md ">   
                 <div className="container js-pin-container-inner">
                     <div className="row y-gap-30 justify-between">
                     <div data-aos="fade-up" data-aos-delay="400" className="col-lg-8">
