@@ -1,4 +1,4 @@
-export const homes = [
+  export const homes = [
   
   { id: 16, title: "Home 06", href: "/home-6" },
   
@@ -63,7 +63,7 @@ export const pages = [
       { id: 524, title: "Blog single", href: "/blog-single/4" },
     ],
   },
-  { id: 53, title: "Destinations", href: "/destinations" },
+  { id: 53, title: "Destinations", href: "/destination" },
   { id: 54, title: "About", href: "/about" },
   { id: 55, title: "Help center", href: "/help-center" },
   { id: 56, title: "Terms", href: "/terms" },
