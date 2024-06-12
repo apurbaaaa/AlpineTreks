@@ -22,6 +22,7 @@ export default function Slug({params}) {
         const response = await axios.get(
           `https://mountaintrekkingnepal.com/api/destination/${slug}`
         );
+        console.log(slug)
         console.log(response);
         setPosts(response?.data?.posts);
         setTitle(response?.data?.title); 
@@ -141,7 +142,7 @@ export default function Slug({params}) {
             {posts.map((post, index) => (
             <div className="col-lg-4 col-md-6 d-flex" key={index}>
                 <div className="w-100">
-                <Link href={`/destination/${slug}/${post.slug}`}>
+                <Link href={`/activity/${post.slug}`}>
                     <div className="featureCard -type-8 -hover-image-scale">
                     <div className="featureCard__image -hover-image-scale__image">
                         <Image src={post.image} alt="feature" width={750} height={563} />
@@ -164,8 +165,8 @@ export default function Slug({params}) {
                   <i className="icon-arrow-left text-15"></i>
                 </button>
                 <div className="pagination__count">
-                  <Link href="#">1</Link>
-                  <Link href="#" className="is-active">2</Link>
+                  <Link href="#" className="is-active">1</Link>
+                  <Link href="#">2</Link>
                   <Link href="#">3</Link>
                   <Link href="#">4</Link>
                   <Link href="#">5</Link>
