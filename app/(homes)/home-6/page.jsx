@@ -13,7 +13,7 @@ import React from "react";
 import FAQ from "@/components/layout/components/FAQ";
 import NewsBlog from "@/components/homes/articles/NewsBlog";
 import Welcome from "@/components/homes/banners/Welcome";
-import HotSelling from "@/components/layout/components/HotSelling";
+import HotSelling from "../../../components/layout/components/HotSelling";
 
 export const metadata = {
   title: "Home-6 || ViaTour - Travel & Tour React NextJS Template",
@@ -36,14 +36,11 @@ export default function page() {
         </div>
         <TopTreks />
         
-        
+        <NewsBlog />
         <BestBhutan />
         <BestTibet />
         <HotSelling />
         <FAQ />
-        <NewsBlog />
-        
-        
         <FooterFour />
       </main>
     </>

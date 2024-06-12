@@ -1,7 +1,10 @@
 {
   "compilerOptions": {
+    "baseUrl": ".",           // Base directory for module resolution
     "paths": {
-      "@/*": ["./*"]
+      "@/*": ["./src/*"]      // Maps "@/..." to "./src/..."
     }
-  }
+  },
+  "include": ["src/**/*"],     // Include all files in the src directory
+  "exclude": ["node_modules"]  // Exclude the node_modules folder
 }

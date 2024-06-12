@@ -12,7 +12,7 @@ export default function HotSelling(){
     const [hotImage, setHotImage] = useState("");
     useEffect(()=>{
         const fetchData = async () => {
-            try{
+            try{    
                 const response = await axios.get("https://mountaintrekkingnepal.com/api/home")
                 setHotTitle(response?.data?.hot_selling?.title);
                 setHotDesc(response?.data?.hot_selling_short_description);
@@ -41,26 +41,6 @@ export default function HotSelling(){
                         <span id="hot-sell">Hot Selling Trip</span>
                         <h2 className="text-70 md:text-40 sm:text-30 text-white fw-700">{hotTitle}</h2>
                         <p className="text-white mt-20">{hotDesc}</p>
-                        <ul>
-                        <li>    
-                        <div className="item">
-                            <span className="icon"><i className="far fa-calendar-alt"></i></span>
-                            <div className="text">
-                            <span className="info-title">Total Duration</span> {/* Not in API*/}
-                            <span className="info">08 days</span> {/* Not in API*/}
-                            </div>
-                        </div>
-                        </li>
-                        <li>
-                        <div className="item">
-                            <span className="icon"><i className="fas fa-tags"></i></span>
-                            <div className="text">
-                            <span className="info-title">Trip Price</span> {/* Not in API*/}
-                            <span className="info">US $740</span> {/* Not in API*/}
-                            </div>
-                        </div>
-                        </li>
-                    </ul>
                     </div>
                     </div>
                 </div>
