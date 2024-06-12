@@ -4,7 +4,7 @@ import Image from "next/image";
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 
-export default function FeaturesOne() {
+export default function WhyUs() {
     const [data, setData] = useState({ choose: [], chooseDesc: "" });
     const [error, setError] = useState(null);
 

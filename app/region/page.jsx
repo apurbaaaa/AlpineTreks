@@ -121,7 +121,7 @@ const Page = () => {
                             <span dangerouslySetInnerHTML={{ __html: content }}></span>
                         </div>
                     </div>
-                </div>
+                </div> 
             </section>
 
             <section className="layout-pt-md bg-light-1">

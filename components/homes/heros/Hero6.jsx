@@ -13,7 +13,7 @@ import Header4 from "@/components/layout/header/Header4";
 const instance = Axios.create(); 
 const axios = setupCache(instance);
 
-export default function Hero6() {
+export default function Banner() {
   const router = useRouter();
 
   const [currentActiveDD, setCurrentActiveDD] = useState("");
