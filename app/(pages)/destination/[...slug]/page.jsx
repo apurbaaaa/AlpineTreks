@@ -8,8 +8,7 @@ import FooterFour from "@/components/layout/footers/FooterFour";
 import Image from "next/image"; 
 import DOMPurify from "dompurify";
 
-export default function Slug({params}) {
-    console.log(params,'dd');
+export default function Slug({}) {
   const { slug } = useParams();
   const [posts, setPosts] = useState([]);
   const [error, setError] = useState(null);
@@ -22,7 +21,6 @@ export default function Slug({params}) {
         const response = await axios.get(
           `https://mountaintrekkingnepal.com/api/destination/${slug}`
         );
-        console.log(slug)
         setPosts(response?.data?.posts);
         setTitle(response?.data?.title); 
         const unpurified_desc = response?.data?.description;
