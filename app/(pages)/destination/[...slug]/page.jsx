@@ -23,14 +23,11 @@ export default function Slug({params}) {
           `https://mountaintrekkingnepal.com/api/destination/${slug}`
         );
         console.log(slug)
-        console.log(response);
         setPosts(response?.data?.posts);
         setTitle(response?.data?.title); 
         const unpurified_desc = response?.data?.description;
         let updatedHtmlString = DOMPurify.sanitize(unpurified_desc);
         setDesc(updatedHtmlString)
-        console.log(updatedHtmlString)
-        console.log(slug);
       } catch (error) {
         setError(error);
         console.error(error);
@@ -40,6 +37,15 @@ export default function Slug({params}) {
       fetchData();
     }
   }, [slug]); 
+
+  const slugType = (slug) => {
+    if (slug == 'nepal'){
+      return "activity"
+    }
+    else{
+      return "package"
+    }
+  }
 
   if (error) return <div>Error loading data</div>; 
 
@@ -142,7 +148,7 @@ export default function Slug({params}) {
             {posts.map((post, index) => (
             <div className="col-lg-4 col-md-6 d-flex" key={index}>
                 <div className="w-100">
-                <Link href={`/activity/${post.slug}`}>
+                <Link href={`/${slugType(slug)}/${post.slug}`}>
                     <div className="featureCard -type-8 -hover-image-scale">
                     <div className="featureCard__image -hover-image-scale__image">
                         <Image src={post.image} alt="feature" width={750} height={563} />
