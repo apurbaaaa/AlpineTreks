@@ -38,7 +38,7 @@ export default function Slug({params}) {
   }, [slug]); 
 
   const slugType = (slug) => {
-    if (slug == 'nepal'){
+    if (slug == 'nepal-trekking'){
       return "region"
     }
     else{
@@ -121,12 +121,12 @@ export default function Slug({params}) {
             <div className="col-auto">
               <div className="text-14 breadcrumb-text">
                 <Link href="/">Home</Link>
-                <Image src="/Image/chevron-right.svg" alt="chevron" width={12} height={12} />
-                <Link href="/nepal">Destination</Link>
-                <Image src="/Image/chevron-right.svg" alt="chevron" width={12} height={12} />
-                <Link href="/trekking">Nepal</Link>
-                <Image src="/Image/chevron-right.svg" alt="chevron" width={12} height={12} />
-                <Link href="/everest-base-camp-trek">{slug}</Link>
+                <Image src="/img/chevron-right.svg" alt="chevron" width={12} height={12} />
+                <Link href="/destination">Destination</Link>
+                <Image src="/img/chevron-right.svg" alt="chevron" width={12} height={12} />
+                <Link href="/destination/nepal">Nepal</Link>
+                <Image src="/img/chevron-right.svg" alt="chevron" width={12} height={12} />
+                <Link href={`/activity/${slug}`}>{title}</Link>
               </div>
             </div>
           </div>

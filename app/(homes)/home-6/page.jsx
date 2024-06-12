@@ -7,7 +7,7 @@ import BestBhutan from "@/components/homes/tours/BestBhutan";
 import BestTibet from "@/components/homes/tours/BestTibet";
 import TopTreks from "@/components/homes/tours/Top10treks";
 import TourSlider3 from "@/components/homes/tours/TourSlider3";
-import FooterFour from "@/components/layout/footers/FooterFour";
+import FooterFour from "../../../components/layout/footers/FooterFour";
 import Header4 from "@/components/layout/header/Header4";
 import React from "react";
 import FAQ from "@/components/layout/components/FAQ";

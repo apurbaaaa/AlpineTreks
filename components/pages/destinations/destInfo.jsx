@@ -31,17 +31,17 @@ export default function DestInfo() {
                 <Link
               href={"/bhutan-list-1"}
               data-aos="fade-up"
-              data-aos-delay=""
-              className="buttonArrow d-flex items-center "
-            >ç
-              <span>See all</span>
-              <i className="icon-arrow-top-right text-16 ml-10"></i>
+              data-aos-delay="400"
+              className="buttonArrow d-flex item  -center "
+            >
+              
             </Link>
                 <span>Destination</span>
                 </div>
                 </div>
-                </div>
-                <h1 className="text-30">Destination</h1>
+                </div>  
+                <h1 className="text-30">Destination</h1><span>See all</span>
+                <i className="icon-arrow-top-right text-16 ml-10"></i>
                 </div>
         </section>
    
