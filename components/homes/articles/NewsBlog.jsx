@@ -61,7 +61,6 @@ export default function NewsBlog() {
                             <Link href={`/blog/${elm.slug}`} key={elm.slug} className="blogCard -type-1">
                                 <div className="blogCard__image ratio ratio-41:30"> 
                                     <Image src={elm.image} alt={elm.image} className="img-ratio rounded-12" width={616} height={451}/>
-                                    <div className="blogCard__badge">Blog</div>
                                 </div>
     
                                 <div className="blogCard__content mt-30">       
