@@ -35,11 +35,13 @@ export default function page() {
           <ArticlesOne />
         </div>
         <TopTreks />
-        <FAQ />
+        
         <NewsBlog />
         <BestBhutan />
         <BestTibet />
+        <FAQ />
         <HotSelling />
+        
         <FooterFour />
       </main>
     </>

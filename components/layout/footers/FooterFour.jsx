@@ -5,9 +5,9 @@ import Link from "next/link";
 export default function FooterFour() {
   return (
     <div>
-      <footer className="footer -type-1 -light">
-  <div className="footer__main">
-    <div className="">
+      <footer className="footer -type-1 -light" >
+  <div className="footer__main" >
+    <div className="" >
       <Image src="/img/footer.svg" width={1906} height={527} alt=""/>
     </div>
     <div style={{ background: '#21262c' }}>
@@ -27,11 +27,11 @@ export default function FooterFour() {
                   Follow Us
                 </div>  
 
-                <div className="footerSocials__icons text-white">
-                  <Link href="#"><Image src="/img/facebook.svg" width = {40} height = {40} alt=""/> </Link>
-                  <Link href="#"><Image src="/img/instagram.svg" width = {40} height = {40} alt=""/> </Link>
-                  <Link href="#"><Image src="/img/linkedin.svg" width = {40} height = {40} alt=""/> </Link>
-                  <Link href="#"><Image src="/img/x-twitter.svg" width = {40} height = {40} alt=""/> </Link>
+                <div className="footerSocials__icons text-white" id="footer_svg">
+                  <Link href="#"><Image  src="/img/facebook.svg" width = {30} height = {25} alt=""/> </Link>
+                  <Link href="#"><Image src="/img/instagram.svg" width = {30} height = {25} alt=""/> </Link>
+                  <Link href="#"><Image src="/img/linkedin.svg" width = {30} height = {25} alt=""/> </Link>
+                  <Link href="#"><Image src="/img/x-twitter.svg" width = {30} height = {25} alt=""/> </Link>
                 </div>
               </div>
             </div>
