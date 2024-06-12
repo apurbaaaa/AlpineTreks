@@ -9,7 +9,7 @@ import Image from "next/image";
 import Link from "next/link";
 import axios from "axios";
 
-export default function TourSlider3() {
+export default function BestSellers() {
 
   const [tours, setTours] = useState([]);
   const [ddActive, setDdActive] = useState(false);

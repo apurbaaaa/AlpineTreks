@@ -4,7 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
 
-export default function TourTypes3() {
+export default function ActivitiesOffered() {
   const [activities, setActivities] = useState([]);
   const [title, setTitle] = useState("");
   const [desc, setDesc] = useState("");

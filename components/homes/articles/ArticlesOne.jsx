@@ -4,7 +4,7 @@ import axios from "axios";
 import Image from "next/image";
 import Link from "next/link";
 
-export default function HomePage() {
+export default function Destination() {
   const [data, setData] = useState([]); // Initialize data as an array
   const [error, setError] = useState(null);
 
