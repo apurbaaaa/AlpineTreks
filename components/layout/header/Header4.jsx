@@ -6,6 +6,8 @@ import MobileMenu from "../components/MobileMenu";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
+import axios from "axios";
+
 export default function Header4() {
   const router = useRouter();
   const pageNavigate = (pageName) => {
@@ -14,6 +16,8 @@ export default function Header4() {
 
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [addClass, setAddClass] = useState(false);
+  const [header, setHeader] = useState("");
+  const [error, setError] = useState(null);
 
   // Add a class to the element when scrolled 50px
   const handleScroll = () => {
@@ -25,6 +29,25 @@ export default function Header4() {
   };
 
   useEffect(() => {
+    const fetchHeader = async () => {
+      try {
+        const response = await axios.get("https://mountaintrekkingnepal.com/api/settings");
+        // Validate the header_logo before setting
+        const headerLogo = response?.data?.header_logo;
+        if (headerLogo) {
+          setHeader(headerLogo);
+        } else {
+          throw new Error("Invalid header logo URL");
+        }
+      } catch (error) {
+        setError(error);
+        console.error("Failed to fetch header logo:", error);
+      }
+    };
+    fetchHeader();
+  }, []);
+
+  useEffect(() => {
     window.addEventListener("scroll", handleScroll);
 
     // Cleanup the event listener when the component unmounts
@@ -32,12 +55,11 @@ export default function Header4() {
       window.removeEventListener("scroll", handleScroll);
     };
   }, []);
+
   return (
     <>
       <header
-        className={`header -type-3 -page-5 js-header ${
-          addClass ? "-is-sticky" : ""
-        }`}
+        className={`header -type-3 -page-5 js-header ${addClass ? "-is-sticky" : ""}`}
       >
         <div className="header__container container">
           <div className="headerMobile__left">
@@ -51,13 +73,17 @@ export default function Header4() {
 
           <div className="header__logo">
             <Link href="/" className="header__logo">
-              <Image
-                width="167"
-                height="32"
-                src="/img/general/logo-1.svg"
-                alt="logo icon"
-                priority
-              />
+              {header ? (
+                <Image
+                  width="167"
+                  height="32"
+                  src={header}
+                  alt="logo icon"
+                  priority
+                />
+              ) : (
+                <span>Logo not available</span> // Placeholder for missing image
+              )}
             </Link>
 
             <Menu />
@@ -78,8 +104,6 @@ export default function Header4() {
               <i className="icon-person text-18"></i>
             </button>
           </div>
-
-          
         </div>
       </header>
       <MobileMenu
