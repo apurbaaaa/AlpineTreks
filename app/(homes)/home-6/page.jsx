@@ -15,6 +15,7 @@ import Welcome from "@/components/homes/banners/Welcome";
 import HotSelling from "../../../components/layout/components/HotSelling";
 import Destination from "@/components/homes/articles/ArticlesOne";
 import ActivitiesOffered from "@/components/homes/tourTypes/TourTypes3";
+import TrekkingRegions from "@/components/homes/tours/TrekkingRegions";
 
 export const metadata = {
   title: "Mountain Trekking Nepal",
@@ -33,7 +34,7 @@ export default function page() {
         <Destination />
         <ActivitiesOffered />
         <CustomerReviews />
-        
+        <TrekkingRegions />
         <TopTreks />
         
         
