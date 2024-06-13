@@ -30,11 +30,10 @@ export default function page() {
         <Welcome />
         <BestSellers />
         <WhyUs /> 
+        <Destination />
         <ActivitiesOffered />
         <CustomerReviews />
-        <div className=" bg-light-1">
-          <Destination />
-        </div>
+        
         <TopTreks />
         
         

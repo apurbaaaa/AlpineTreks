@@ -47,7 +47,7 @@ export default function BestSellers() {
   }, []);
 
   return (
-    <section className="layout-pt-xl layout-pb-xl">
+    <section className="layout-pt-xl layout-pb-xl bg-light-1">
       <div className="container">
         <div className="row y-gap-10 justify-between items-end y-gap-10">
           <div className="col-auto">

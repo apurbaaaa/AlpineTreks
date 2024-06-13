@@ -8,7 +8,7 @@ export default function FooterFour() {
       <footer className="footer -type-1 -light" >
   <div className="footer__main" style={{backgroundColor:"#f5f5f5"}}>
     <div className="" >
-      <Image src="/img/footer.svg" width={1906} height={527} alt=""/>ç
+      <Image src="/img/footer.svg" width={1906} height={527} alt=""/>
     </div>
     <div style={{ background: '#21262c' }}>
       <div className="container">

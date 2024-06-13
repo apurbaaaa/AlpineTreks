@@ -60,7 +60,7 @@ export default function DestInfo() {
                 <div data-aos="fade-up" data-aos-delay="400" className="col-lg-5 is-in-view">
                   <div className="video relative container">
                     <div className="video__bg">
-                      <Image src={elm.image} alt="Nepal" className="rounded-12" width={800} height={500}/>
+                      <Image src={elm.image} alt={elm.title} className="rounded-12" width={800} height={500}/>
                     </div>
                   </div>
                 </div>
