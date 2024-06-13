@@ -30,9 +30,8 @@ const Page = () => {
             } 
         };
         fetchData();
-    }, []); // Empty dependency array to run once
+    }, []); 
 
-    // Show error message if there's an error
     if (error) return <div>Error: {error.message}</div>;
 
     return (

@@ -19,7 +19,6 @@ export default function Header4() {
   const [header, setHeader] = useState("");
   const [error, setError] = useState(null);
 
-  // Add a class to the element when scrolled 50px
   const handleScroll = () => {
     if (window.scrollY >= 50) {
       setAddClass(true);
@@ -32,7 +31,6 @@ export default function Header4() {
     const fetchHeader = async () => {
       try {
         const response = await axios.get("https://mountaintrekkingnepal.com/api/settings");
-        // Validate the header_logo before setting
         const headerLogo = response?.data?.header_logo;
         if (headerLogo) {
           setHeader(headerLogo);
@@ -50,7 +48,6 @@ export default function Header4() {
   useEffect(() => {
     window.addEventListener("scroll", handleScroll);
 
-    // Cleanup the event listener when the component unmounts
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
@@ -82,7 +79,7 @@ export default function Header4() {
                   priority
                 />
               ) : (
-                <span>Logo not available</span> // Placeholder for missing image
+                <span>Logo not available</span>
               )}
             </Link>
 
