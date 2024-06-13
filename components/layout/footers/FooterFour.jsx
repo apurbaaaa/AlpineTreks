@@ -6,7 +6,7 @@ export default function FooterFour() {
   return (
     <div>
       <footer className="footer -type-1 -light" >
-  <div className="footer__main" >
+  <div className="footer__main" style={{backgroundColor:"#f5f5f5"}}>
     <div className="" >
       <Image src="/img/footer.svg" width={1906} height={527} alt=""/>
     </div>

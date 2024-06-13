@@ -37,11 +37,13 @@ export default function page() {
         {/* </div> */}
         <TopTreks />
         
-        <NewsBlog />
+        
         <BestBhutan />
-        <BestTibet />
         <HotSelling />
+        <BestTibet />
         <FAQ />
+        <NewsBlog />
+        
         <FooterFour />
       </main>
     </>

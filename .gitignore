@@ -28,9 +28,11 @@ yarn-error.log*
 # local env files
 .env*.local
 
-# vercel
+# vercels
 .vercel
 
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+git rm --cached .env
