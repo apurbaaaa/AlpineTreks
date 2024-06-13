@@ -17,8 +17,8 @@ import Destination from "@/components/homes/articles/ArticlesOne";
 import ActivitiesOffered from "@/components/homes/tourTypes/TourTypes3";
 
 export const metadata = {
-  title: "Home-6 || ViaTour - Travel & Tour React NextJS Template",
-  description: "ViaTour - Travel & Tour React NextJS Template",
+  title: "Mountain Trekking Nepal",
+  description: "Mountain Trekking Nepal",
 };
 
 export default function page() {
@@ -32,9 +32,9 @@ export default function page() {
         <WhyUs /> 
         <ActivitiesOffered />
         <CustomerReviews />
-        {/* <div className=" bg-light-1"> */}
+        <div className=" bg-light-1">
           <Destination />
-        {/* </div> */}
+        </div>
         <TopTreks />
         
         
