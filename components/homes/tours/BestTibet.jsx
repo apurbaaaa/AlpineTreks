@@ -152,9 +152,6 @@ export default function BestTibet() {
                           />
                         </div>
 
-                        <button className="tourCard__favorite">
-                          <i className="icon-heart"></i>
-                        </button>
                       </div>
 
                       <div className="tourCard__content px-10 pt-10">

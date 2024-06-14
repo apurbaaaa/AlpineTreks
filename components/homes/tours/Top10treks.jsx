@@ -142,9 +142,6 @@ export default function TopTreks() {
                       <div className="tourCard_header">
                       <div className="tourCard__image ratio ratio-28:20 -hover-image-scale__image">
                           <Image src={trek.featured_image} alt={trek.title} width={500} height={300} className="img-ratio rounded-12"/>
-                          <button className="tourCard__favorite">
-                          <i className="icon-heart"></i>
-                        </button>
                         </div>
                         <div className="tourCard__content px-10 pt-10">
                         <div className="tourCard__location d-flex items-center text-13 text-light-2">
