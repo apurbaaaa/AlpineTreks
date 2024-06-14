@@ -5985,6 +5985,8 @@ h1, h2, h3, h4, h5, h6 {
 
 .blogCard.-type-1 {
   display: block;
+  border: 1px solid gainsboro;
+  border-radius: 13px;
 }
 
 .blogCard.-type-1 .blogCard__image {
@@ -6000,6 +6002,10 @@ h1, h2, h3, h4, h5, h6 {
   padding: 5px 15px;
   background-color: white;
   border-radius: 200px;
+}
+
+.blogCard.-type-1 .blogCard__content {
+  padding: 0px 20px 30px;
 }
 
 .blogCard.-type-1 .blogCard__info {
