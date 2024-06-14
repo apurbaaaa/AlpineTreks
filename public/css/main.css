@@ -1973,6 +1973,17 @@ h1, h2, h3, h4, h5, h6 {
   font-weight: 700;
 }
 
+#act_title{
+  font-size: 30px;
+  font-weight: 700;
+  line-height: 1.6 !important;  
+
+}
+
+#feature_content{
+  /* color: red; */
+}
+
 .header.-type-1 {
   position: fixed;
   top: 0;
@@ -4957,6 +4968,8 @@ h1, h2, h3, h4, h5, h6 {
   z-index: -1;
 }
 
+
+
 .featureCard.-type-2 .featureCard__image img {
   width: 100%;
   height: 100%;
@@ -5227,6 +5240,20 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .featureCard.-type-6 .featureCard__content {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  z-index: 1;
+}
+
+#feature {
   position: absolute;
   top: 0;
   left: 0;
@@ -6013,6 +6040,26 @@ h1, h2, h3, h4, h5, h6 {
   align-items: center;
 }
 
+.featureCard.-type-6 .featureCard__content {
+  position: absolute;
+  bottom: 36px;
+  top: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  text-align: center;
+  height: auto;
+  z-index: 1;
+  justify-content: flex-end;
+  flex-direction: column;
+}
+.featureCard.-type-6 {
+  position: relative;
+  display: block;
+  z-index: 0;
+  transition: .2s;
+}
 .blogCard.-type-1 .blogCard__line {
   width: 1px;
   height: 26px;

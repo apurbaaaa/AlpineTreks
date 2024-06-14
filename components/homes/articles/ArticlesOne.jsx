@@ -51,23 +51,23 @@ export default function Destination() {
 
           <div data-aos="fade-up" data-aos-delay="" className="row y-gap-30 pt-40 sm:pt-20">
             {data.map((elm, i) => (
-              <div key={i} className="col-lg-4 col-md-6">
-                <Link href={`/destination/${elm.slug}`} className="featureCard -type-6 -hover-image-scale">
-                  <div className="blogCard__image ratio ratio-41:30 -hover-image-scale__image rounded-12">  
-                    <Image width={616} height={451} src={elm.image} alt="image" className="img-ratio rounded-12 ratio-41:30" />
-                    <div className="blogCard__badge">{elm.count}</div>
-                    </div>
+              <div key={i} className="col-lg-4 col-md-6 is-in-view " data-aos="fade-up" data-aos-delay="400">
+                <Link href={`/destination/${elm.slug}`} className="featureCard-type-6 -hover-image-scale">
+                  
+                <div className="blogCard__image ratio ratio-16:9 -hover-image-scale__image rounded-12">
+                <Image src={elm.image} width={750} height={420} alt={elm.title} className="img-ratio rounded-12" />
+                </div>
+                <div className="featuredCard__content"  id="feature">
+                <h3 className="text-white" id="act_title">{elm.title}</h3>
+                <p className="text-white lh-16">{elm.count}+ Activities</p>
+                </div>
+
 
                   <div className="blogCard__content mt-30">
                     <div className="blogCard__info text-14">
                       <div className="lh-13">{elm.date}</div>
                       <div className="blogCard__line"></div>
-                      <div className="lh-13">By {elm.author}</div>
                     </div>
-
-                    <h3 className="blogCard__title text-18 fw-500 mt-10">
-                      {elm.title}
-                    </h3>
                   </div>
                 </Link>
               </div>
@@ -78,3 +78,7 @@ export default function Destination() {
     </div>
   );
 }
+
+
+
+
