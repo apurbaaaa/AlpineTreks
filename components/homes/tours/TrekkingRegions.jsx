@@ -71,7 +71,7 @@ export default function TrekkingRegions() {
                                         <div className="featureCard__image">
                                             <Image src={trek.image} width={342.7} height={258.5} alt={trek.title} layout="responsive" />
                                         </div>
-                                        <div className="featureCard__content">
+                                        <div className="featureCard__content" style={{color: 'white'}}>
                                             <h3 className="text-18 fw-500">{trek.title}</h3>
                                         </div>
                                     </div>

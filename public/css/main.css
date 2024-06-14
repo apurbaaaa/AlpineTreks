@@ -5337,6 +5337,7 @@ h1, h2, h3, h4, h5, h6 {
   text-align: center;
   height: auto;
   padding-bottom: 20px;
+  padding-top: 30px;
 }
 
 @media (max-width: 767px) {
@@ -13667,21 +13668,24 @@ table.table-4.-border-bottom tbody > tr {
 }
 
 .-hover-image-scale__image img {
-  
   transition: 0.6s;
 }
 
 .featureCard__image:hover img {
   transform: scale(1.15); /* Scale the image on hover */
-  transition: 0.6s;
+  transition: transform 0.6s ease-in-out;
+  overflow: hidden;
 }
 
 .-hover-image-scale:hover {
   transform: scale(1.15);
+  transition: transform 0.6s ease-in-out;
+  overflow: hidden;
 }
 
 #trekkingregions_hover:hover{
   transform: scale(1.15);
+  overflow: hidden;
   transition: transform 0.6s ease-in-out;
 }
 .gallery__item {
@@ -13963,11 +13967,17 @@ button.gm-ui-hover-effect::after {
   height: 100%;
 }
 
-.-hover-image-scale:hover{
+.-hover-image-scale:hover .-hover-image-scale__image img{
   transform: scale(1.15);
-  transition: 0.6s;
+  transition: transform 0.6s ease-in-out;
+  overflow: hidden;
+
+
+
 }
 
-/* .-hover-image-scale:hover .-hover-image-scale__image img{
+.-hover-image-scale:hover .-hover-image-scale__image img{
   transform: scale(1.15);
-} */
+  transition: transform 0.6s ease-in-out;
+  overflow: hidden;
+}
