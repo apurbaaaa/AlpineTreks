@@ -94,7 +94,7 @@ export default function TopTreks() {
 
           <div className="col-auto">
             <Link
-              href={"/trek-list-1"}
+              href={"/activity/nepal-trekking"}
               data-aos="fade-up"
               data-aos-delay=""
               className="buttonArrow d-flex items-center "
@@ -109,7 +109,7 @@ export default function TopTreks() {
           <div className="overflow-hidden js-section-slider">
             <div
               data-aos="fade-up"
-              data-aos-delay=""
+              data-aos-delay="400"
               className="swiper-wrapper "
             >
               <Swiper
@@ -137,7 +137,7 @@ export default function TopTreks() {
               >
                 {treks.map((trek, i) => (
                   <SwiperSlide key={i}>
-                    <Link href={`/trek/${trek.slug}`}className="tourCard -type-1 py-10 px-10 border-1 rounded-12 bg-white -hover-shadow"
+                    <Link href={`/package/${trek.slug}`}className="tourCard -type-1 py-10 px-10 border-1 rounded-12 bg-white -hover-shadow"
                     >
                       <div className="tourCard_header">
                       <div className="tourCard__image ratio ratio-28:20">

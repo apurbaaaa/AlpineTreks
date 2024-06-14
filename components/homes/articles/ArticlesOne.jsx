@@ -56,7 +56,7 @@ export default function Destination() {
                   <div className="blogCard__image ratio ratio-41:30 -hover-image-scale__image rounded-12">  
                     <Image width={616} height={451} src={elm.image} alt="image" className="img-ratio rounded-12 ratio-41:30" />
                     <div className="blogCard__badge">{elm.count}</div>
-                  </div>
+                    </div>
 
                   <div className="blogCard__content mt-30">
                     <div className="blogCard__info text-14">

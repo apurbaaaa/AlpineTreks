@@ -34,18 +34,6 @@ export default function ActivitiesOffered() {
         if(response.data && response.data.we_offers_title) {
           setTitle(response.data.we_offers_title);
         }
-      } catch (err) {
-        console.error(err);
-        setError(err);
-      }
-    };
-    fetchTitle();
-  }, []); 
-  useEffect(() => {
-    const fetchDesc = async () => {
-      try {
-        const response = await axios.get("https://mountaintrekkingnepal.com/api/home");
-        // Ensure that the path to the data is correct
         if(response.data && response.data.we_offers_desc) {
           setDesc(response.data.we_offers_desc);
         }
@@ -54,8 +42,9 @@ export default function ActivitiesOffered() {
         setError(err);
       }
     };
-    fetchDesc();
+    fetchTitle();
   }, []); 
+
   return (
     <section className="layout-pt-xl layout-pb-xl bg-accent-1-05">
       <div className="container">
@@ -66,27 +55,17 @@ export default function ActivitiesOffered() {
             </h2>
             <p>{desc}</p>
           </div>
-          <div className="col-auto">
-            <Link
-              href={"/tour-list-1"}
-              data-aos="fade-up"
-              className="buttonArrow d-flex items-center"
-            >
-              <span>See all</span>
-              <i className="icon-arrow-top-right text-16 ml-10"></i>
-            </Link>
-          </div>
         </div>
-
+    
         <div className="row y-gap-20 pt-40" data-aos="fade-up">
           {activities.map((activity, index) => (
             <div key={index} className="col-xl-2 col-md-4 col-6">
-              <Link href={"/tour-list-1"} className="featureCard -type-5 -hover-accent-1">
+              <Link href={`/activity/${activity.slug}`} className="featureCard -type-5 -hover-accent-1">
                 <div className="featureCard__icon">
                   <Image width="40" height="41" src={activity.image} alt="image" />
                 </div>
                 <h4 className="text-18 fw-500 mt-20">{activity.title}</h4>
-                <div className="lh-13 mt-5">{activity.tourCount}</div>
+                <div className="lh-13 mt-5">{activity.count}+ activities</div>
               </Link>
             </div>
           ))}

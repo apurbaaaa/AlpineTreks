@@ -44,7 +44,7 @@ export default function NewsBlog() {
 
                     <div className="col-auto">
                         <Link
-                            href={"/trek-list-1"}
+                            href={"/blog"}
                             data-aos="fade-up"
                             data-aos-delay=""
                             className="buttonArrow d-flex items-center "
@@ -58,7 +58,7 @@ export default function NewsBlog() {
                 <div data-anim-child="delay-2" data-aos="fade-up" className="row y-gap-30 pt-40 sm:pt-20">
                     {blogs.map((elm, i) => (
                         <div key={i} className="col-lg-4 col-md-6">
-                            <Link href={`/blog/${elm.slug}`} key={elm.slug} className="blogCard -type-1">
+                            <Link href={`/${elm.slug}`} key={elm.slug} className="blogCard -type-1">
                                 <div className="blogCard__image ratio ratio-41:30"> 
                                     <Image src={elm.image} alt={elm.image} className="img-ratio rounded-12" width={616} height={451}/>
                                 </div>

@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import axios from "axios";
+import Link from "next/link";
 
 
 export default function HotSelling(){
@@ -30,12 +31,13 @@ export default function HotSelling(){
     return(
         <div>
             <section className="layout-pt-lg layout-pb-lg relative hotsell trip-month ">
-                <div className="sectionBg sectionBg-1">
-                    <Image src={hotImage} alt="image" className="img-ratio" width={1600}
-                            height={700}/>
-                </div>
+                <Link href = {`package/${hotSlug}`}>
+                    <div className="sectionBg sectionBg-1">
+                        <Image src={hotImage} alt="image" className="img-ratio" width={1600}
+                                height={700}/>
+                    </div>
 
-                <div className="container">
+                    <div className="container"> 
                     <div className="row justify-center text-center">
                     <div className="col-auto">
                         <span id="hot-sell">Hot Selling Trip</span>
@@ -44,6 +46,10 @@ export default function HotSelling(){
                     </div>
                     </div>
                 </div>
+                </Link>
+                
+
+                
             </section>
         </div>
     );

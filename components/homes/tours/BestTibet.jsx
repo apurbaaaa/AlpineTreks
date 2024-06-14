@@ -94,8 +94,8 @@ export default function BestTibet() {
 
           <div className="col-auto">
             <Link
-              href={"/tibet-list-1"}
-              data-aos="fade-up"
+              href={"/destination/tibet"}
+              data-aos="fade-up"  
               data-aos-delay=""
               className="buttonArrow d-flex items-center "
             >
@@ -138,7 +138,7 @@ export default function BestTibet() {
                 {tibet.map((elm, i) => (
                   <SwiperSlide key={i}>
                     <Link
-                      href={`/tour-single-1/${elm.slug}`}
+                      href={`/package/${elm.slug}`}
                       className="tourCard -type-1 py-10 px-10 border-1 rounded-12 bg-white -hover-shadow"
                     >
                       <div className="tourCard__header">

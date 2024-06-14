@@ -2,11 +2,18 @@
 import React, { useEffect } from 'react'
 import Header4 from '@/components/layout/header/Header4'
 import FooterFour from '@/components/layout/footers/FooterFour'
+import { useState } from 'react'
+import Link from 'next/link'
+import { useParams } from "next/navigation";
+import DOMPurify from "dompurify";
+
 
 const page = () => {
     const [title, setTitle] = useState("");
     const [desc, setDesc] = useState("");
     const [post, setPosts] = useState("");
+    const { slug } = useParams();
+    const [error, setError] = useState(null);
 
     
     useEffect(() => {
@@ -99,17 +106,17 @@ const page = () => {
                         <div className="col-auto">
                             <div className="text-14 breadcrumb-text">
                                 <Link href="/">Home</Link>
-                                <Image src="/img/chevron-right.svg" alt="chevron" width={12} height={12} />
+                                {/* <Image src="/img/chevron-right.svg" alt="chevron" width={12} height={12} /> */}
                                 <Link href="/destination">Region</Link>
-                                <Image src="/img/chevron-right.svg" alt="chevron" width={12} height={12} />
+                                {/* <Image src="/img/chevron-right.svg" alt="chevron" width={12} height={12} /> */}
                                 <Link href={`/region/${slug}`}>{title}</Link>
                             </div>
                         </div>
                     </div>
-                    <div className="row pt-30">
+                    <div className="row pt-30"> 
                         <div className="col-auto text-collapse">
                             <h1 className="pageHeader__title">{title}</h1>
-                            <span dangerouslySetInnerHTML={{ __html: content }}></span>
+                            <span dangerouslySetInnerHTML={{ __html: desc }}></span>
                         </div>
                     </div>
                 </div> 

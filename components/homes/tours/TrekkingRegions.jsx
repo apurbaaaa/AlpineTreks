@@ -103,7 +103,7 @@ export default function TrekkingRegions() {
               >
                 {treks.map((trek, i) => (
                   <SwiperSlide key={i}>
-               <Link href="/" className="featureCard -type-8 -hover-image-scale">
+               <Link href={`/region/${trek.slug}`} className="featureCard -type-8 -hover-image-scale">
               <div className="featureCard__image -hover-image-scale__image">
                 <Image src={trek.image} width={342.7} height={258.5} alt="image"/>
               </div>

@@ -56,18 +56,6 @@ export default function BestSellers() {
             </h2>   
             <p>Join us on our trending adventure this year.</p>
           </div>
-
-          <div className="col-auto">
-            <Link
-              href={"/tour-list-1"}
-              data-aos="fade-up"
-              data-aos-delay="400"
-              className="buttonArrow d-flex items-center "
-            >
-              <span>See all</span>
-              <i className="icon-arrow-top-right text-16 ml-10"></i>
-            </Link>
-          </div>
         </div>
 
         <div className="relative pt-40 sm:pt-20">
@@ -103,7 +91,7 @@ export default function BestSellers() {
                 {tours.map((elm, i) => (
                   <SwiperSlide key={i}>
                     <Link
-                      href={`/tour-single-1/${elm.slug}`}
+                      href={`/package/${elm.slug}`}
                       className="tourCard -type-1 py-10 px-10 border-1 rounded-12 bg-white -hover-shadow"
                     >
                       <div className="tourCard__header">
