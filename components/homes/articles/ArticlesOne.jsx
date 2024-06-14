@@ -5,7 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 export default function Destination() {
-  const [data, setData] = useState([]); // Initialize data as an array
+  const [data, setData] = useState([]); 
   const [error, setError] = useState(null);
   const [title, setTitle] = useState("");
   const [desc, setDesc] = useState("")
@@ -13,7 +13,7 @@ export default function Destination() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get("https://mountaintrekkingnepal.com/api/home"); //  in object
+        const response = await axios.get("https://mountaintrekkingnepal.com/api/home");
         setData(response?.data?.choose_destinations); 
         setTitle(response?.data?.destination_title);
         setDesc(response?.data?.destination_short_description);
@@ -28,7 +28,7 @@ export default function Destination() {
   }, []);
   
 
-  if (error) return <div>Error loading the data.</div>; // Check for data length instead of data falsiness
+  if (error) return <div>Error loading the data.</div>; 
 
   return (
     <div>

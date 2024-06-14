@@ -162,7 +162,7 @@ export default function TopTreks() {
                           </div>
 
                           <span className="text-dark-1 ml-10">
-                            {trek.total_rating} ({trek.total_reviews})
+                            Out of {trek.total_reviews} reviews
                           </span>
                         </div>
 

@@ -145,7 +145,7 @@ export default function BestBhutan() {
                           </div>
 
                           <span className="text-dark-1 ml-10">
-                            {elm.total_rating} ({elm.total_reviews})
+                          Out of {elm.total_reviews} reviews
                           </span>
                         </div>
 
