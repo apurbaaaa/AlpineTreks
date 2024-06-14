@@ -4,7 +4,6 @@ import React from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination } from "swiper/modules";
 import { useEffect, useState, useRef } from "react";
-import Stars from "@/components/common/Stars";
 import Image from "next/image";
 import Link from "next/link";
 import axios from "axios";
@@ -17,7 +16,7 @@ export default function TrekkingRegions() {
     useEffect(() => {
       const fetchData = async () => {
         try {
-          const response = await axios.get("https://mountaintrekkingnepal.com/api/home", { cache: 'force-cache' }); //  in object
+          const response = await axios.get("https://mountaintrekkingnepal.com/api/home", { cache: 'force-cache' }); 
           setTreks(response?.data?.trekking_regions); 
           
         } catch (error) {
