@@ -82,7 +82,7 @@ export default function BestTibet() {
 
 
   return (
-    <section className="layout-pt-xl layout-pb-xl">
+    <section className="layout-pt-xl layout-pb-xl bg-accent-1-05">
       <div className="container">
         <div className="row y-gap-10 justify-between items-end y-gap-10">
           <div className="col-auto">

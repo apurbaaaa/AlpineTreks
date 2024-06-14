@@ -33,17 +33,14 @@ export default function page() {
         <WhyUs /> 
         <Destination />
         <ActivitiesOffered />
-        <CustomerReviews />
         <TrekkingRegions />
         <TopTreks />
-        
-        
         <BestBhutan />
-        <HotSelling />
         <BestTibet />
+        <HotSelling />
+        <CustomerReviews />
         <FAQ />
         <NewsBlog />
-        
         <FooterFour />
       </main>
     </>

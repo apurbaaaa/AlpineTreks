@@ -8,7 +8,7 @@ import Image from "next/image";
 export default function  CustomerReviews() {
   
   return (
-    <section className="relative layout-pt-xl layout-pb-xl">
+    <section className="relative layout-pt-xl layout-pb-xl bg-accent-1-05">
       <div className="sectionBg md:d-none">
         <Image
           width={1920}
