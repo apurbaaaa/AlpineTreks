@@ -49,7 +49,7 @@ export default function FAQ() {
             }`}
           >
             <div className="col-lg-8 col-12">
-              <div className="accordion__item px-20 py-15 border-1 rounded-12">
+              <div className="accordion__item px-20 py-15 border-1   rounded-12">
                 <div
                   className="accordion__button d-flex items-center justify-between"
                   onClick={() => toggleAccordion(i)}
@@ -71,7 +71,7 @@ export default function FAQ() {
                   style={{
                     maxHeight: openIndex === i ? "1000px" : "0",
                     overflow: "hidden",
-                    transition: "max-height 0.3s ease",
+                    transition: "max-height 0.5s ease",
                   }}
                 >
                   <div className="pt-20">

@@ -5345,6 +5345,18 @@ h1, h2, h3, h4, h5, h6 {
     height: 120px;
   }
 }
+/* Add this CSS to your stylesheet */
+
+.accordion__content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease; /* Add easing here */
+}
+
+.accordion.is-active .accordion__content {
+  max-height: 200px; /* Adjust max-height to accommodate your content */
+}
+
 
 .featureCard.-type-9 {
   position: relative;
@@ -6702,7 +6714,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .accordion__icon .icon:nth-child(2) {
   position: relative;
-  transform: rotate(-90deg);
+  transform: rotate(-90deg);  
   opacity: 0;
 }
 
@@ -6715,6 +6727,77 @@ h1, h2, h3, h4, h5, h6 {
   transform: none;
   opacity: 1;
 }
+
+/* Add this CSS to your stylesheet */
+
+.faq-section {
+  padding: 60px 0;
+}
+
+.section-title {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.section-title h2 {
+  font-size: 30px;
+  margin-bottom: 10px;
+}
+
+.section-title p {
+  font-size: 16px;
+  color: #777;
+}
+
+.accordion-container {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.accordion {
+  margin-bottom: 10px;
+  border-radius: 8px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.accordion.active {
+  background-color: #ffffff;
+}
+
+.accordion-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 15px 20px;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.accordion-title {
+  flex: 1;
+  font-size: 18px;
+  font-weight: 600;
+  color: #333;
+}
+
+.accordion-icon {
+  flex-shrink: 0;
+  font-size: 18px;
+  color: #777;
+}
+
+.accordion-content {
+  padding: 15px 20px;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.5s ease-in-out; /* Updated transition for easing in */
+}
+
+.accordion.active .accordion-content {
+  max-height: 1000px; /* Adjust based on your content */
+}
+
 
 .accordion__content {
   overflow: hidden;
