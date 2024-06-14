@@ -140,7 +140,7 @@ export default function TopTreks() {
                     <Link href={`/package/${trek.slug}`}className="tourCard -type-1 py-10 px-10 border-1 rounded-12 bg-white -hover-shadow"
                     >
                       <div className="tourCard_header">
-                      <div className="tourCard__image ratio ratio-28:20">
+                      <div className="tourCard__image ratio ratio-28:20 -hover-image-scale__image">
                           <Image src={trek.featured_image} alt={trek.title} width={500} height={300} className="img-ratio rounded-12"/>
                           <button className="tourCard__favorite">
                           <i className="icon-heart"></i>
