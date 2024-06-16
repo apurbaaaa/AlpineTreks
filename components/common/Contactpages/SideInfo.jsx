@@ -1,37 +1,35 @@
-import React from 'react';
+"use client"
+import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
+import axios from 'axios';
 
-export default function SideInfo() {
-
-  const [email, setEmail] = useState("")
-  const [address, setAddress] = useState("")
-  const [phone, setPhone] = useState("")
-  const [mobile, setMobile] = useState("")
-  // const [tel , setTel] = useState("")
-  // const [socials, setSocials] = useState([]);
-  const [error, setError] = useState(null)
-  const [mapURL, setMapURL] = useState("")
+const SideInfo = () => {
+  const [email, setEmail] = useState('');
+  const [address, setAddress] = useState('');
+  const [phone, setPhone] = useState('');
+  const [mobile, setMobile] = useState('');
+  const [error, setError] = useState(null);
+  const [mapURL, setMapURL] = useState('');
 
   useEffect(() => {
     const fetchData = async () => {
-      try{
-        const response = await axios.get("https://mountaintrekkingnepal.com/api/settings");
-        setEmail(response?.data?.email_address)
-        setAddress(response?.data?.address)
-        setPhone(response?.data?.phone)
-        setMobile(response?.data?.mobile)   
-        setMapURL(response?.data?.map_url)          
-        // setSocials[response?.data?.social_media]       currently un-mapable data by API
-        // setInterval(response?.data?.tel)               currently has null in API
-      }
-      catch(error){
+      try {
+        const response = await axios.get('/api/settings');
+        setEmail(response?.data?.email_address);
+        setAddress(response?.data?.address);
+        setPhone(response?.data?.phone);
+        setMobile(response?.data?.mobile);
+        setMapURL(response?.data?.map_url);
+      } catch (error) {
         setError(error);
-        console.error(error)
+        console.error('Error fetching data:', error);
       }
-    }; fetchData();
-  })
+    };
+    fetchData();
+  }, []);
+
   return (
-    <section className="layout-pt-sm"> {/* <section data-anim="fade" className="layout-pt-sm"> */}
+    <section className="layout-pt-sm">
       <div className="container">
         <div className="row justify-center">
           <div className="col-lg-5 col-sm-6">
@@ -40,42 +38,60 @@ export default function SideInfo() {
 
               <div className="mt-20 md:mt-10">
                 <div className="contact-information">
-                  <h4><i className="fa-solid fa-location-dot"></i> Address</h4>
+                  <h4>
+                    <i className="fa-solid fa-location-dot"></i> Address
+                  </h4>
                   <span>{address}</span>
                 </div>
                 <div className="contact-information">
-                  <h4><i className="fa-regular fa-envelope"></i> Email</h4>
-                  <span><div href="mailto:info@webtechnepal.com">{email}</div></span>
+                  <h4>
+                    <i className="fa-regular fa-envelope"></i> Email
+                  </h4>
+                  <span>
+                    <a href={`mailto:${email}`}>{email}</a>
+                  </span>
                 </div>
                 <div className="contact-information">
-                  <h4><i className="fa-solid fa-mobile"></i> Mobile</h4>
+                  <h4>
+                    <i className="fa-solid fa-mobile"></i> Mobile
+                  </h4>
                   <span>{mobile}</span>
                 </div>
                 <div className="contact-information">
-                  <h4><i className="fa-solid fa-phone"></i> Phone</h4>
+                  <h4>
+                    <i className="fa-solid fa-phone"></i> Phone
+                  </h4>
                   <span>{phone}</span>
                 </div>
                 <div className="contact-information social-contact-information">
                   <h4 className="text-25 md:text-24 fw-700">Follow Us</h4>
                   <ul>
                     <li>
-                      <Link href="https://facebook.com">
-                        <div aria-label="Facebook"><i className="fa-brands fa-facebook-f"></i> Facebook </div>
+                      <Link href="https://facebook.com" legacyBehavior>
+                        <a aria-label="Facebook">
+                          <i className="fa-brands fa-facebook-f"></i> Facebook
+                        </a>
                       </Link>
                     </li>
                     <li>
-                      <Link href="https://instagram.com">
-                        <div aria-label="Instagram"><i className="fa-brands fa-instagram"></i> Instagram</div>
+                      <Link href="https://instagram.com" legacyBehavior>
+                        <a aria-label="Instagram">
+                          <i className="fa-brands fa-instagram"></i> Instagram
+                        </a>
                       </Link>
                     </li>
                     <li>
-                      <Link href="https://twitter.com">
-                        <div aria-label="Twitter"><i className="fa-brands fa-x-twitter"></i> Twitter</div>
+                      <Link href="https://twitter.com" legacyBehavior>
+                        <a aria-label="Twitter">
+                          <i className="fa-brands fa-x-twitter"></i> Twitter
+                        </a>
                       </Link>
                     </li>
                     <li>
-                      <Link href="https://linkedin.com">
-                        <div aria-label="LinkedIn"><i className="fa-brands fa-linkedin-in"></i> LinkedIn </div>
+                      <Link href="https://linkedin.com" legacyBehavior>
+                        <a aria-label="LinkedIn">
+                          <i className="fa-brands fa-linkedin-in"></i> LinkedIn
+                        </a>
                       </Link>
                     </li>
                   </ul>
@@ -94,7 +110,7 @@ export default function SideInfo() {
               referrerPolicy="no-referrer-when-downgrade"
               aria-label="Google Maps"
             ></iframe>
-          </div> 
+          </div>
           <div className="col-lg-7">
             <div className="form-contact">
               <h2 className="text-30 fw-700 text-center mb-30">Leave us your info</h2>
@@ -113,7 +129,9 @@ export default function SideInfo() {
                     <textarea name="message" placeholder="Message" rows="3"></textarea>
                   </div>
                   <div className="col-12">
-                    <button className="button -md -dark-1 bg-accent-1 text-white col-12">Send Message</button>
+                    <button className="button -md -dark-1 bg-accent-1 text-white col-12">
+                      Send Message
+                    </button>
                   </div>
                 </div>
               </div>
@@ -123,4 +141,6 @@ export default function SideInfo() {
       </div>
     </section>
   );
-}
+};
+
+export default SideInfo;

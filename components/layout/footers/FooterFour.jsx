@@ -22,7 +22,6 @@ export default function FooterFour() {
         setEmail(response?.data?.email_address)
         setAddress(response?.data?.address)
         setPhone(response?.data?.phone)
-        console.log(email)
         // setMobile(response?.data?.mobile)              data not displayed in current footer format
         // setSocials[response?.data?.social_media]       currently un-mapable data by API
         // setInterval(response?.data?.tel)               currently has null in API

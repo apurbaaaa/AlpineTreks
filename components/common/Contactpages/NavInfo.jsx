@@ -4,7 +4,6 @@ import Link from "next/link";
 export default function NavInfo() {
     return (
         <section className="mt-header pt-30">
-            {/* Optionally, you can include data attributes for animation */}
             {/* <section data-anim="fade" className="mt-header pt-30"> */}
             <div className="container">
                 <nav className="breadcrumbs mb-30 md:mb-15" aria-label="breadcrumb">
