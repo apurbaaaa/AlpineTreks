@@ -2,6 +2,34 @@ import React from 'react';
 import Link from 'next/link';
 
 export default function SideInfo() {
+
+  const [email, setEmail] = useState("")
+  const [address, setAddress] = useState("")
+  const [phone, setPhone] = useState("")
+  const [mobile, setMobile] = useState("")
+  // const [tel , setTel] = useState("")
+  // const [socials, setSocials] = useState([]);
+  const [error, setError] = useState(null)
+  const [mapURL, setMapURL] = useState("")
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try{
+        const response = await axios.get("https://mountaintrekkingnepal.com/api/settings");
+        setEmail(response?.data?.email_address)
+        setAddress(response?.data?.address)
+        setPhone(response?.data?.phone)
+        setMobile(response?.data?.mobile)   
+        setMapURL(response?.data?.map_url)          
+        // setSocials[response?.data?.social_media]       currently un-mapable data by API
+        // setInterval(response?.data?.tel)               currently has null in API
+      }
+      catch(error){
+        setError(error);
+        console.error(error)
+      }
+    }; fetchData();
+  })
   return (
     <section className="layout-pt-sm"> {/* <section data-anim="fade" className="layout-pt-sm"> */}
       <div className="container">
@@ -13,19 +41,19 @@ export default function SideInfo() {
               <div className="mt-20 md:mt-10">
                 <div className="contact-information">
                   <h4><i className="fa-solid fa-location-dot"></i> Address</h4>
-                  <span>Lazimpat, Kathmandu, Nepal</span>
+                  <span>{address}</span>
                 </div>
                 <div className="contact-information">
                   <h4><i className="fa-regular fa-envelope"></i> Email</h4>
-                  <span><div href="mailto:info@webtechnepal.com">info@webtechnepal.com</div></span>
+                  <span><div href="mailto:info@webtechnepal.com">{email}</div></span>
                 </div>
                 <div className="contact-information">
                   <h4><i className="fa-solid fa-mobile"></i> Mobile</h4>
-                  <span>+977-9851000301</span>
+                  <span>{mobile}</span>
                 </div>
                 <div className="contact-information">
                   <h4><i className="fa-solid fa-phone"></i> Phone</h4>
-                  <span>+977-1-4541620</span>
+                  <span>{phone}</span>
                 </div>
                 <div className="contact-information social-contact-information">
                   <h4 className="text-25 md:text-24 fw-700">Follow Us</h4>
@@ -58,7 +86,7 @@ export default function SideInfo() {
 
           <div className="col-lg-7">
             <iframe
-              src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d14127.182941124678!2d85.3210918!3d27.7235924!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39eb18fd15c7ab3b%3A0x15ced2461b5b98e0!2sWebtech%20Nepal%20Pvt.%20Ltd.!5e0!3m2!1sen!2snp!4v1710488991711!5m2!1sen!2snp"
+              src={mapURL}
               width="100%"
               height="550"
               allowFullScreen
