@@ -1,8 +1,40 @@
+"use client"
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { useState, useEffect } from "react";
+import axios from "axios";
 
 export default function FooterFour() {
+
+  const [email, setEmail] = useState("")
+  const [address, setAddress] = useState("")
+  const [phone, setPhone] = useState("")
+  // const [mobile, setMobile] = useState("")
+  // const [tel , setTel] = useState("")
+  // const [socials, setSocials] = useState([]);
+  const [error, setError] = useState(null)
+
+  useEffect(()=> {
+    const getData = async () => {
+      try {
+        const response = await axios.get("https://mountaintrekkingnepal.com/api/settings");
+        setEmail(response?.data?.email_address)
+        setAddress(response?.data?.address)
+        setPhone(response?.data?.phone)
+        console.log(email)
+        // setMobile(response?.data?.mobile)              data not displayed in current footer format
+        // setSocials[response?.data?.social_media]       currently un-mapable data by API
+        // setInterval(response?.data?.tel)               currently has null in API
+      }
+      catch(error){
+        setError(error);
+        console.error(error)
+      }
+    }; getData();
+  }, [])
+
+
   return (
     <div>
       <footer className="footer -type-1 -light" >
@@ -18,9 +50,9 @@ export default function FooterFour() {
               <h4 className="text-20 fw-500 text-white">Contact</h4>
 
               <div className="y-gap-10 mt-20 text-white">
-                <Link className="d-block" href="#">Lazimpat, Kathmamndu, Nepal</Link>
-                <Link className="d-block" href="#">info@alpinetreks.com</Link>
-                <Link className="d-block" href="#">+977 9876543210</Link>
+                <Link className="d-block" href="/">{address}</Link>
+                <Link className="d-block" href="/">{email} </Link>
+                <Link className="d-block" href="/">{phone}</Link>
               </div>
               <div className="footerSocials">
                 <div className="footerSocials__title text-white">
