@@ -40,7 +40,6 @@ export default function FAQ() {
             <p>Join us on our trending adventure this year.</p>
           </div>
         </div>
-        {error && <p className="text-error">{error}</p>}
         {datas.map((data, i) => (
           <div
             key={i}

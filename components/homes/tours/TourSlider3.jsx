@@ -1,30 +1,27 @@
 "use client";
 
-import React from "react";
+import React, { useEffect, useState, useRef } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation, Pagination } from "swiper/modules";
-import { useEffect, useState, useRef } from "react";
+import { Navigation } from "swiper/modules";
 import Stars from "@/components/common/Stars";
 import Image from "next/image";
 import Link from "next/link";
 import axios from "axios";
+import "swiper/css";
+import "swiper/css/navigation";
 
 export default function BestSellers() {
-
   const [tours, setTours] = useState([]);
   const [ddActive, setDdActive] = useState(false);
 
-  
   useEffect(() => {
     axios.get('https://mountaintrekkingnepal.com/api/home')
       .then(response => {
         setTours(response.data.best_selling_tours || []);
-
       })
       .catch(error => {
         console.error('Error fetching tours:', error);
         setTours([]);
-
       });
   }, []);
 
@@ -51,20 +48,16 @@ export default function BestSellers() {
       <div className="container">
         <div className="row y-gap-10 justify-between items-end y-gap-10">
           <div className="col-auto">
-            <h2 data-aos="fade-up" data-aos-delay="400" className="text-30">   
+            <h2 data-aos="fade-up" data-aos-delay="400" className="text-30">
               Our Best Sellers for 2024
-            </h2>   
+            </h2>
             <p>Join us on our trending adventure this year.</p>
           </div>
         </div>
 
         <div className="relative pt-40 sm:pt-20">
           <div className="overflow-hidden js-section-slider">
-            <div
-              data-aos="fade-up"
-              data-aos-delay=""
-              className="swiper-wrapper "
-            >
+            <div data-aos="fade-up" data-aos-delay="" className="swiper-wrapper">
               <Swiper
                 spaceBetween={30}
                 className="w-100"
@@ -72,7 +65,7 @@ export default function BestSellers() {
                   prevEl: ".js-slider1-prev",
                   nextEl: ".js-slider1-next",
                 }}
-                modules={[Navigation, Pagination]}
+                modules={[Navigation]}
                 breakpoints={{
                   500: {
                     slidesPerView: 1,
@@ -122,7 +115,7 @@ export default function BestSellers() {
                           </div>
 
                           <span className="text-dark-1 ml-10">
-                          Out of {elm.total_reviews} reviews
+                            Out of {elm.total_reviews} reviews
                           </span>
                         </div>
 
@@ -142,7 +135,6 @@ export default function BestSellers() {
                   </SwiperSlide>
                 ))}
               </Swiper>
-
             </div>
           </div>
 

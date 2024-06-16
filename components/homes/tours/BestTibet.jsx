@@ -1,66 +1,35 @@
 "use client";
 
-import React from "react";
+import React, { useEffect, useState, useRef } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination } from "swiper/modules";
-import { useEffect, useState, useRef } from "react";
 import Stars from "@/components/common/Stars";
 import Image from "next/image";
 import Link from "next/link";
 import axios from "axios";
 
 export default function BestTibet() {
+  const [tibet, setTibet] = useState([]);
+  const [error, setError] = useState(null);
+  const [title, setTitle] = useState("");
+  const [desc, setDesc] = useState("");
 
-    const [tibet, setTibet] = useState([]); // Initialize data as an array
-    const [error, setError] = useState(null);
-    const [title, setTitle] = useState("");
-    const [desc, setDesc] = useState("");
-  
-    useEffect(() => {
-      const fetchData = async () => {
-        try {
-          const response = await axios.get("https://mountaintrekkingnepal.com/api/home"); //  in object
-          setTibet(response?.data?.best_of_tibet); 
-          
-        } catch (error) {
-          console.error("Error fetching data:", error);
-          setError(error);
-        }
-      };
-  
-      fetchData();
-    }, []);
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get("https://mountaintrekkingnepal.com/api/home");
+        const data = response.data;
+        setTibet(data.best_of_tibet);
+        setTitle(data.tibet_title);
+        setDesc(data.tibet_short_description);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+        setError(error);
+      }
+    };
 
-    useEffect(() => {
-        const fetchData = async () => {
-          try {
-            const response = await axios.get("https://mountaintrekkingnepal.com/api/home"); //  in object
-            setTitle(response?.data?.tibet_title); 
-            
-          } catch (error) {
-            console.error("Error fetching data:", error);
-            setError(error);
-          }
-        };
-    
-        fetchData();
-      }, []);
-      
-    useEffect(() => {
-        const fetchData = async () => {
-          try {
-            const response = await axios.get("https://mountaintrekkingnepal.com/api/home"); //  in object
-            setDesc(response?.data?.tibet_short_description); 
-            
-          } catch (error) {
-            console.error("Error fetching data:", error);
-            setError(error);
-          }
-        };
-    
-        fetchData();
-    }, []);
-
+    fetchData();
+  }, []);
 
   const dropDownContainer = useRef();
   useEffect(() => {
@@ -80,24 +49,23 @@ export default function BestTibet() {
     };
   }, []);
 
-
   return (
     <section className="layout-pt-xl layout-pb-xl bg-accent-1-05">
       <div className="container">
         <div className="row y-gap-10 justify-between items-end y-gap-10">
           <div className="col-auto">
-            <h2 data-aos="fade-up" data-aos-delay="400" className="text-30">   
+            <h2 data-aos="fade-up" data-aos-delay="400" className="text-30">
               {title}
-            </h2>   
+            </h2>
             <p>{desc}</p>
           </div>
 
           <div className="col-auto">
             <Link
               href={"/destination/tibet"}
-              data-aos="fade-up"  
+              data-aos="fade-up"
               data-aos-delay=""
-              className="buttonArrow d-flex items-center "
+              className="buttonArrow d-flex items-center"
             >
               <span>See all</span>
               <i className="icon-arrow-top-right text-16 ml-10"></i>
@@ -110,14 +78,14 @@ export default function BestTibet() {
             <div
               data-aos="fade-up"
               data-aos-delay=""
-              className="swiper-wrapper "
+              className="swiper-wrapper"
             >
               <Swiper
                 spaceBetween={30}
                 className="w-100"
                 navigation={{
-                  prevEl: ".js-slider1-prev",
-                  nextEl: ".js-slider1-next",
+                  prevEl: ".js-slider1-prev-tibet",
+                  nextEl: ".js-slider1-next-tibet",
                 }}
                 modules={[Navigation, Pagination]}
                 breakpoints={{
@@ -151,7 +119,6 @@ export default function BestTibet() {
                             className="img-ratio rounded-12"
                           />
                         </div>
-
                       </div>
 
                       <div className="tourCard__content px-10 pt-10">
@@ -190,16 +157,15 @@ export default function BestTibet() {
                   </SwiperSlide>
                 ))}
               </Swiper>
-
             </div>
           </div>
 
           <div className="navAbsolute">
-            <button className="navAbsolute__button bg-white js-slider1-prev">
+            <button className="navAbsolute__button bg-white js-slider1-prev-tibet">
               <i className="icon-arrow-left text-14"></i>
             </button>
 
-            <button className="navAbsolute__button bg-white js-slider1-next">
+            <button className="navAbsolute__button bg-white js-slider1-next-tibet">
               <i className="icon-arrow-right text-14"></i>
             </button>
           </div>

@@ -1,16 +1,15 @@
 "use client";
 
-import React, { useEffect, useState, useRef } from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Image from "next/image";
 import Link from "next/link";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation, Pagination } from "swiper/modules";
+import { Navigation } from "swiper/modules";
 
 // Import Swiper styles
 import "swiper/css";
 import "swiper/css/navigation";
-import "swiper/css/pagination";
 
 export default function TrekkingRegions() {
     const [treks, setTreks] = useState([]);
@@ -51,17 +50,16 @@ export default function TrekkingRegions() {
                 <div className="relative pt-40 sm:pt-20">
                     <Swiper
                         spaceBetween={30}
-                        modules={[Navigation, Pagination]}
+                        modules={[Navigation]}
                         navigation={{
-                            prevEl: ".js-slider1-prev",
-                            nextEl: ".js-slider1-next",
+                            prevEl: ".js-slider1-prev-trekking",
+                            nextEl: ".js-slider1-next-trekking",
                         }}
                         breakpoints={{
                             500: { slidesPerView: 1 },
                             768: { slidesPerView: 2 },
                             1024: { slidesPerView: 3 },
                             1200: { slidesPerView: 4 },
-                            1600: { slidesPerView: 5 },
                         }}
                     >
                         {treks.map((trek, index) => (
@@ -71,12 +69,9 @@ export default function TrekkingRegions() {
                                         <div className="featureCard__image">
                                             <Image src={trek.image} width={342.7} height={258.5} alt={trek.title} layout="responsive" />
                                         </div>
-                                        <div id = "test">
-                                          <div className="featureCard__content">
-                                              <h3 className="text-18 fw-500">{trek.title}</h3>
-                                          </div>
+                                        <div className="featureCard__content">
+                                            <h3 className="text-18 fw-500">{trek.title}</h3>
                                         </div>
-                                        
                                     </div>
                                 </Link>
                             </SwiperSlide>
@@ -84,10 +79,10 @@ export default function TrekkingRegions() {
                     </Swiper>
 
                     <div className="navAbsolute">
-                        <button className="navAbsolute__button bg-white js-slider1-prev">
+                        <button className="navAbsolute__button bg-white js-slider1-prev-trekking">
                             <i className="icon-arrow-left"></i>
                         </button>
-                        <button className="navAbsolute__button bg-white js-slider1-next">
+                        <button className="navAbsolute__button bg-white js-slider1-next-trekking">
                             <i className="icon-arrow-right"></i>
                         </button>
                     </div>
