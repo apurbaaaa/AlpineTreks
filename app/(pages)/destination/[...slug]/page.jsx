@@ -7,6 +7,7 @@ import Header4 from "@/components/layout/header/Header4";
 import FooterFour from "@/components/layout/footers/FooterFour";
 import Image from "next/image"; 
 import DOMPurify from "dompurify";
+import Head from "next/head";
 
 export default function Slug({params}) {
   const { slug } = useParams();
@@ -14,6 +15,8 @@ export default function Slug({params}) {
   const [error, setError] = useState(null);
   const [title, setTitle] = useState("");
   const [desc, setDesc] = useState("");
+  const [seoTitle, setSeoTitle] = useState("");
+  const [seoDesc, setSeoDesc] = useState("");
 
   useEffect(() => {
     const fetchData = async () => {
@@ -45,11 +48,35 @@ export default function Slug({params}) {
       return "package"
     }
   }
+  useEffect(()=>{
+    const fetchData = async () => {
+      try{
+        const response = await axios.get(`https://mountaintrekkingnepal.com/api/destination/${slug}`);
+        setSeoTitle(response?.data?.seo_titile);
+        setSeoDesc(response?.data?.seo_description);
+
+      }
+      catch(error){
+        setError(error)
+        console.error(error)
+      }
+    }; fetchData();
+  },[])
 
   if (error) return <div>Error loading data</div>; 
 
   return (
+    
     <div>
+      <Head>
+      <title>{seoTitle}</title>
+        <meta
+          name="description"
+          content= {seoDesc}
+        />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
       <Header4 />
       <div className="menu js-menu">
         <div className="menu__overlay js-menu-button"></div>

@@ -14,6 +14,8 @@ const Page = () => {
     const [content, setContent] = useState("");
     const [region, setRegion] = useState([]); // Initialize as empty array
     const [error, setError] = useState(null); // Error state
+    const [seoTitle, setSeoTitle] = useState("");
+    const [seoDesc, setSeoDesc] = useState("");
 
     useEffect(() => {
         const fetchData = async () => {
@@ -32,10 +34,34 @@ const Page = () => {
         fetchData();
     }, []); 
 
+    useEffect(()=>{
+        const fetchData = async () => {
+          try{
+            const response = await axios.get("https://mountaintrekkingnepal.com/api/destination");
+            setSeoTitle(response?.data?.seo_titile);
+            setSeoDesc(response?.data?.seo_description);
+    
+          }
+          catch(error){
+            setError(error)
+            console.error(error)
+          }
+        }; fetchData();
+      },[])
+
     if (error) return <div>Error: {error.message}</div>;
 
     return (
         <div>
+            <Head>
+                <title>{seoTitle}</title>
+                <meta
+                name="description"
+                content= {seoDesc}
+                />
+                <meta name="viewport" content="width=device-width, initial-scale=1" />
+                <link rel="icon" href="/favicon.ico" />
+            </Head>
             <Header4 />
             <div className="menu js-menu">
                 <div className="menu__overlay js-menu-button"></div>
