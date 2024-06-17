@@ -6,24 +6,24 @@ import { setupCache } from "axios-cache-interceptor";
 const instance = Axios.create();
 const axios = setupCache(instance);
 
-export default function FAQ() {
-  const [datas, setDatas] = useState([]);
-  const [error, setError] = useState(null);
+export default function FAQ({data}) {
+  // const [datas, setDatas] = useState([]);
+  // const [error, setError] = useState(null);
   const [openIndex, setOpenIndex] = useState(null);
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await axios.get(
-          "https://mountaintrekkingnepal.com/api/settings"
-        );
-        setDatas(response?.data?.traveller_faq || []); // Default to an empty array if undefined
-      } catch (error) {
-        setError("Failed to fetch data. Please try again later."); // Set error message in state
-      }
-    };
-    fetchData();
-  }, []);
+  // useEffect(() => {
+  //   const fetchData = async () => {
+  //     try {
+  //       const response = await axios.get(
+  //         "https://mountaintrekkingnepal.com/api/settings"
+  //       );
+  //       setDatas(response?.data?.traveller_faq || []); // Default to an empty array if undefined
+  //     } catch (error) {
+  //       setError("Failed to fetch data. Please try again later."); // Set error message in state
+  //     }
+  //   };
+  //   fetchData();
+  // }, []);
 
   const toggleAccordion = (index) => {
     setOpenIndex(openIndex === index ? null : index);
@@ -40,7 +40,7 @@ export default function FAQ() {
             <p>Join us on our trending adventure this year.</p>
           </div>
         </div>
-        {datas.map((data, i) => (
+        {data.traveller_faq.map((data, i) => (
           <div
             key={i}
             className={`accordion -simple row y-gap-20 mt-30 js-accordion justify-content-center ${

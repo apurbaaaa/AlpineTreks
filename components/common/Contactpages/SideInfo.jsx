@@ -10,23 +10,51 @@ const SideInfo = () => {
   const [mobile, setMobile] = useState('');
   const [error, setError] = useState(null);
   const [mapURL, setMapURL] = useState('');
+  const [loading, setLoading] = useState(true);
+  const [form, setForm] = useState({ name: '', phone: '', email: '', message: '' });
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get('/api/settings');
+        const response = await axios.get('https://mountaintrekkingnepal.com/api/settings'); // Set timeout to 5 seconds
         setEmail(response?.data?.email_address);
         setAddress(response?.data?.address);
         setPhone(response?.data?.phone);
         setMobile(response?.data?.mobile);
         setMapURL(response?.data?.map_url);
       } catch (error) {
-        setError(error);
-        console.error('Error fetching data:', error);
+        setError(error.message);
+        console.error('Error fetching data: sideInfo', error);
+      } finally {
+        setLoading(false);
       }
     };
     fetchData();
   }, []);
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setForm((prevForm) => ({ ...prevForm, [name]: value }));
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      await axios.post('/api/contact', form);
+      alert('Message sent successfully!');
+    } catch (error) {
+      console.error('Error sending message', error);
+      alert('Failed to send message');
+    }
+  };
+
+  if (loading) {
+    return <div>Loading...</div>;
+  }
+
+  if (error) {
+    return <div>Error mf: {error}</div>;
+  }
 
   return (
     <section className="layout-pt-sm">
@@ -35,7 +63,6 @@ const SideInfo = () => {
           <div className="col-lg-5 col-sm-6">
             <div className="ap-contact">
               <h3 className="text-25 md:text-24 fw-700">Contact Information</h3>
-
               <div className="mt-20 md:mt-10">
                 <div className="contact-information">
                   <h4>
@@ -114,27 +141,55 @@ const SideInfo = () => {
           <div className="col-lg-7">
             <div className="form-contact">
               <h2 className="text-30 fw-700 text-center mb-30">Leave us your info</h2>
-              <div className="contactForm">
+              <form className="contactForm" onSubmit={handleSubmit}>
                 <div className="row y-gap-30">
                   <div className="col-md-6">
-                    <input type="text" name="name" placeholder="Name" />
+                    <input
+                      type="text"
+                      name="name"
+                      placeholder="Name"
+                      value={form.name}
+                      onChange={handleInputChange}
+                      required
+                    />
                   </div>
                   <div className="col-md-6">
-                    <input type="text" name="phone" placeholder="Phone" />
+                    <input
+                      type="text"
+                      name="phone"
+                      placeholder="Phone"
+                      value={form.phone}
+                      onChange={handleInputChange}
+                      required
+                    />
                   </div>
                   <div className="col-12">
-                    <input type="text" name="email" placeholder="Email" />
+                    <input
+                      type="email"
+                      name="email"
+                      placeholder="Email"
+                      value={form.email}
+                      onChange={handleInputChange}
+                      required
+                    />
                   </div>
                   <div className="col-12">
-                    <textarea name="message" placeholder="Message" rows="3"></textarea>
+                    <textarea
+                      name="message"
+                      placeholder="Message"
+                      rows="3"
+                      value={form.message}
+                      onChange={handleInputChange}
+                      required
+                    ></textarea>
                   </div>
                   <div className="col-12">
-                    <button className="button -md -dark-1 bg-accent-1 text-white col-12">
+                    <button className="button -md -dark-1 bg-accent-1 text-white col-12" type="submit">
                       Send Message
                     </button>
                   </div>
                 </div>
-              </div>
+              </form>
             </div>
           </div>
         </div>

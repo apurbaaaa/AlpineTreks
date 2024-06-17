@@ -8,28 +8,28 @@ import Image from "next/image";
 import Link from "next/link";
 import axios from "axios";
 
-export default function BestTibet() {
-  const [tibet, setTibet] = useState([]);
-  const [error, setError] = useState(null);
-  const [title, setTitle] = useState("");
-  const [desc, setDesc] = useState("");
+export default function BestTibet({data}) {
+  // const [tibet, setTibet] = useState([]);
+  // const [error, setError] = useState(null);
+  // const [title, setTitle] = useState("");
+  // const [desc, setDesc] = useState("");
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await axios.get("https://mountaintrekkingnepal.com/api/home");
-        const data = response.data;
-        setTibet(data.best_of_tibet);
-        setTitle(data.tibet_title);
-        setDesc(data.tibet_short_description);
-      } catch (error) {
-        console.error("Error fetching data:", error);
-        setError(error);
-      }
-    };
+  // useEffect(() => {
+  //   const fetchData = async () => {
+  //     try {
+  //       const response = await axios.get("https://mountaintrekkingnepal.com/api/home");
+  //       const data = response.data;
+  //       setTibet(data.best_of_tibet);
+  //       setTitle(data.tibet_title);
+  //       setDesc(data.tibet_short_description);
+  //     } catch (error) {
+  //       console.error("Error fetching data:", error);
+  //       setError(error);
+  //     }
+  //   };
 
-    fetchData();
-  }, []);
+  //   fetchData();
+  // }, []);
 
   const dropDownContainer = useRef();
   useEffect(() => {
@@ -55,9 +55,9 @@ export default function BestTibet() {
         <div className="row y-gap-10 justify-between items-end y-gap-10">
           <div className="col-auto">
             <h2 data-aos="fade-up" data-aos-delay="400" className="text-30">
-              {title}
+              {data.tibet_title}
             </h2>
-            <p>{desc}</p>
+            <p>{data.tibet_short_description}</p>
           </div>
 
           <div className="col-auto">
@@ -103,7 +103,7 @@ export default function BestTibet() {
                   },
                 }}
               >
-                {tibet.map((elm, i) => (
+                {data.best_of_tibet.map((elm, i) => (
                   <SwiperSlide key={i}>
                     <Link
                       href={`/package/${elm.slug}`}

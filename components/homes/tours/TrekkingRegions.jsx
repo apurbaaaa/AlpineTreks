@@ -1,6 +1,7 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React from "react";
+import PropTypes from "prop-types";
 import axios from "axios";
 import Image from "next/image";
 import Link from "next/link";
@@ -11,24 +12,7 @@ import { Navigation } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
 
-export default function TrekkingRegions() {
-    const [treks, setTreks] = useState([]);
-    const [error, setError] = useState(null);
-
-    useEffect(() => {
-        const fetchData = async () => {
-            try {
-                const response = await axios.get("https://mountaintrekkingnepal.com/api/home", { cache: 'force-cache' });
-                setTreks(response?.data?.trekking_regions || []);
-            } catch (error) {
-                console.error("Error fetching data:", error);
-                setError(error);
-            }
-        };
-
-        fetchData();
-    }, []);
-
+export default function TrekkingRegions({data}) {
     return (
         <section className="layout-pt-lg layout-pb-lg">
             <div className="container">
@@ -39,7 +23,7 @@ export default function TrekkingRegions() {
                     </div>
                     <div className="col-auto">
                         <Link href={"/"} passHref>
-                            <div className="buttonArrow d-flex items-center">
+                            <div className="buttonArrow d-flex items-center" aria-label="See all trekking regions">
                                 <span>See all</span>
                                 <i className="icon-arrow-top-right ml-10"></i>
                             </div>
@@ -62,10 +46,11 @@ export default function TrekkingRegions() {
                             1200: { slidesPerView: 4 },
                         }}
                     >
-                        {treks.map((trek, index) => (
+                        {data.trekking_regions && data.trekking_regions.length > 0 ? (
+                        data.trekking_regions.map((trek, index) => (
                             <SwiperSlide key={index}>
                                 <Link href={`/region/${trek.slug}`} passHref>
-                                    <div className="featureCard -type-8">
+                                    <div className="featureCard -type-8" aria-label={`Trekking region: ${trek.title}`}>
                                         <div className="featureCard__image">
                                             <Image src={trek.image} width={342.7} height={258.5} alt={trek.title} layout="responsive" />
                                         </div>
@@ -75,14 +60,16 @@ export default function TrekkingRegions() {
                                     </div>
                                 </Link>
                             </SwiperSlide>
-                        ))}
+                        ))) : (
+                            <p>No offers available.</p>
+                        )}
                     </Swiper>
 
                     <div className="navAbsolute">
-                        <button className="navAbsolute__button bg-white js-slider1-prev-trekking">
+                        <button className="navAbsolute__button bg-white js-slider1-prev-trekking" aria-label="Previous slide">
                             <i className="icon-arrow-left"></i>
                         </button>
-                        <button className="navAbsolute__button bg-white js-slider1-next-trekking">
+                        <button className="navAbsolute__button bg-white js-slider1-next-trekking" aria-label="Next slide">
                             <i className="icon-arrow-right"></i>
                         </button>
                     </div>
@@ -91,3 +78,15 @@ export default function TrekkingRegions() {
         </section>
     );
 }
+
+TrekkingRegions.propTypes = {
+    data: PropTypes.shape({
+        trekking_regions: PropTypes.arrayOf(
+            PropTypes.shape({
+                slug: PropTypes.string.isRequired,
+                image: PropTypes.string.isRequired,
+                title: PropTypes.string.isRequired,
+            })
+        ),
+    }).isRequired,
+};

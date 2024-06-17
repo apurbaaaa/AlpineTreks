@@ -13,36 +13,39 @@ import Header4 from "@/components/layout/header/Header4";
 const instance = Axios.create(); 
 const axios = setupCache(instance);
 
-export default function Banner() {
+export default function Banner({data}) {
   const router = useRouter();
 
   const [currentActiveDD, setCurrentActiveDD] = useState("");
   const [location, setLocation] = useState("");
   const [calender, setCalender] = useState("");
   const [tourType, setTourType] = useState("");
-  const [firstTitle, setFirstTitle] = useState("");
-  const [secondTitle, setSecondTitle] = useState("");
-  const [bannerImage , setBannerImage] = useState("");
-  const [error, setError] = useState(null)
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await axios.get("https://mountaintrekkingnepal.com/api/home");
-        let htmlString = response.data.banner_first_title;
-        let updatedHtmlString = htmlString.replace(/class=/g, 'className=');
-        updatedHtmlString = DOMPurify.sanitize(updatedHtmlString);
-        setFirstTitle(updatedHtmlString);
-        setSecondTitle(response?.data?.banner_second_title);
-        setBannerImage(response?.data?.banner_image);
+  let htmlString = data.banner_first_title;
+  let updatedHtmlString = htmlString.replace(/class=/g, 'className=');
+  updatedHtmlString = DOMPurify.sanitize(updatedHtmlString);
+  // const [firstTitle, setFirstTitle] = useState("");
+  // const [secondTitle, setSecondTitle] = useState("");
+  // const [bannerImage , setBannerImage] = useState("");
+  // const [error, setError] = useState(null)
 
-      } catch (error) {
-        console.log(error);
-        setError(error);
-      }
-    }
-    fetchData();
-  }, []);  
+  // useEffect(() => {
+  //   const fetchData = async () => {
+  //     try {
+  //       const response = await axios.get("https://mountaintrekkingnepal.com/api/home");
+  //       
+  //       
+  //       setFirstTitle(updatedHtmlString);
+  //       setSecondTitle(response?.data?.banner_second_title);
+  //       setBannerImage(response?.data?.banner_image);
+
+  //     } catch (error) {
+  //       console.log(error);
+  //       setError(error);
+  //     }
+  //   }
+  //   fetchData();
+  // }, []);  
 
   useEffect(() => {
     setCurrentActiveDD("");
@@ -69,7 +72,7 @@ export default function Banner() {
     <section className="hero -type-6">
       <div className="hero__bg">  
         <Image
-          src={bannerImage}
+          src={data.banner_image}
           alt="background"
           width="1920"
           height="1386"
@@ -86,9 +89,9 @@ export default function Banner() {
               className="hero__title"
             >
               <h1>
-                  <span dangerouslySetInnerHTML={{ __html: firstTitle }}></span>
+                  <span dangerouslySetInnerHTML={{ __html: data.banner_first_title }}></span>
                   &nbsp;
-                  <span className="text-accent-1">{secondTitle}</span>
+                  <span className="text-accent-1">{data.banner_second_title}</span>
               </h1>
             </div>
 

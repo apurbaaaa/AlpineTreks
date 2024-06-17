@@ -2,9 +2,7 @@ import NavInfo from "@/components/common/Contactpages/NavInfo";
 import SideInfo from "@/components/common/Contactpages/SideInfo";
 import FooterFour from "@/components/layout/footers/FooterFour";
 import Header4 from "@/components/layout/header/Header4";
-import ContactForm from "@/components/pages/contact/ContactForm";
-import Locations from "@/components/pages/contact/Locations";
-import Map from "@/components/pages/contact/Map";
+
 import React from "react";
 
 export const metadata = {
@@ -17,9 +15,6 @@ export default function page() {
     <>
       <main>
         <Header4 />
-        {/* <Map /> */}
-        {/* <Locations /> */}
-        {/* <ContactForm /> */}
         <NavInfo />
         <SideInfo />
 

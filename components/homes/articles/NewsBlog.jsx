@@ -10,30 +10,7 @@ const axios = setupCache(instance);
 
 const cache = {};
 
-export default function NewsBlog() {
-    const [blogs, setBlogs] = useState([]);
-    const [error, setError] = useState(null);
-
-    useEffect(() => {
-        const fetchData = async () => {
-            try {
-                let response;
-                if (cache["https://mountaintrekkingnepal.com/api/home"]) {
-                    response = cache["https://mountaintrekkingnepal.com/api/home"];
-                } else {
-                    response = await axios.get("https://mountaintrekkingnepal.com/api/home");
-                    cache["https://mountaintrekkingnepal.com/api/home"] = response.data;
-                }
-                
-                setBlogs(response?.data?.blogs || []);
-            } catch (error) {
-                setError(error);
-                console.log(error);
-            }
-        }
-        fetchData();
-    }, []);
-
+export default function NewsBlog({data}) {
     return (
         <section className="layout-pt-lg bg-light-1">
             <div data-anim-wrap className="container">
@@ -56,7 +33,7 @@ export default function NewsBlog() {
                 </div>
 
                 <div data-anim-child="delay-2" data-aos="fade-up" className="row y-gap-30 pt-40 sm:pt-20">
-                    {blogs.map((elm, i) => (
+                    {data.blogs.map((elm, i) => (
                         <div key={i} className="col-lg-4 col-md-6">
                             <Link href={`/${elm.slug}`} key={elm.slug} className="blogCard -type-1">
                                 <div className="blogCard__image ratio ratio-41:30"> 

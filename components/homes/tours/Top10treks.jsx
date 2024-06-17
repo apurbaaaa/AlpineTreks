@@ -1,36 +1,15 @@
 "use client"
 
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper/modules";
 import Stars from "@/components/common/Stars";
 import Image from "next/image";
 import Link from "next/link";
-import axios from "axios";
 import 'swiper/css';
 import 'swiper/css/navigation';
 
-export default function TopTreks() {
-  const [treks, setTreks] = useState([]);
-  const [error, setError] = useState(null);
-  const [title, setTitle] = useState("");
-  const [desc, setDesc] = useState("");
-
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await axios.get("https://mountaintrekkingnepal.com/api/home");
-        setTitle(response?.data?.top_treks_title);
-        setDesc(response?.data?.top_treks_short_description);
-        setTreks(response?.data?.top_treks);
-      } catch (error) {
-        console.error("Error fetching data:", error);
-        setError(error);
-      }
-    };
-
-    fetchData();
-  }, []);
+export default function TopTreks({data}) {
 
   return (
     <section className="layout-pt-xl layout-pb-xl bg-accent-1-05">
@@ -38,9 +17,9 @@ export default function TopTreks() {
         <div className="row y-gap-10 justify-between items-end y-gap-10">
           <div className="col-auto">
             <h2 data-aos="fade-up" data-aos-delay="" className="text-30">
-              {title}
+              {data.top_treks_title}
             </h2>
-            <p>{desc}</p>
+            <p>{data.top_treks_short_description}</p>
           </div>
 
           <div className="col-auto">
@@ -66,7 +45,8 @@ export default function TopTreks() {
               1200: { slidesPerView: 4 },
             }}
           >
-            {treks.map((trek, i) => (
+            {data.top_treks && data.top_treks.length > 0 ? (
+            data.top_treks.map((trek, i) => (
               <SwiperSlide key={i}>
                 <Link href={`/package/${trek.slug}`} className="tourCard -type-1 py-10 px-10 border-1 rounded-12 bg-white -hover-shadow">
                   <div className="tourCard__header">
@@ -105,7 +85,9 @@ export default function TopTreks() {
                   </div>
                 </Link>
               </SwiperSlide>
-            ))}
+            ))) : (
+              <p>No offers available.</p>
+          )}
           </Swiper>
           <div className="navAbsolute">
             <button className="navAbsolute__button bg-white js-slider2-prev-treks">

@@ -10,20 +10,20 @@ import axios from "axios";
 import "swiper/css";
 import "swiper/css/navigation";
 
-export default function BestSellers() {
-  const [tours, setTours] = useState([]);
-  const [ddActive, setDdActive] = useState(false);
+export default function BestSellers({data}) {
+  // const [tours, setTours] = useState([]);
+  // const [ddActive, setDdActive] = useState(false);
 
-  useEffect(() => {
-    axios.get('https://mountaintrekkingnepal.com/api/home')
-      .then(response => {
-        setTours(response.data.best_selling_tours || []);
-      })
-      .catch(error => {
-        console.error('Error fetching tours:', error);
-        setTours([]);
-      });
-  }, []);
+  // useEffect(() => {
+  //   axios.get('https://mountaintrekkingnepal.com/api/home')
+  //     .then(response => {
+  //       setTours(response.data.best_selling_tours || []);
+  //     })
+  //     .catch(error => {
+  //       console.error('Error fetching tours:', error);
+  //       setTours([]);
+  //     });
+  // }, []);
 
   const dropDownContainer = useRef();
   useEffect(() => {
@@ -49,9 +49,9 @@ export default function BestSellers() {
         <div className="row y-gap-10 justify-between items-end y-gap-10">
           <div className="col-auto">
             <h2 data-aos="fade-up" data-aos-delay="400" className="text-30">
-              Our Best Sellers for 2024
+              {data.best_seller_title}
             </h2>
-            <p>Join us on our trending adventure this year.</p>
+            <p>{data.best_seller_short_description}</p>
           </div>
         </div>
 
@@ -81,7 +81,7 @@ export default function BestSellers() {
                   },
                 }}
               >
-                {tours.map((elm, i) => (
+                {data.best_selling_tours.map((elm, i) => (
                   <SwiperSlide key={i}>
                     <Link
                       href={`/package/${elm.slug}`}
