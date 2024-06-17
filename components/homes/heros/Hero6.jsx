@@ -24,28 +24,7 @@ export default function Banner({data}) {
   let htmlString = data.banner_first_title;
   let updatedHtmlString = htmlString.replace(/class=/g, 'className=');
   updatedHtmlString = DOMPurify.sanitize(updatedHtmlString);
-  // const [firstTitle, setFirstTitle] = useState("");
-  // const [secondTitle, setSecondTitle] = useState("");
-  // const [bannerImage , setBannerImage] = useState("");
-  // const [error, setError] = useState(null)
-
-  // useEffect(() => {
-  //   const fetchData = async () => {
-  //     try {
-  //       const response = await axios.get("https://mountaintrekkingnepal.com/api/home");
-  //       
-  //       
-  //       setFirstTitle(updatedHtmlString);
-  //       setSecondTitle(response?.data?.banner_second_title);
-  //       setBannerImage(response?.data?.banner_image);
-
-  //     } catch (error) {
-  //       console.log(error);
-  //       setError(error);
-  //     }
-  //   }
-  //   fetchData();
-  // }, []);  
+ 
 
   useEffect(() => {
     setCurrentActiveDD("");

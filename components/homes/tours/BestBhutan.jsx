@@ -12,27 +12,6 @@ import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 
 export default function BestBhutan({data}) {
-  // const [bhutan, setBhutan] = useState([]);
-  // const [error, setError] = useState(null);
-  // const [title, setTitle] = useState("");
-  // const [desc, setDesc] = useState("");
-
-  // useEffect(() => {
-  //   const fetchData = async () => {
-  //     try {
-  //       const response = await axios.get("https://mountaintrekkingnepal.com/api/home");
-  //       setTitle(response?.data?.bhutan_title);
-  //       setDesc(response?.data?.bhutan_short_description);
-  //       setBhutan(response?.data?.best_of_bhutans);
-  //     } catch (error) {
-  //       console.error("Error fetching data:", error);
-  //       setError(error);
-  //     }
-  //   };
-
-  //   fetchData();
-  // }, []);
-
   return (
     <section className="layout-pt-xl layout-pb-xl">
       <div className="container">
@@ -68,7 +47,8 @@ export default function BestBhutan({data}) {
               1200: { slidesPerView: 4 },
             }}
           >
-            {data.best_of_bhutans.map((elm, i) => (
+            {data.choose_us && data.choose_us.length > 0 ? (
+              data.best_of_bhutans.map((elm, i) => (
               <SwiperSlide key={i}>
                 <Link href={`/package/${elm.slug}`} className="tourCard -type-1 py-10 px-10 border-1 rounded-12 bg-white -hover-shadow">
                   <div className="tourCard__header">
@@ -113,10 +93,12 @@ export default function BestBhutan({data}) {
                         <span className="text-16 fw-500">${elm.price}</span>
                       </div>
                     </div>
-                  </div>
+                  </div>  
                 </Link>
               </SwiperSlide>
-            ))}
+            ))) : (
+              <p>No offers available.</p>
+          )}
           </Swiper>
 
           <div className="navAbsolute">

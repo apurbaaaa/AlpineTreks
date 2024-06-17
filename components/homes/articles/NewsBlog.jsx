@@ -1,14 +1,6 @@
 "use client"
 import Link from "next/link";
-import { useEffect, useState } from "react";
-import Axios from "axios";
-import { setupCache } from "axios-cache-interceptor";
 import Image from "next/image";
-
-const instance = Axios.create(); 
-const axios = setupCache(instance);
-
-const cache = {};
 
 export default function NewsBlog({data}) {
     return (
@@ -33,7 +25,8 @@ export default function NewsBlog({data}) {
                 </div>
 
                 <div data-anim-child="delay-2" data-aos="fade-up" className="row y-gap-30 pt-40 sm:pt-20">
-                    {data.blogs.map((elm, i) => (
+                    {data.traveller_faq && data.traveller_faq.length > 0 ? (
+                        data.blogs.map((elm, i) => (
                         <div key={i} className="col-lg-4 col-md-6">
                             <Link href={`/${elm.slug}`} key={elm.slug} className="blogCard -type-1">
                                 <div className="blogCard__image ratio ratio-41:30"> 
@@ -48,7 +41,9 @@ export default function NewsBlog({data}) {
                                 </div>
                             </Link>
                         </div>
-                    ))}
+                    ))) : (
+                        <p>No offers available.</p>
+                    )}
                 </div>
             </div>
         </section>

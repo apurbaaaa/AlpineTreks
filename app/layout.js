@@ -8,6 +8,8 @@ import Wrapper from "@/components/layout/Wrapper";
 import { useEffect } from "react";
 import { useState } from "react";
 import axios from "axios";
+import Header4 from "@/components/layout/header/Header4";
+import FooterFour from "@/components/layout/footers/FooterFour";
 const dmsans = DM_Sans({
   weight: ["400", "500", "700"],
   style: ["normal", "italic"],
@@ -21,7 +23,27 @@ if (typeof window !== "undefined") {
 
 
 
+
+
 export default function RootLayout({ children }) {
+
+  const [dataSettings, setDataSettings] = useState(true)
+  const [loading, setLoading] = useState(true)
+
+useEffect(()=>{
+  const fetchData = async () => {
+    try{
+      const responseSettings = await axios.get(`${process.env.NEXT_PUBLIC_API_BASE_URL}/settings`);
+      setDataSettings(responseSettings?.data)
+    }
+    catch(error){
+      setError(error)
+      console.error(error)
+    } finally {
+      setLoading(false);
+    }
+  }; fetchData();
+},[])
 
   const [favicon,setFavicon] = useState('');
   const [error,setError] = useState(null);
@@ -45,9 +67,11 @@ export default function RootLayout({ children }) {
       <head><link rel="icon" href={favicon} sizes="any" />
       </head>
       <body className={dmsans.className}>
+        <Header4 />
         <Wrapper>{children}</Wrapper>
         <ScrollToTop />
         <ScrollTopBehaviour />
+        <FooterFour data = {dataSettings} />
       </body>
     </html>
   );

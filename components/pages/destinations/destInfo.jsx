@@ -1,25 +1,24 @@
 "use client"
 import Image from "next/image";
 import Link from "next/link";
-import { useEffect, useState } from "react";
-import axios from "axios";
 
-export default function DestInfo() {
-  const [data, setData] = useState([]);
-  const [error, setError] = useState(null);
-  useEffect(()=>{
-    const fetchData = async () => {
-      try{
-        const response = await axios.get("https://mountaintrekkingnepal.com/api/destination")
-        setData(response.data)
-      }
-      catch(error){
-        console.log(error)
-        setError(error);
-      }
-    }
-    fetchData();
-  },[])
+
+export default function DestInfo({data}) {
+  // const [data, setData] = useState([]);
+  // const [error, setError] = useState(null);
+  // useEffect(()=>{
+  //   const fetchData = async () => {
+  //     try{
+  //       const response = await axios.get("https://mountaintrekkingnepal.com/api/destination")
+  //       setData(response.data)
+  //     }
+  //     catch(error){
+  //       console.log(error)
+  //       setError(error);
+  //     }
+  //   }
+  //   fetchData();
+  // },[])
   return (
     <div>
         <section>
