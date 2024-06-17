@@ -20,43 +20,27 @@ import axios from "axios";
 import Head from "next/head";
 
 export default function page() {
-  //for SEO
-
-  // const [seoTitle, setSeoTitle] = useState("");
-  // const [seoDesc, setSeoDesc] = useState("");
-  // const [error, setError] = useState(null);
-  // const [data, setData] = useState(null);
-
-
-  // useEffect(()=>{
-  //   const fetchData = async () => {
-  //     try{
-  //       const response = await axios.get("https://mountaintrekkingnepal.com/api/home");
-  //       setSeoTitle(response?.data?.seo_title);
-  //       setSeoDesc(response?.data?.seo_description);
-  //       setData(response?.data);
-  //     }
-  //     catch(error){
-  //       setError(error)
-  //       console.error(error)
-  //     }
-  //   }; fetchData();
-  // },[])
+  
     const [dataSettings, setDataSettings] = useState(null);
     const [dataHome, setDataHome] = useState(null);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
+    const [seoTitle, setSeoTitle] = useState(""); // for SEO
+    const [seoDesc, setSeoDesc] = useState("");
   
     useEffect(() => {
       const fetchData = async () => {
         try {
-          const responseSettings = await fetch('https://mountaintrekkingnepal.com/api/settings'); // Replace with actual API URL
-          const settings = await responseSettings.json();
+          const responseSettings = await axios.get(`${process.env.NEXT_PUBLIC_API_BASE_URL}/settings`); 
+          const settings = await responseSettings.data;
           setDataSettings(settings);
 
-          const responseHome = await fetch ('https://mountaintrekkingnepal.com/api/home');
-          const home = await responseHome.json();
+          const responseHome = await axios.get (`${process.env.NEXT_PUBLIC_API_BASE_URL}/home`);
+          const home = await responseHome.data;
           setDataHome(home);
+
+          setSeoTitle(responseHome?.data?.seo_title);
+          setSeoDesc(responseHome?.data?.seo_description);
 
         } catch (error) {
           setError(error);
@@ -77,7 +61,7 @@ export default function page() {
     }
   return (
     <>
-      {/* <Head>
+      <Head>
       <title>{seoTitle}</title>
         <meta
           name="description"
@@ -85,10 +69,10 @@ export default function page() {
         />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
-      </Head> */}
+      </Head>
 
       <main>
-        <Header4 /> 
+        <Header4 /> {/* Header Logo URL used instead of sending props*/}
         <Banner data = {dataHome}/>
         <Welcome />
         <BestSellers data = {dataHome} />
