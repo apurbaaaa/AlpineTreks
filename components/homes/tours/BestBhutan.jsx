@@ -47,7 +47,7 @@ export default function BestBhutan({data}) {
               1200: { slidesPerView: 4 },
             }}
           >
-            {data.choose_us && data.choose_us.length > 0 ? (
+            {data.best_of_bhutans && data.best_of_bhutans.length > 0 ? (
               data.best_of_bhutans.map((elm, i) => (
               <SwiperSlide key={i}>
                 <Link href={`/package/${elm.slug}`} className="tourCard -type-1 py-10 px-10 border-1 rounded-12 bg-white -hover-shadow">

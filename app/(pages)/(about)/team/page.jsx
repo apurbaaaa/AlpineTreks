@@ -10,7 +10,7 @@ import { useState, useEffect } from "react";
 export default function page({data}){
     return(
         <div>
-            <Header4 />
+
             <section data-anim="fade" className="mt-header pt-30">
                 <div className="container">
                     <div className="breadcrumbs mb-30 md:mb-15">
@@ -54,7 +54,7 @@ export default function page({data}){
                 </div>
             </div>
             </section>
-            <FooterFour />
+
         </div>
     )
         

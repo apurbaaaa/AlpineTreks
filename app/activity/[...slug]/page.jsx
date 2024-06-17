@@ -46,7 +46,6 @@ export default function Slug({params}) {
         const response = await axios.get(`https://mountaintrekkingnepal.com/api/destination/${slug}`);
         setSeoTitle(response?.data?.seo_titile);
         setSeoDesc(response?.data?.seo_description);
-
       }
       catch(error){
         setError(error)

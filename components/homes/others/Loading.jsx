@@ -1,16 +1,13 @@
-import 'bootstrap/dist/css/bootstrap.min.css';
-import React from 'react';
-
 // components/Loading.js
-export default function Loading(){
-    return (
-      <div className="d-flex justify-content-center mt-5">
-        <div className="spinner-border" role="status">
-          <span className="visually-hidden">Loading...</span>
-        </div>
-      </div>
-    );
-  };
-  
+import styles from "../../../public/css/Loading.module.css"
 
-  
+const Loading = () => {
+  return (
+    <div className={styles.loadingContainer}>
+      <div className={styles.spinner}></div>
+      <p className={styles.loadingText}>Loading...</p>
+    </div>
+  );
+};
+
+export default Loading;

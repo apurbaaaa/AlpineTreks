@@ -18,6 +18,7 @@ import ActivitiesOffered from "@/components/homes/tourTypes/TourTypes3";
 import TrekkingRegions from "@/components/homes/tours/TrekkingRegions";
 import axios from "axios";
 import Head from "next/head";
+import Loading from "@/components/homes/others/Loading";
 
 export default function page() {
   
@@ -53,7 +54,7 @@ export default function page() {
     }, []);
   
     if (loading) {
-      return <div>Loading...</div>;
+      return <div><Loading/></div>;
     }
   
     if (error) {
