@@ -47,8 +47,7 @@ export default function Banner({data}) {
 
   return (
     <div>
-      <Header4 />
-    <section className="hero -type-6">
+    <section className="hero -type-6  ">
       <div className="hero__bg">  
         <Image
           src={data.banner_image}

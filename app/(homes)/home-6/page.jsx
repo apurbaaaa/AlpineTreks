@@ -73,7 +73,6 @@ export default function page() {
       </Head>
 
       <main>
-        <Header4 /> {/* Header Logo URL used instead of sending props*/}
         <Banner data = {dataHome}/>
         <Welcome />
         <BestSellers data = {dataHome} />
@@ -88,7 +87,6 @@ export default function page() {
         <CustomerReviews />
         <FAQ data = {dataSettings}/>
         <NewsBlog data = {dataHome}/>
-        <FooterFour data = {dataSettings}/>
       </main>
     </>
   );

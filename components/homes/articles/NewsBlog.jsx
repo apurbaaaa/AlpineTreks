@@ -25,7 +25,7 @@ export default function NewsBlog({data}) {
                 </div>
 
                 <div data-anim-child="delay-2" data-aos="fade-up" className="row y-gap-30 pt-40 sm:pt-20">
-                    {data.traveller_faq && data.traveller_faq.length > 0 ? (
+                    {data.blogs && data.blogs.length > 0 ? (
                         data.blogs.map((elm, i) => (
                         <div key={i} className="col-lg-4 col-md-6">
                             <Link href={`/${elm.slug}`} key={elm.slug} className="blogCard -type-1">

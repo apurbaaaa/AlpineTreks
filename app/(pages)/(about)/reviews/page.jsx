@@ -8,24 +8,23 @@ import axios from "axios";
 
 
 export default function page(){
-    const [data, setData] = useState([]);
-    const [error, setError] = useState(null)
-    useEffect(()=>{
-        const fetchData = async () => {
-            try{
-                const response = await axios.get(`${process.env.NEXT_PUBLIC_API_BASE_URL}/home`)
-                setData(response?.data?.whatever) // replace API endpoint and setData
-            }
-            catch(error){
-                console.error(error)
-                setError(error)
-            }
-        }; fetchData();
-    }, [])
+    // const [data, setData] = useState([]);
+    // const [error, setError] = useState(null)
+    // useEffect(()=>{
+    //     const fetchData = async () => {
+    //         try{
+    //             const response = await axios.get(`${process.env.NEXT_PUBLIC_API_BASE_URL}/home`)
+    //             setData(response?.data?.whatever) // replace API endpoint and setData
+    //         }
+    //         catch(error){
+    //             console.error(error)
+    //             setError(error)
+    //         }
+    //     }; fetchData();
+    // }, [])
 
     return(
         <div>
-            <Header4 />
             <section data-anim="fade" className="mt-header pt-30">
   <div className="container">
     <div className="breadcrumbs mb-30 md:mb-15">
@@ -70,7 +69,7 @@ export default function page(){
         </div>  
       </div>
   </section>
-            <FooterFour />
+
         </div>
     );
 }

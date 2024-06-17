@@ -6,26 +6,6 @@ import Link from "next/link";
 
 
 export default function HotSelling({data}){
-    // const [hotTitle, setHotTitle] = useState("");
-    // const [hotDesc, setHotDesc] = useState("");
-    // const [error, setError] = useState(null);
-    // const [hotSlug, setHotSlug] = useState("");
-    // const [hotImage, setHotImage] = useState("");
-    // useEffect(()=>{
-    //     const fetchData = async () => {
-    //         try{    
-    //             const response = await axios.get("https://mountaintrekkingnepal.com/api/home")
-    //             setHotTitle(response?.data?.hot_selling?.title);
-    //             setHotDesc(response?.data?.hot_selling_short_description);
-    //             setHotImage(response?.data?.hot_selling?.image)
-    //             setHotSlug(response?.data?.hot_selling?.slug);
-    //         }
-    //         catch(error){
-    //             setError(error)
-    //             console.error(error);
-    //         }
-    //     }; fetchData(); 
-    // }, [])
     return(
         <div>
             <section className="layout-pt-lg layout-pb-lg relative hotsell trip-month ">

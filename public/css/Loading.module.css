@@ -1,4 +1,3 @@
-/* components/Loading.module.css */
 .loadingContainer {
   display: flex;
   flex-direction: column;
@@ -10,7 +9,7 @@
 
 .spinner {
   border: 8px solid #ffffff;
-  border-top: 8px solid #57bf94; /* Darker shade of #e9fff9 */
+  border-top: 8px solid #57bf94; 
   border-radius: 50%;
   width: 60px;
   height: 60px;
@@ -29,5 +28,5 @@
 .loadingText {
   margin-top: 20px;
   font-size: 18px;
-  color: #005555; /* Darker shade of #e9fff9 */
+  color: #005555; 
 }
