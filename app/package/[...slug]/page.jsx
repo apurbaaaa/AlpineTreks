@@ -19,7 +19,7 @@ const page = () => {
     useEffect(() => {
         const fetchData = async () => {
             try{
-                const response = await axios.get("https://mountaintrekkingnepal.com/api/package")
+                const response = await axios.get(`${process.env.NEXT_PUBLIC_API_BASE_URL}/package`)
                 setTitle(response?.data?.title);
                 setPosts(response?.data?.posts);
                 const unpurifiedDesc = response?.data?.description;

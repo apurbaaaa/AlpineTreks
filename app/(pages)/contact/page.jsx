@@ -14,11 +14,8 @@ export default function page() {
   return (
     <>
       <main>
-        <Header4 />
         <NavInfo />
         <SideInfo />
-
-        <FooterFour />
       </main>
     </>
   );

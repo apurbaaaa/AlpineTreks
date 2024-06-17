@@ -7,24 +7,7 @@ import Header4 from "@/components/layout/header/Header4";
 import axios from "axios";
 import { useState, useEffect } from "react";
 
-export default function page(){
-    const [data, setData] = useState([]);
-    const [error, setError] = useState(null);
-
-    useEffect(()=>{
-        const fetchData = async () => { 
-            try{
-                const response = await axios.get({/* Whatever Url */})
-                // setData(response?.data?.whatever)
-            }
-            catch(error){
-                setError(error)
-                console.log(error)
-            }
-        }
-        fetchData();
-    })
-
+export default function page({data}){
     return(
         <div>
             <Header4 />

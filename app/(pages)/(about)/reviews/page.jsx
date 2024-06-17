@@ -13,7 +13,7 @@ export default function page(){
     useEffect(()=>{
         const fetchData = async () => {
             try{
-                const response = await axios.get("https://mountaintrekkingnepal.com/api/home")
+                const response = await axios.get(`${process.env.NEXT_PUBLIC_API_BASE_URL}/home`)
                 setData(response?.data?.whatever) // replace API endpoint and setData
             }
             catch(error){

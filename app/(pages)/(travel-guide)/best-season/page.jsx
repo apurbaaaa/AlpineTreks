@@ -8,7 +8,7 @@ export default function page(){
     return(
 
         <div>
-            <Header4 /> 
+
             <section data-aos="fade-up" className="mt-header pt-30">
                 <div className="container">
                     <div className="breadcrumbs mb-30 md:mb-15">
@@ -129,7 +129,7 @@ export default function page(){
                     </div>
             </section>
             <TourSlider3 />
-            <FooterFour />
+
         </div>
     )
 }

@@ -18,7 +18,7 @@ export default function Page() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get("https://mountaintrekkingnepal.com/api/about-us");
+        const response = await axios.get(`${process.env.NEXT_PUBLIC_API_BASE_URL}/about-us`);
         setTitle(response?.data?.title);
         setImage(response?.data?.image);
         setVideo(response?.data?.youtube_url);

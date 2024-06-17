@@ -22,7 +22,7 @@ export default function Slug({params}) {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          `https://mountaintrekkingnepal.com/api/activity/${slug}`
+          `${process.env.NEXT_PUBLIC_API_BASE_URL}/activity/${slug}`
         );
 
         setPosts(response?.data?.posts);

@@ -20,7 +20,7 @@ export default function Slug({data, seoDesc, seoTitle}) {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          `https://mountaintrekkingnepal.com/api/destination/${slug}`
+          `${process.env.NEXT_PUBLIC_API_BASE_URL}/destination/${slug}`
         );
 
         setPosts(response?.data?.posts);
