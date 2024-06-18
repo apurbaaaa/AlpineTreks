@@ -7,6 +7,7 @@ import Image from "next/image";
 import DOMPurify from "dompurify";
 import Head from "next/head";
 import NextBreadcrumb from "@/components/common/BreadCrumbs";
+import Loading from "@/components/homes/others/Loading";
 
 export default function Slug({data, seoDesc, seoTitle}) {
   const { slug } = useParams();
@@ -39,6 +40,9 @@ export default function Slug({data, seoDesc, seoTitle}) {
     if (slug) {
       fetchData();
     }
+    if (loading) {
+      setLoading(false);
+    }
   }, [slug]); 
 
   const slugType = (slug) => {
@@ -49,6 +53,8 @@ export default function Slug({data, seoDesc, seoTitle}) {
       return "package"
     }
   }
+
+  if (loading) return <div><Loading /></div>
   if (error) return <div>Error loading data</div>; 
 
   return (
@@ -128,7 +134,7 @@ export default function Slug({data, seoDesc, seoTitle}) {
       </div>    
 
       <section data-aos="fade-up" className="pageHeader -type-3">
-        <div className="container">
+        <div className="container"> 
           <div className="row justify-between">
             <div className="col-auto">
             <NextBreadcrumb

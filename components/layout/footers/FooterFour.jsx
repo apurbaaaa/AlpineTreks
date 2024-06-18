@@ -2,8 +2,6 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { useState, useEffect } from "react";
-import axios from "axios";
 
 export default function FooterFour({data}) {
   return (

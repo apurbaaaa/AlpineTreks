@@ -4,8 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import axios from "axios";
-import Header4 from "@/components/layout/header/Header4";
-import FooterFour from "@/components/layout/footers/FooterFour";
+import NextBreadcrumb from "@/components/common/BreadCrumbs";
 
 export default function page(){
     const [title, setTitle] = useState("");
@@ -32,13 +31,13 @@ export default function page(){
             <section data-aos="fade" className="mt-header pt-30">
                 <div className="container">
                     <div className="breadcrumbs mb-30 md:mb-15">
-                    <span className="breadcrumbs__item">
-                        <Link href="/">Home</Link>
-                    </span>
-                    <span> {`>`} </span>
-                    <span className="breadcrumbs__item">
-                        <Link href="/blog">{title}</Link>
-                    </span>
+                    <NextBreadcrumb
+                        homeElement={<span>Home</span>}
+                        containerClasses="text-14 breadcrumb-text"
+                        listClasses=""
+                        activeClasses="active"
+                        capitalizeLinks={true}
+                    />
                     
                     </div>
 

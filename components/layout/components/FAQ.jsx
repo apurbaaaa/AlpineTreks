@@ -27,7 +27,8 @@ export default function FAQ({data}) {
             <p>Join us on our trending adventure this year.</p>
           </div>
         </div>
-        {data.traveller_faq.map((data, i) => (
+        {data.traveller_faq && data.traveller_faq.length > 0 ? (
+          data.traveller_faq.map((data, i) => (
           <div
             key={i}
             className={`accordion -simple row y-gap-20 mt-30 js-accordion justify-content-center ${
@@ -67,7 +68,9 @@ export default function FAQ({data}) {
               </div>
             </div>
           </div>
-        ))}
+        ))) : (
+          <p>No offers available.</p>
+      )}
       </div>
     </section>
   );
