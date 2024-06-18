@@ -5,10 +5,8 @@ import TopTreks from "@/components/homes/tours/Top10treks";
 export default function page(){
     return(
         <div>
-            <Header4 />
             <TripDetails />
             <TopTreks />
-            <FooterFour />
         </div>
         
     )

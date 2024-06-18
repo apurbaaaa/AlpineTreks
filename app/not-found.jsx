@@ -12,7 +12,7 @@ export default function NotFound() {
   return (
     <>
       <main>
-        <Header1 />
+
         <section className="nopage mt-header">
           <div className="container">
             <div className="row y-gap-30 justify-between items-center">
@@ -47,7 +47,7 @@ export default function NotFound() {
             </div>
           </div>
         </section>
-        <FooterOne />
+
       </main>
     </>
   );

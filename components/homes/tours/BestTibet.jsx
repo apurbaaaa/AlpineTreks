@@ -9,27 +9,6 @@ import Link from "next/link";
 import axios from "axios";
 
 export default function BestTibet({data}) {
-  // const [tibet, setTibet] = useState([]);
-  // const [error, setError] = useState(null);
-  // const [title, setTitle] = useState("");
-  // const [desc, setDesc] = useState("");
-
-  // useEffect(() => {
-  //   const fetchData = async () => {
-  //     try {
-  //       const response = await axios.get("https://mountaintrekkingnepal.com/api/home");
-  //       const data = response.data;
-  //       setTibet(data.best_of_tibet);
-  //       setTitle(data.tibet_title);
-  //       setDesc(data.tibet_short_description);
-  //     } catch (error) {
-  //       console.error("Error fetching data:", error);
-  //       setError(error);
-  //     }
-  //   };
-
-  //   fetchData();
-  // }, []);
 
   const dropDownContainer = useRef();
   useEffect(() => {

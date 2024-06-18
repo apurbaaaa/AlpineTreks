@@ -19,7 +19,7 @@ export default function page() {
   const [dataDest, setDataDest] = useState(null)
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
-  const [dataSettings, setDataSettings] = useState(null)
+
 
 
   useEffect(()=>{
@@ -29,8 +29,6 @@ export default function page() {
         setSeoTitle(response?.data?.seo_titile);
         setSeoDesc(response?.data?.seo_description);
         setDataDest(response?.data)
-        const responseSettings = await axios.get(`${process.env.NEXT_PUBLIC_API_BASE_URL}/settings`);
-        setDataSettings(responseSettings?.data)
       }
       catch(error){
         setError(error)
