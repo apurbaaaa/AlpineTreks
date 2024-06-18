@@ -1,4 +1,4 @@
-  export const homes = [
+    export const homes = [
   
   { id: 16, title: "Home 06", href: "/home-6" },
   
