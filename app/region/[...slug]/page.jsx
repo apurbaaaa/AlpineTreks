@@ -3,10 +3,10 @@ import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { useParams } from "next/navigation";
 import axios from "axios"; 
-import Header4 from "@/components/layout/header/Header4";
-import FooterFour from "@/components/layout/footers/FooterFour";
 import Image from "next/image"; 
 import DOMPurify from "dompurify";
+import NextBreadcrumb from "@/components/common/BreadCrumbs";
+
 
 export default function Slug({params}) {
   const { slug } = useParams();
@@ -19,7 +19,7 @@ export default function Slug({params}) {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          `https://mountaintrekkingnepal.com/api/region/${slug}`
+          `${process.env.NEXT_PUBLIC_API_BASE_URL}/region/${slug}`
         );
 
         setPosts(response?.data?.packages);
@@ -41,7 +41,6 @@ export default function Slug({params}) {
 
   return (
     <div>
-      <Header4 />
       <div className="menu js-menu">
         <div className="menu__overlay js-menu-button"></div>
         <div className="menu__container">
@@ -111,13 +110,13 @@ export default function Slug({params}) {
           <div className="row justify-between">
             <div className="col-auto">
               <div className="text-14 breadcrumb-text">
-                <Link href="/">Home</Link>
-                <Image src="/img/chevron-right.svg" alt="chevron" width={12} height={12} />
-                <Link href="/destination">Destination</Link>
-                <Image src="/img/chevron-right.svg" alt="chevron" width={12} height={12} />
-                <Link href="/destination/nepal">Nepal</Link>
-                <Image src="/img/chevron-right.svg" alt="chevron" width={12} height={12} />
-                <Link href={`/activity/${slug}`}>{title}</Link>
+              <NextBreadcrumb
+                homeElement={<span>Home</span>}
+                containerClasses="text-14 breadcrumb-text"
+                listClasses=""
+                activeClasses="active"
+                capitalizeLinks={true}
+              />
               </div>
             </div>
           </div>
@@ -154,7 +153,6 @@ export default function Slug({params}) {
     </div>
         
       </section>
-      <FooterFour />
     </div>
   );
 }

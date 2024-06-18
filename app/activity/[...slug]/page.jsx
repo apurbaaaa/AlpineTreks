@@ -4,10 +4,10 @@ import Link from "next/link";
 import { useParams } from "next/navigation";
 import axios from "axios"; 
 import Header4 from "@/components/layout/header/Header4";
-import FooterFour from "@/components/layout/footers/FooterFour";
 import Image from "next/image"; 
 import DOMPurify from "dompurify";
 import Head from "next/head";
+import NextBreadcrumb from "@/components/common/BreadCrumbs";
 
 export default function Slug({params}) {
   const { slug } = useParams();
@@ -43,7 +43,7 @@ export default function Slug({params}) {
   useEffect(()=>{
     const fetchData = async () => {
       try{
-        const response = await axios.get(`https://mountaintrekkingnepal.com/api/destination/${slug}`);
+        const response = await axios.get(`${process.env.NEXT_PUBLIC_API_BASE_URL}/destination/${slug}`);
         setSeoTitle(response?.data?.seo_titile);
         setSeoDesc(response?.data?.seo_description);
       }
@@ -145,15 +145,15 @@ export default function Slug({params}) {
         <div className="container">
           <div className="row justify-between">
             <div className="col-auto">
-              <div className="text-14 breadcrumb-text">
-                <Link href="/">Home</Link>
-                <Image src="/img/chevron-right.svg" alt="chevron" width={12} height={12} />
-                <Link href="/destination">Destination</Link>
-                <Image src="/img/chevron-right.svg" alt="chevron" width={12} height={12} />
-                <Link href="/destination/nepal">Nepal</Link>
-                <Image src="/img/chevron-right.svg" alt="chevron" width={12} height={12} />
-                <Link href={`/activity/${slug}`}>{title}</Link>
-              </div>
+              
+              <NextBreadcrumb
+                homeElement={<span>Home</span>}
+                containerClasses="text-14 breadcrumb-text"
+                listClasses=""
+                activeClasses="active"
+                capitalizeLinks={true}
+              />
+      
             </div>
           </div>
           <div className="row pt-30">
@@ -189,7 +189,6 @@ export default function Slug({params}) {
     </div>
         
       </section>
-      <FooterFour />
     </div>
   );
 }

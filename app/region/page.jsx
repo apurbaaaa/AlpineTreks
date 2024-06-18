@@ -3,29 +3,33 @@ import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { useParams } from "next/navigation";
 import axios from "axios"; 
-import Header4 from "@/components/layout/header/Header4";
-import FooterFour from "@/components/layout/footers/FooterFour";
 import Image from "next/image"; 
 import DOMPurify from "dompurify";
+import Head from "next/head";
+import NextBreadcrumb from "@/components/common/BreadCrumbs";
 
 const Page = () => {
     const { slug } = useParams();
     const [title, setTitle] = useState("");
     const [content, setContent] = useState("");
-    const [region, setRegion] = useState([]); // Initialize as empty array
-    const [error, setError] = useState(null); // Error state
+    const [region, setRegion] = useState([]);
+    const [error, setError] = useState(null); 
     const [seoTitle, setSeoTitle] = useState("");
     const [seoDesc, setSeoDesc] = useState("");
 
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await axios.get("https://mountaintrekkingnepal.com/api/region");
+                const response = await axios.get(`${process.env.NEXT_PUBLIC_API_BASE_URL}/region`);
                 const unpurifiedDesc = response?.data?.content;
                 let updatedHtmlString = DOMPurify.sanitize(unpurifiedDesc);
                 setContent(updatedHtmlString);
                 setTitle(response?.data?.title);
                 setRegion(response?.data?.regions);
+
+                setSeoTitle(response?.data?.seo_titile);
+                setSeoDesc(response?.data?.seo_description);
+
             } catch (error) {
                 setError(error);
                 console.error(error);
@@ -33,21 +37,6 @@ const Page = () => {
         };
         fetchData();
     }, []); 
-
-    useEffect(()=>{
-        const fetchData = async () => {
-          try{
-            const response = await axios.get("https://mountaintrekkingnepal.com/api/destination");
-            setSeoTitle(response?.data?.seo_titile);
-            setSeoDesc(response?.data?.seo_description);
-    
-          }
-          catch(error){
-            setError(error)
-            console.error(error)
-          }
-        }; fetchData();
-      },[])
       
     if (error) return <div>Error: {error.message}</div>;
 
@@ -62,7 +51,6 @@ const Page = () => {
                 <meta name="viewport" content="width=device-width, initial-scale=1" />
                 <link rel="icon" href="/favicon.ico" />
             </Head>
-            <Header4 />
             <div className="menu js-menu">
                 <div className="menu__overlay js-menu-button"></div>
                 <div className="menu__container">
@@ -132,11 +120,13 @@ const Page = () => {
                     <div className="row justify-between">
                         <div className="col-auto">
                             <div className="text-14 breadcrumb-text">
-                                <Link href="/">Home</Link>
-                                <Image src="/img/chevron-right.svg" alt="chevron" width={12} height={12} />
-                                <Link href="/destination">Region</Link>
-                                <Image src="/img/chevron-right.svg" alt="chevron" width={12} height={12} />
-                                <Link href={`/region/${slug}`}>{title}</Link>
+                            <NextBreadcrumb
+                                homeElement={<span>Home</span>}
+                                containerClasses="text-14 breadcrumb-text"
+                                listClasses=""
+                                activeClasses="active"
+                                capitalizeLinks={true}
+                            />
                             </div>
                         </div>
                     </div>
@@ -159,7 +149,7 @@ const Page = () => {
                         <Link href={`/region/${post.slug}`}>
                             <div className="featureCard -type-8 -hover-image-scale">
                             <div className="featureCard__image -hover-image-scale__image">
-                                <Image src={post.image} alt="feature" width={750} height={563} />
+                                <Image src={post.image} alt={post.title} width={750} height={563} />
                             </div>
                             <div className="featureCard__content">
                                 <h3 className="text-18 fw-500">{post.title}</h3>
@@ -172,7 +162,6 @@ const Page = () => {
                 </div>
             </div>
             </section>
-            <FooterFour />
         </div>
     );
 };

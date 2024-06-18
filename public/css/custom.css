@@ -353,7 +353,22 @@ opacity: 1;
   filter: invert(100%);
 }
 
-.breadcrumbs-list{
+.breadcrumb-container {
   display: flex;
-  flex-direction: row;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.breadcrumb-item {
+  color: #005555;
+}
+
+.breadcrumb-separator {
+  margin: 0 0.5rem;
+  color: #005555;
+}
+
+.breadcrumb-active {
+  font-weight: bold;
 }

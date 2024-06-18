@@ -14,7 +14,6 @@ export default function DestInfo({ data }) {
 
               <NextBreadcrumb
                 homeElement={<span>Home</span>}
-                separator={<span> / </span>}
                 containerClasses="text-14 breadcrumb-text"
                 listClasses=""
                 activeClasses="active"
@@ -24,8 +23,6 @@ export default function DestInfo({ data }) {
           </div>
           
           <h1 className="text-30">Destination</h1>
-          <span>See all</span>
-          <i className="icon-arrow-top-right text-16 ml-10"></i>
         </div>
       </section>
 

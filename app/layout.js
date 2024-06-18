@@ -34,7 +34,7 @@ useEffect(()=>{
     try{
       const responseSettings = await axios.get(`${process.env.NEXT_PUBLIC_API_BASE_URL}/settings`);
       setDataSettings(responseSettings?.data)
-      setFavicon(response?.data?.site_favicon);
+      setFavicon(responseSettings?.data?.site_favicon);
     }
     catch(error){
       setError(error)

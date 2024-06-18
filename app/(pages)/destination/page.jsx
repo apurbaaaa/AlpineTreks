@@ -1,12 +1,12 @@
 "use client"
-import FooterFour from "@/components/layout/footers/FooterFour";
-import Header4 from "@/components/layout/header/Header4"
+
 import DestInfo from "@/components/pages/destinations/destInfo";
 import React from "react";
 import { useState } from "react";
 import { useEffect } from "react";
 import Head from "next/head";
 import axios from "axios";
+import Loading from "@/components/homes/others/Loading";
 
 
 
@@ -40,7 +40,7 @@ export default function page() {
   },[])
 
   if (loading) {
-    return <div>Loading...</div>;
+    return <div><Loading /></div>;
   }
 
 
