@@ -17,7 +17,9 @@ const Page = () => {
         rating_count: 0,
         accommodation: "",
         destination: "",
-        images: []
+        images: [],
+        days: "",
+        price: ""
     });
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
@@ -34,7 +36,9 @@ const Page = () => {
                     rating_count: data?.rating_count,
                     accommodation: data?.accommodation,
                     destination: data?.destination,
-                    images: data?.gallery
+                    images: data?.gallery,
+                    days: data?.days,
+                    price: data.price
                 });
             } catch (error) {
                 setError(error);
@@ -49,10 +53,11 @@ const Page = () => {
     if (loading) return <Loading />;
     if (error) return <div className="error-message">Error loading data: {error.message}</div>;
 
-    const { title, total_rating, rating_count, accommodation, destination, images } = packageData;
+    const { title, total_rating, rating_count, accommodation, destination, images, days, price } = packageData;
 
     return (
         <div>
+            {/* Header component */}
             <div className="menu js-menu">
                 <div className="menu__overlay js-menu-button"></div>
                 <div className="menu__container">
@@ -98,6 +103,7 @@ const Page = () => {
                     </div>
                 </div>
             </div>
+            {/* Slider component */}
             <section data-aos="fade-up" data-aos-delay="400" className="pageHeader -type-3">
                 <div className="container">
                     <div className="row justify-between">
@@ -143,14 +149,14 @@ const Page = () => {
                                 </div>
                                 <div className="col-auto">
                                     <div className="d-flex x-gap-30 y-gap-10">
-                                        <a href="#" onClick={(e) => e.preventDefault()} className="d-flex items-center">
+                                        <Link href="#" onClick={(e) => e.preventDefault()} className="d-flex items-center">
                                             <i className="fa-solid fa-share-from-square mr-10"></i>
                                             Share
-                                        </a>
-                                        <a href="#" onClick={(e) => e.preventDefault()} className="d-flex items-center">
+                                        </Link>
+                                        <Link href="#" onClick={(e) => e.preventDefault()} className="d-flex items-center">
                                             <i className="fa-solid fa-download mr-10"></i>
                                             Download
-                                        </a>
+                                        </Link>
                                     </div>
                                 </div>
                             </div>
@@ -208,6 +214,44 @@ const Page = () => {
                     </div>
                 </div>
             </section>
+            {/* payment */}
+            <div className="col-lg-4">
+                <div className="d-flex  js-pin-content" style={{position: 'static', top: 'auto'}}>
+                    <div className="tourSingleSidebar">
+                        <div className="d-flex justify-content-between">
+                            <div className="d-flex items-center price mobile-none flex-column">
+                                <div className="fw-500">Days</div>
+                                <div className="text-20 fw-700">{days}</div>
+                            </div>
+                        <div className="d-flex items-center price  mobile-none flex-column">
+                        <div className="fw-500">Save </div>
+                        <div className="text-20 fw-700 ml-10">$0</div>
+                        </div>
+                        <div className="d-flex items-center price flex-column">
+                        <div className="fw-500">Price <del className="d-none">{price}</del> </div>
+                        </div>
+                        </div>
+                    <div className="button-book">
+                        <Link className="button -md -dark-1 col-12 bg-accent-1 text-white mt-20" href="#depature">
+                            Book Now
+                            <i className="icon-arrow-top-right ml-10"></i>
+                        </Link>
+                        <button className="button -md -dark-1 col-12  mt-20 border-1" id="modalBtn">
+                            Make an Enquiry
+                            <i className="icon-arrow-top-right ml-10"></i>
+                        </button>
+                    </div>
+                        <div className="points">
+                            <ul>
+                                <li>Instant Booking</li>
+                                <li>Secure Payments</li>
+                                <li>Flexibility</li>
+                                <li>No Hidden Costs</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                </div>
         </div>
     );
 };

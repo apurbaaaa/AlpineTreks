@@ -6494,6 +6494,7 @@ h1, h2, h3, h4, h5, h6 {
   border-radius: 100%;
   border: 1px solid var(--border, #E7E6E6);
   box-shadow: 0px 10px 40px 0px rgba(0, 0, 0, 0.05);
+  margin-right: 450px;
 }
 
 .navAbsolute.-type-2 {
@@ -11089,7 +11090,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .img-cover {
-  width: 100%;
+  /* width: 100%; */
   height: 100%;
   -o-object-fit: cover;
      object-fit: cover;
