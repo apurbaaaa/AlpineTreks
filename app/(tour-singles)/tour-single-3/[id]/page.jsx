@@ -20,12 +20,9 @@ export default function page({ params }) {
   return (
     <>
       <main>
-        <Header1 />
         <PageHeader />
-
         <SingleThree tour={tour} />
         <TourSlider />
-        <FooterOne />
       </main>
     </>
   );

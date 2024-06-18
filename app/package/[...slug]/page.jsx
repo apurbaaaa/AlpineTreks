@@ -3,23 +3,25 @@ import React, { useEffect, useState } from 'react';
 import Stars from "@/components/common/Stars";
 import Link from 'next/link';
 import { useParams } from "next/navigation";
-import DOMPurify from "dompurify";
 import NextBreadcrumb from '@/components/common/BreadCrumbs';
+import { Swiper, SwiperSlide } from 'swiper/react';
 import axios from 'axios';
 import Loading from '@/components/homes/others/Loading';
+import { Navigation, Pagination } from 'swiper/modules';
+import Image from 'next/image';
 
 const Page = () => {
-
     const [packageData, setPackageData] = useState({
         title: "",
         total_rating: "",
         rating_count: 0,
         accommodation: "",
-        destination: ""
+        destination: "",
+        images: []
     });
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
-    
+
     const { slug } = useParams();
 
     useEffect(() => {
@@ -30,8 +32,9 @@ const Page = () => {
                     title: data?.title,
                     total_rating: data?.total_rating,
                     rating_count: data?.rating_count,
-                    accomodation: data?.accomodation,
-                    destination: data?.destination
+                    accommodation: data?.accommodation,
+                    destination: data?.destination,
+                    images: data?.gallery
                 });
             } catch (error) {
                 setError(error);
@@ -44,9 +47,9 @@ const Page = () => {
     }, [slug]);
 
     if (loading) return <Loading />;
-    if (error) return <div>Error loading data: {error.message}</div>;
+    if (error) return <div className="error-message">Error loading data: {error.message}</div>;
 
-    const { title, total_rating, rating_count, accomodation, destination } = packageData;
+    const { title, total_rating, rating_count, accommodation, destination, images } = packageData;
 
     return (
         <div>
@@ -133,22 +136,72 @@ const Page = () => {
                                         <div className="col-auto">
                                             <div className="d-flex items-center">
                                                 <i className="icon-reservation text-16 mr-5"></i>
-                                                {accomodation}
+                                                {accommodation}
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                                 <div className="col-auto">
                                     <div className="d-flex x-gap-30 y-gap-10">
-                                        <a href="javascript:void(0)" className="d-flex items-center">
+                                        <a href="#" onClick={(e) => e.preventDefault()} className="d-flex items-center">
                                             <i className="fa-solid fa-share-from-square mr-10"></i>
                                             Share
                                         </a>
-                                        <a href="javascript:void(0)" className="d-flex items-center">
+                                        <a href="#" onClick={(e) => e.preventDefault()} className="d-flex items-center">
                                             <i className="fa-solid fa-download mr-10"></i>
                                             Download
                                         </a>
                                     </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="row justify-center pt-30">
+                        <div className="col-12">
+                            <div className={`relative overflow-hidden`} style={{ height: "438px" }}>
+                                <Swiper
+                                    spaceBetween={10}
+                                    className="w-100 overflow-visible"
+                                    style={{ maxWidth: "100%" }}
+                                    loop={true}
+                                    navigation={{
+                                        prevEl: ".js-sliderMain-prev",
+                                        nextEl: ".js-sliderMain-next",
+                                    }}
+                                    modules={[Navigation, Pagination]}
+                                    slidesPerView={1}
+                                >
+                                    {images && images.length > 0 ? (
+                                        images.map((elm, i) => (
+                                            <SwiperSlide key={i}>
+                                                <div className="swiper-slide">
+                                                    <Image
+                                                        width={850}
+                                                        height={510}
+                                                        src={elm}
+                                                        alt="image"
+                                                        className="img-cover rounded-12"
+                                                    />
+                                                </div>
+                                            </SwiperSlide>
+                                        ))
+                                    ) : (
+                                        <div>No images available</div>
+                                    )}
+                                </Swiper>
+                                <div className={`navAbsolute -type-2`}>
+                                    <button
+                                        className="navAbsolute__button bg-white js-sliderMain-prev"
+                                        aria-label="Previous slide"
+                                    >
+                                        <i className="icon-arrow-left text-14"></i>
+                                    </button>
+                                    <button
+                                        className="navAbsolute__button bg-white js-sliderMain-next"
+                                        aria-label="Next slide"
+                                    >
+                                        <i className="icon-arrow-right text-14"></i>
+                                    </button>
                                 </div>
                             </div>
                         </div>
