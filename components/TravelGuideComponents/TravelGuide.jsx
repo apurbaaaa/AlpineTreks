@@ -1,7 +1,7 @@
 import React from "react";
 import Link from "next/link";
 
-const TravelGuideTable = () => {
+const TravelGuideTable = ({ pages }) => {
   return (
     <div>
       <section className="layout-pt-md layout-pb-md js-pin-container normal-page tabs -terms js-tabs">
@@ -11,46 +11,16 @@ const TravelGuideTable = () => {
               <div className="d-flex justify-end">
                 <div className="tabs__controls row y-gap-10 js-tabs-controls side-bar">
                   <h2>Travel Guide</h2>
-                  <div className="col-12">
-                    <Link
-                      href="/nepal-in-brief"
-                      className="tabs__button relative pl-20 js-tabs-button is-tab-el-active"
-                    >
-                      Nepal In Brief
-                    </Link>
-                  </div>
-                  <div className="col-12">
-                    <Link
-                      href="/best-season-for-trekking-in-nepal"
-                      className="tabs__button relative pl-20 js-tabs-button "
-                    >
-                      Best Season for Trekking In Nepal
-                    </Link>
-                  </div>
-                  <div className="col-12">
-                    <Link
-                      href="/equipment-checklist"
-                      className="tabs__button relative pl-20 js-tabs-button "
-                    >
-                      Equipment Checklist
-                    </Link>
-                  </div>
-                  <div className="col-12">
-                    <Link
-                      href="/nepal-trekking-grades"
-                      className="tabs__button relative pl-20 js-tabs-button "
-                    >
-                      Nepal Trekking Grades
-                    </Link>
-                  </div>
-                  <div className="col-12">
-                    <Link
-                      href="/nepal-visa-information"
-                      className="tabs__button relative pl-20 js-tabs-button "
-                    >
-                      Nepal Visa Information
-                    </Link>
-                  </div>
+                  {pages.map((page) => (
+                    <div key={page.slug} className="col-12">
+                      <Link
+                        href={`/${page.slug}`}
+                        className="tabs__button relative pl-20 js-tabs-button"
+                      >
+                        {page.post_title}
+                      </Link>
+                    </div>
+                  ))}
                 </div>
               </div>
             </div>
