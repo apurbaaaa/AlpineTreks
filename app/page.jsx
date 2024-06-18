@@ -1,5 +1,5 @@
 import React from "react";
-import Firstpage from "./(homes)/home-6/page";
+import Firstpage from "./home/page";
 
 export const metadata = {
   title: "Mountain Trekking Nepal",

@@ -1,11 +1,11 @@
 "use client"
 import React, { useEffect } from 'react'
-import Header4 from '@/components/layout/header/Header4'
-import FooterFour from '@/components/layout/footers/FooterFour'
 import { useState } from 'react'
 import Link from 'next/link'
 import { useParams } from "next/navigation";
 import DOMPurify from "dompurify";
+import NextBreadcrumb from '@/components/common/BreadCrumbs'
+import axios from 'axios';
 
 
 const page = () => {
@@ -14,14 +14,16 @@ const page = () => {
     const [post, setPosts] = useState("");
     const { slug } = useParams();
     const [error, setError] = useState(null);
+    const[pSlug, setPSlug] = useState("")
 
     
     useEffect(() => {
         const fetchData = async () => {
             try{
-                const response = await axios.get(`${process.env.NEXT_PUBLIC_API_BASE_URL}/package`)
+                const response = await axios.get(`${process.env.NEXT_PUBLIC_API_BASE_URL}/package/${slug}`)
                 setTitle(response?.data?.title);
                 setPosts(response?.data?.posts);
+                console.log(title)
                 const unpurifiedDesc = response?.data?.description;
                 let updatedHtmlString = DOMPurify.sanitize(unpurifiedDesc);
                 setDesc(updatedHtmlString);              
@@ -36,7 +38,6 @@ const page = () => {
 
   return (
     <div>
-        <Header4 />
         <div className="menu js-menu">
                 <div className="menu__overlay js-menu-button"></div>
                 <div className="menu__container">
@@ -105,11 +106,13 @@ const page = () => {
                     <div className="row justify-between">
                         <div className="col-auto">
                             <div className="text-14 breadcrumb-text">
-                                <Link href="/">Home</Link>
-                                {/* <Image src="/img/chevron-right.svg" alt="chevron" width={12} height={12} /> */}
-                                <Link href="/destination">Region</Link>
-                                {/* <Image src="/img/chevron-right.svg" alt="chevron" width={12} height={12} /> */}
-                                <Link href={`/region/${slug}`}>{title}</Link>
+                            <NextBreadcrumb
+                                homeElement={<span>Home</span>}
+                                containerClasses="text-14 breadcrumb-text"
+                                listClasses=""
+                                activeClasses="active"
+                                capitalizeLinks={true}
+                            />
                             </div>
                         </div>
                     </div>
@@ -121,8 +124,6 @@ const page = () => {
                     </div>
                 </div> 
             </section> 
-
-        <FooterFour />
     </div>
   )
 }
