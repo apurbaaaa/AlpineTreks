@@ -12,6 +12,7 @@ import Details from '@/components/package-components/Details';
 import TripOverview from '@/components/package-components/TripOverview';
 import Itinerary from '@/components/package-components/Itinerary';
 import Costs from '@/components/package-components/Costs';
+import Departure from '@/components/package-components/Departure';
 
 const Page = () => {
     const [loading, setLoading] = useState(true);
@@ -46,7 +47,7 @@ const Page = () => {
             <section className=" js-pin-container layout-pb-md">
                 <div className="container js-pin-container-inner">
                     <div className="row y-gap-30 justify-between">
-                        <div data-anim="slide-up delay-1" className="col-lg-8 is-in-view">
+                        <div data-anim="slide-up delay-1" className="col-lg-8 is-in-view">  
                             <TitleHeader data = {data}/>
                             <PackageSwiper data = {data}/>  
                             <Details data = {data} />
@@ -55,7 +56,8 @@ const Page = () => {
                             <Itinerary data = {data}/>
                             <div className="line mt-30 mb-20"></div>
                             <Costs data = {data} />
-                            <div class="line mt-30 mb-20"></div>
+                            <div className="line mt-30 mb-20"></div>
+                            <Departure data = {data}/>
                         </div>
 
                         <div className="col-lg-4">

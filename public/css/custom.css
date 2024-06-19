@@ -279,6 +279,68 @@ opacity: 1;
   margin-bottom: 8px;
 }
 
+.pt-40 {
+  padding-top: 40px !important;
+}
+.tabs__content {
+  position: relative;
+}
+
+.tab-btn {
+  margin: 5px;
+  font-weight: 500;
+  display: flex;
+  float: left;
+  flex-direction: column;
+  border: 1px solid #d4d4d4;
+    border-top-color: rgb(212, 212, 212);
+    border-right-color: rgb(212, 212, 212);
+    border-bottom-color: rgb(212, 212, 212);
+    border-left-color: rgb(212, 212, 212);
+  padding: 11px 21px;
+  text-align: center;
+  border-radius: 5px;
+  color: #000;
+  min-height: 67px;
+  text-decoration: none;
+  -webkit-appearance: button;
+}
+
+.tabs__pane.is-tab-el-active {
+  transition: opacity 0.3s cubic-bezier(0.165, 0.84, 0.44, 1) 0.1s;
+  position: relative;
+  opacity: 1;
+  visibility: visible;
+  display: flex;
+  justify-content: space-between;
+  padding: 0px 25px 0px 0px;
+}
+.tabs__pane.is-tab-el-active, .headerDropdown .tabsMenu__tabs {
+  height: 70vh;
+  overflow: auto;
+    overflow-x: auto;
+  overflow-x: hidden;
+}
+
+.tab-container-list {
+  margin-bottom: 10px;
+  display: inline-block;
+}
+*, ::after, ::before {
+  box-sizing: border-box;
+}
+.tabs__pane.is-tab-el-active {
+  visibility: visible;
+}
+
+.tab-btn.active {
+  background: var(--color-accent-1);
+  color: #fff;
+}
+.tab-btn:hover {
+  border-color: var(--color-accent-1);
+}
+
 .highlight ul li::before {
   content: "\f00c";
   font-family: "Font Awesome 6 Pro";
