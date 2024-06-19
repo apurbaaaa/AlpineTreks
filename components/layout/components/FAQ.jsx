@@ -1,7 +1,8 @@
 "use client";
 import React from "react";
 
-export default function FAQ({ data }) {
+export default function FAQ({ data} ) {
+
   return (
     <section className="layout-pt-lg layout-pb-lg">
       <div className="container">
@@ -11,8 +12,8 @@ export default function FAQ({ data }) {
             <p>Join us on our trending adventure this year.</p>
           </div>
         </div>
-        {data.traveller_faq && data.traveller_faq.length > 0 ? (
-          data.traveller_faq.map((item, i) => (
+        {data && data.length > 0 ? (
+          data.map((item, i) => (
             <div key={i} className="accordion -simple row y-gap-20 mt-30 js-accordion justify-content-center">
               <div className="col-lg-8 col-12">
                 <input
