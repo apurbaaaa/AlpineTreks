@@ -4,7 +4,7 @@ import Stars from "../common/Stars";
 import Link from "next/link"; // Assuming you are using Next.js for routing
 
 function TitleHeader({ data }) {
-    // If data is undefined, provide default empty object
+
     const { title, total_rating, rating_count, destination, accommodation } = data || {};
 
     return (
