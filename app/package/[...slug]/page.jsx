@@ -1,16 +1,14 @@
 "use client";
 import React, { useEffect, useState } from 'react';
-import Stars from "@/components/common/Stars";
 import Link from 'next/link';
 import { useParams } from "next/navigation";
 import NextBreadcrumb from '@/components/common/BreadCrumbs';
-import { Swiper, SwiperSlide } from 'swiper/react';
 import axios from 'axios';
 import Loading from '@/components/homes/others/Loading';
-import { Navigation, Pagination } from 'swiper/modules';
 import Image from 'next/image';
 import TitleHeader from '@/components/package-components/TitleHeader';
 import PackageSwiper from '@/components/package-components/PackageSwiper';
+import Details from '@/components/package-components/Details';
 
 const Page = () => {
     const [loading, setLoading] = useState(true);
@@ -47,7 +45,8 @@ const Page = () => {
                     <div className="row y-gap-30 justify-between">
                         <div data-anim="slide-up delay-1" className="col-lg-8 is-in-view">
                             <TitleHeader data = {data}/>
-                            <PackageSwiper data = {data}/>
+                            <PackageSwiper data = {data}/>  
+                            <Details data = {data} />
                         </div>
 
                         <div className="col-lg-4">
