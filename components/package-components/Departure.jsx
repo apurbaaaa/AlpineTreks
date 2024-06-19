@@ -27,8 +27,6 @@ const Departure = ({ data }) => {
     const openTab = (tab) => setActiveTab(tab);
     const openPane = (pane) => setActivePane(pane);
 
-    
-
     const formattedDates = year_month.reduce((acc, { year, month }) => {
         const formattedMonth = formatTabId(year, month);
         acc[formattedMonth] = dates[formattedMonth];
@@ -63,7 +61,7 @@ const Departure = ({ data }) => {
             <div className="tabs__content pt-40 js-tabs-content">
                 <div className={`tabs__pane -tab-item-1 ${activePane === 'pane1' ? 'is-tab-el-active' : ''}`}>
                     {year_month.length > 0 ? (
-                        <div className="tab-container w-100" style={{width : '100%'}}>
+                        <div className="tab-container w-100" style={{ width: '100%' }}>
                             <div className="tab-container-list">
                                 {year_month.map(({ year, month }) => (
                                     <button
@@ -77,15 +75,11 @@ const Departure = ({ data }) => {
                                     </button>
                                 ))}
                             </div>
-                            <div id='tab1' className='tab-content'>
-
-                            </div>
-                            <div className='departure'>
-                            
+                            <div id="tab1" className="tab-content"></div>
+                            <div className="departure">
                                 {formattedDates[activeTab] ? (
                                     formattedDates[activeTab].map(({ date, price, availability }) => (
-                                        <div className="depature-section">
-                                        <div key={date}>
+                                        <div key={date} className="depature-section">
                                             <div className="date">
                                                 <div className="time font-lg-bold" data-title="Package Dates">
                                                     {date}
@@ -98,14 +92,22 @@ const Departure = ({ data }) => {
                                                 <span>Price</span>
                                                 <span className="font-lg-bold" data-title="Package Price">US${price}</span>
                                             </div>
-                                        </div>
+                                            <div className="submit-button">
+                                                <form action="/booking" method="POST">
+                                                    <input type="hidden" name="_token" value="bBphzNCVIqfk89NtzdBgXyHGTW2aSubHVrYW3yq6" autoComplete="off" />
+                                                    <input type="hidden" name="package" value="Annapurna Base Camp Trek" />
+                                                    <input type="hidden" name="package_url" value="https://mountaintrekkingnepal.com/package/annapurna-base-camp-trek" />
+                                                    <input type="hidden" name="date" value={date} />
+                                                    <input type="hidden" name="price" value={price} />
+                                                    <button type="submit" className="button -sm -dark-1 col-12 border-1">Book Now</button>
+                                                </form>
+                                            </div>
                                         </div>
                                     ))
                                 ) : (
                                     <div>No dates available for the selected month.</div>
                                 )}
-                            </div> 
-                            
+                            </div>
                         </div>
                     ) : (
                         <div>No departure dates available.</div>
