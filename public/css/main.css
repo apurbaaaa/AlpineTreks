@@ -606,6 +606,21 @@ button:focus {
   transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
 }
 
+trip-detail ul li {
+  list-style: none;
+  color: #000;
+  position: relative;
+  padding-left: 25px;
+  margin-bottom: 8px;
+}
+ul, li {
+  list-style: none;
+  padding: 0;
+    padding-left: 0px;
+  margin: 0;
+    margin-bottom: 0px;
+}
+
 .button.-sm {
   padding: 7px 20px;
 }

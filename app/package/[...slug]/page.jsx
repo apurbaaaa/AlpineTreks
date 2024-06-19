@@ -9,6 +9,7 @@ import Image from 'next/image';
 import TitleHeader from '@/components/package-components/TitleHeader';
 import PackageSwiper from '@/components/package-components/PackageSwiper';
 import Details from '@/components/package-components/Details';
+import TripOverview from '@/components/package-components/TripOverview';
 
 const Page = () => {
     const [loading, setLoading] = useState(true);
@@ -47,6 +48,7 @@ const Page = () => {
                             <TitleHeader data = {data}/>
                             <PackageSwiper data = {data}/>  
                             <Details data = {data} />
+                            <TripOverview data ={data} />
                         </div>
 
                         <div className="col-lg-4">
