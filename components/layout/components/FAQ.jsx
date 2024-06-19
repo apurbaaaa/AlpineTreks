@@ -58,7 +58,7 @@ export default function FAQ({data}) {
                   style={{
                     maxHeight: openIndex === i ? "1000px" : "0",
                     overflow: "hidden",
-                    transition: "max-height 0.5s ease",
+                    transition: "max-height 0.2s ease",
                   }}
                 >
                   <div className="pt-20">

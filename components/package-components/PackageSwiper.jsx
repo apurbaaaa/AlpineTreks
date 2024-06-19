@@ -2,7 +2,7 @@ import React from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination } from "swiper/modules";
 import Image from "next/image";
-import "swiper/swiper-bundle.css"; // Import Swiper styles
+import "swiper/swiper-bundle.css"; 
 
 export default function PackageSwiper({ data }) {
   return (
@@ -30,10 +30,10 @@ export default function PackageSwiper({ data }) {
                       width={850}
                       height={510}
                       src={elm}
-                      alt={`Slide image ${i + 1}`} // Unique alt text
+                      alt={`Slide image ${i + 1}`} 
                       className="img-cover rounded-12"
-                      placeholder="blur" // Using blur placeholder for better UX
-                      blurDataURL={elm} // For SSR optimization
+                      placeholder="blur" 
+                      blurDataURL={elm} 
                     />
                   </div>
                 </SwiperSlide>

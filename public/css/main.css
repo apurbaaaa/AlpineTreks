@@ -612,14 +612,13 @@ trip-detail ul li {
   position: relative;
   padding-left: 25px;
   margin-bottom: 8px;
-}
-ul, li {
   list-style: none;
   padding: 0;
     padding-left: 0px;
   margin: 0;
     margin-bottom: 0px;
 }
+
 
 .button.-sm {
   padding: 7px 20px;
@@ -6839,6 +6838,13 @@ h1, h2, h3, h4, h5, h6 {
   color: var(--text-dark-1);
 }
 
+.accordion__content {
+  display: none; /* Initially hide all content */
+}
+
+.accordion__item.is-open .accordion__content {
+  display: block; /* Show content of active item */
+}
 .accordion.-simple .accordion__icon {
   background-color: rgba(235, 102, 43, 0.05) !important;
   color: var(--color-accent-1) !important;

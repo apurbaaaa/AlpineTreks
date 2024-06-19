@@ -11,6 +11,7 @@ import PackageSwiper from '@/components/package-components/PackageSwiper';
 import Details from '@/components/package-components/Details';
 import TripOverview from '@/components/package-components/TripOverview';
 import Itinerary from '@/components/package-components/Itinerary';
+import Costs from '@/components/package-components/Costs';
 
 const Page = () => {
     const [loading, setLoading] = useState(true);
@@ -52,6 +53,9 @@ const Page = () => {
                             <TripOverview data ={data} />
                             <div className="line mt-30 mb-20"></div>
                             <Itinerary data = {data}/>
+                            <div className="line mt-30 mb-20"></div>
+                            <Costs data = {data} />
+                            <div class="line mt-30 mb-20"></div>
                         </div>
 
                         <div className="col-lg-4">

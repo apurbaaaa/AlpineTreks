@@ -135,6 +135,8 @@
     border-radius: 3px 0 0 3px;
    
   }
+
+
   
   /* On hover, add a black background color with a little bit see-through */
   
@@ -249,6 +251,10 @@ opacity: 1;
   }
  
  }
+
+ .trip-detail .include ul, .trip-detail .exclude ul {
+  margin-top: 20px;
+}
  .trip-detail p {
   margin-top: 6px;
   margin-bottom: 10px;
@@ -271,7 +277,6 @@ opacity: 1;
   position: relative;
   padding-left: 25px;
   margin-bottom: 8px;
-  list-style: none;
 }
 
 .highlight ul li::before {

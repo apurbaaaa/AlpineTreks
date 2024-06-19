@@ -5,7 +5,7 @@ export default function Itinerary({ data }) {
 
     const toggleAccordion = (index) => {
         setActiveIndex(activeIndex === index ? null : index); // Toggle active index
-        console.log("Hello")
+            
     };
 
     return (
