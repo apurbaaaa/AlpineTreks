@@ -136,8 +136,56 @@
    
   }
 
+  .tab-container .w-100{
+    width: 100%
+  }
 
-  
+
+  .depature-section:hover {
+    border-color: var(--color-accent-1);
+  }
+  .depature-section {
+    display: flex;
+    justify-content: space-between;
+    border: 1px solid gainsboro;
+      border-top-color: gainsboro;
+      border-right-color: gainsboro;
+      border-bottom-color: gainsboro;
+      border-left-color: gainsboro;
+    padding: 20px;
+    border-radius: 7px;
+    margin-bottom: 20px;
+    color: #333;
+  }
+
+  .tabs__pane.is-tab-el-active {
+    transition: opacity 0.3s cubic-bezier(0.165, 0.84, 0.44, 1) 0.1s;
+    position: relative;
+    opacity: 1;
+    visibility: visible;
+    display: flex;
+    justify-content: space-between;
+    padding: 0px 25px 0px 0px;
+  }
+  .tabs__pane.is-tab-el-active, .headerDropdown .tabsMenu__tabs {
+    height: 70vh;
+    overflow: auto;
+      overflow-x: auto;
+    overflow-x: hidden;
+  }
+
+  *, ::after, ::before {
+    box-sizing: border-box;
+  }
+
+  .bottom-menu {
+    display: flex;
+    justify-content: space-around;
+  }
+
+  .font-lg-bold {
+    font-weight: bolder;
+  }
   /* On hover, add a black background color with a little bit see-through */
   
   

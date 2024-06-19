@@ -5,9 +5,16 @@ const Departure = ({ data }) => {
         return <div>No departure data available</div>;
     }
 
-    const { year_month, dates } = data.departures;
+    const { year_month = [], dates = {} } = data.departures;
 
-    const initialYearMonth = year_month[1] ? `${year_month[0].year}-${year_month[0].month}` : '';
+    const formatTabId = (year, month) => {
+        const monthIndex = new Date(`${month} 1, ${year}`).getMonth() + 1;
+        return `${year}-${monthIndex.toString().padStart(2, '0')}`;
+    };
+
+    // Ensure the first element in year_month is used as the initial active tab
+    const initialYearMonth = year_month.length > 0 ? formatTabId(year_month[0]?.year, year_month[0]?.month) : '';
+
     const [activeTab, setActiveTab] = useState(initialYearMonth);
     const [activePane, setActivePane] = useState('pane1');
 
@@ -17,19 +24,20 @@ const Departure = ({ data }) => {
         }
     }, [initialYearMonth]);
 
-    const openTab = (tab) => {
-        setActiveTab(tab);
-    };
+    const openTab = (tab) => setActiveTab(tab);
+    const openPane = (pane) => setActivePane(pane);
 
-    const openPane = (pane) => {
-        setActivePane(pane);
-    };
+    
 
-    const formatTabId = (year, month) => `${year}-${month}`;
+    const formattedDates = year_month.reduce((acc, { year, month }) => {
+        const formattedMonth = formatTabId(year, month);
+        acc[formattedMonth] = dates[formattedMonth];
+        return acc;
+    }, {});
 
     return (
-        <div className="trip-detail tour_details_boxed depature tabs -tourSingle js-tabs" id="depature">
-            <div className="fixed-depature-tab">
+        <div className="trip-detail tour_details_boxed departure tabs -tourSingle js-tabs" id="departure">
+            <div className="fixed-departure-tab">
                 <div>
                     <h2>Fixed Departure</h2>
                 </div>
@@ -52,10 +60,10 @@ const Departure = ({ data }) => {
                     </div>
                 </div>
             </div>
-            <div className="">
-                <div className="tabs__content pt-40 js-tabs-content">
-                    <div className={`tabs__pane -tab-item-1 ${activePane === 'pane1' ? 'is-tab-el-active' : ''}`}>
-                        <div className="tab-container w-100">
+            <div className="tabs__content pt-40 js-tabs-content">
+                <div className={`tabs__pane -tab-item-1 ${activePane === 'pane1' ? 'is-tab-el-active' : ''}`}>
+                    {year_month.length > 0 ? (
+                        <div className="tab-container w-100" style={{width : '100%'}}>
                             <div className="tab-container-list">
                                 {year_month.map(({ year, month }) => (
                                     <button
@@ -69,22 +77,42 @@ const Departure = ({ data }) => {
                                     </button>
                                 ))}
                             </div>
-                            {year_month.map(({ year, month }) => (
-                                <div
-                                    key={formatTabId(year, month)}
-                                    id={formatTabId(year, month)}
-                                    className={`tab-content ${activeTab === formatTabId(year, month) ? 'active' : ''}`}
-                                >
-                                    {dates[`${year}-${month}`] &&
-                                        dates[`${year}-${month}`].map(({ date, price }) => (
-                                            <DepartureSection key={date} date={date} price={price} />
-                                        ))}
-                                </div>
-                            ))}
+                            <div id='tab1' className='tab-content'>
+
+                            </div>
+                            <div className='departure'>
+                            
+                                {formattedDates[activeTab] ? (
+                                    formattedDates[activeTab].map(({ date, price, availability }) => (
+                                        <div className="depature-section">
+                                        <div key={date}>
+                                            <div className="date">
+                                                <div className="time font-lg-bold" data-title="Package Dates">
+                                                    {date}
+                                                </div>
+                                                <div className="place" data-title="Package Place">
+                                                    Starts/Ends: Kathmandu
+                                                </div>
+                                            </div>
+                                            <div className="price">
+                                                <span>Price</span>
+                                                <span className="font-lg-bold" data-title="Package Price">US${price}</span>
+                                            </div>
+                                        </div>
+                                        </div>
+                                    ))
+                                ) : (
+                                    <div>No dates available for the selected month.</div>
+                                )}
+                            </div> 
+                            
                         </div>
-                    </div>
-                    <div className={`tabs__pane -tab-item-2 ${activePane === 'pane2' ? 'd-none' : ''}`}>
-                    </div>
+                    ) : (
+                        <div>No departure dates available.</div>
+                    )}
+                </div>
+                <div className={`tabs__pane -tab-item-2 ${activePane === 'pane2' ? 'is-tab-el-active' : ''}`}>
+                    {/* Add content for private departures here */}
                 </div>
             </div>
             <div className="submit-button text-center">
@@ -93,35 +121,5 @@ const Departure = ({ data }) => {
         </div>
     );
 };
-
-const DepartureSection = ({ date, price }) => (
-    <div className="depature">
-        <div className="depature-section" data-title={date}>
-            <div className="date">
-                <div className="time font-lg-bold" data-title="Package Dates">
-                    {new Date(date).toLocaleDateString('en-US', { day: '2-digit', month: 'short', year: 'numeric' })}
-                </div>
-                <div className="place" data-title="Package Place">
-                    Starts/Ends: Kathmandu
-                </div>
-            </div>
-            <div className="price">
-                <span>Price</span> <span className="font-lg-bold" data-title="Package Price">US$ {price}</span>
-            </div>
-            <div className="book">
-                <div className="submit-button">
-                    <form action="https://mountaintrekkingnepal.com/booking" method="POST">
-                        <input type="hidden" name="_token" value="bBphzNCVIqfk89NtzdBgXyHGTW2aSubHVrYW3yq6" />
-                        <input type="hidden" name="package" value="Annapurna Base Camp Trek" />
-                        <input type="hidden" name="package_url" value="https://mountaintrekkingnepal.com/package/annapurna-base-camp-trek" />
-                        <input type="hidden" name="date" value={date} />
-                        <input type="hidden" name="price" value={price} />
-                        <button type="submit" className="button -sm -dark-1 col-12 border-1">Book Now</button>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-);
 
 export default Departure;

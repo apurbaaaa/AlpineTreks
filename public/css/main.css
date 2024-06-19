@@ -6744,6 +6744,13 @@ h1, h2, h3, h4, h5, h6 {
   opacity: 1;
 }
 
+.tabs__pane.is-tab-el-active, .headerDropdown .tabsMenu__tabs {
+  height: 70vh;
+  overflow: auto;
+    overflow-x: auto;
+  overflow-x: auto;
+  overflow-x: hidden;
+}
 /* Add this CSS to your stylesheet */
 
 .faq-section {
