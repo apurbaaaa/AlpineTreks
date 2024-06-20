@@ -14,6 +14,7 @@ import Itinerary from '@/components/package-components/Itinerary';
 import Costs from '@/components/package-components/Costs';
 import Departure from '@/components/package-components/Departure';
 import FAQ from '@/components/layout/components/FAQ';
+import BestSellers from '@/components/homes/tours/TourSlider3';
 
 const Page = () => {
     const [loading, setLoading] = useState(true);
@@ -60,7 +61,9 @@ const Page = () => {
                             <div className="line mt-30 mb-20"></div>
                             <Departure data = {data}/>
                             <FAQ data = {data.tour_faq} />
+                            
                         </div>
+                        
 
                         <div className="col-lg-4">
 
@@ -68,6 +71,7 @@ const Page = () => {
                     </div>
                 </div>
             </section>
+            <BestSellers title = "You might also like..." desc = "" posts = {data.related_posts} />
         </div>
     );
 };

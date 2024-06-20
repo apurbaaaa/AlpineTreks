@@ -11,16 +11,16 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 
-export default function BestBhutan({title, desc, posts}) {
+export default function BestBhutan({data}) {
   return (
     <section className="layout-pt-xl layout-pb-xl">
       <div className="container">
         <div className="row y-gap-10 justify-between items-end y-gap-10">
           <div className="col-auto">
             <h2 data-aos="fade-up" data-aos-delay="400" className="text-30">
-              {title}
+              {data.bhutan_title}
             </h2>
-            <p>{desc}</p>
+            <p>{data.bhutan_short_description}</p>
           </div>
 
           <div className="col-auto">
@@ -47,8 +47,8 @@ export default function BestBhutan({title, desc, posts}) {
               1200: { slidesPerView: 4 },
             }}
           >
-            {posts && posts.length > 0 ? (
-              posts.map((elm, i) => (
+            {data.best_of_bhutans && data.best_of_bhutans.length > 0 ? (
+              data.best_of_bhutans.map((elm, i) => (
               <SwiperSlide key={i}>
                 <Link href={`/package/${elm.slug}`} className="tourCard -type-1 py-10 px-10 border-1 rounded-12 bg-white -hover-shadow">
                   <div className="tourCard__header">
