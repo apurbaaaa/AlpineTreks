@@ -3,10 +3,9 @@ import Link from "next/link";
 
 const TravelGuideTable = ({ data }) => {
   return (
-    <div>
-      <section className="layout-pt-md layout-pb-md js-pin-container normal-page tabs -terms js-tabs">
-        <div className="container">
-          <div className="row y-gap-30 justify-between">
+
+      
+        
             <div className="col-lg-3">
               <div className="d-flex justify-end">
                 <div className="tabs__controls row y-gap-10 js-tabs-controls side-bar">
@@ -23,11 +22,8 @@ const TravelGuideTable = ({ data }) => {
                   ))}
                 </div>
               </div>
-            </div>
-          </div>
         </div>
-      </section>
-    </div>
+
   );
 };
 

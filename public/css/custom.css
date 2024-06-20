@@ -668,3 +668,19 @@ input[type="checkbox"] {
   accent-color: green;
   margin-right: 10px;
 }
+
+.normal-page .side-bar {
+  border: 1px solid gainsboro;
+  border-radius: 8px;
+  padding: 25px 0px;
+  width: 340px;
+  color: #055;
+}
+
+.normal-page .inner-text {
+  padding-left: 25px;
+}
+
+.normal-page p {
+  margin-bottom: 20px;
+}
