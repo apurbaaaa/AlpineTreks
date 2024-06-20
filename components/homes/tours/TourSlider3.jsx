@@ -10,7 +10,7 @@ import axios from "axios";
 import "swiper/css";
 import "swiper/css/navigation";
 
-export default function BestSellers({data}) {
+export default function BestSellers({title, desc, posts}) {
   
   const dropDownContainer = useRef();
   useEffect(() => {
@@ -36,9 +36,9 @@ export default function BestSellers({data}) {
         <div className="row y-gap-10 justify-between items-end y-gap-10">
           <div className="col-auto">
             <h2 data-aos="fade-up" data-aos-delay="400" className="text-30">
-              {data.best_seller_title}
+              {title}
             </h2>
-            <p>{data.best_seller_short_description}</p>
+            <p>{desc}</p>
           </div>
         </div>
 
@@ -49,8 +49,8 @@ export default function BestSellers({data}) {
                 spaceBetween={30}
                 className="w-100"
                 navigation={{
-                  prevEl: ".js-slider1-prev",
-                  nextEl: ".js-slider1-next",
+                  prevEl: `.js-slider1-prev`,
+                  nextEl: `.js-slider1-next`,
                 }}
                 modules={[Navigation]}
                 breakpoints={{
@@ -68,7 +68,7 @@ export default function BestSellers({data}) {
                   },
                 }}
               >
-                {data.best_selling_tours.map((elm, i) => (
+                {posts.map((elm, i) => (
                   <SwiperSlide key={i}>
                     <Link
                       href={`/package/${elm.slug}`}

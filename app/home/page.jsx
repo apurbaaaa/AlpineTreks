@@ -73,12 +73,12 @@ export default function page() {
       <main>
         <Banner data = {dataHome}/>
         <Welcome />
-        <BestSellers data = {dataHome} />
+        <BestSellers title = {dataHome.best_seller_title} desc = {dataHome.best_seller_short_description} posts = {dataHome.best_selling_tours} />
         <WhyUs data = {dataSettings} /> 
         <Destination data = {dataHome}/>
         <ActivitiesOffered data = {dataHome}/>
         <TrekkingRegions data = {dataHome}/>
-        <TopTreks data = {dataHome}/>
+        <TopTreks data = {dataHome} />
         <BestBhutan data = {dataHome}/>
         <BestTibet data = {dataHome}/>
         <HotSelling data = {dataHome}/>
