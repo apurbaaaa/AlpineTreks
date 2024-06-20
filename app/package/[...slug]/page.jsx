@@ -15,6 +15,7 @@ import Costs from '@/components/package-components/Costs';
 import Departure from '@/components/package-components/Departure';
 import FAQ from '@/components/layout/components/FAQ';
 import BestSellers from '@/components/homes/tours/TourSlider3';
+import BookCard from '@/components/package-components/BookCard';
 
 const Page = () => {
     const [loading, setLoading] = useState(true);
@@ -60,14 +61,14 @@ const Page = () => {
                             <Costs data = {data} />
                             <div className="line mt-30 mb-20"></div>
                             <Departure data = {data}/>
+                            <div className="line mt-30 mb-20"></div>
                             <FAQ data = {data.tour_faq} />
-                            
+
                         </div>
+                        <BookCard data = {data} />
                         
 
-                        <div className="col-lg-4">
-
-                        </div>
+                        
                     </div>
                 </div>
             </section>
