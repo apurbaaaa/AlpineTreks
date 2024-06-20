@@ -622,7 +622,7 @@ trip-detail ul li {
 
 
 .button.-sm {
-  padding: 7px 20px;
+  padding: 15px 10px;
 }
 
 .button.-md {
@@ -734,15 +734,19 @@ trip-detail ul li {
 .button.-outline-accent-2:hover {
   background-color: var(--color-accent-2) !important;
   border-color: transparent;
-  color: white !important;
+  color: white !important;  
 }
 
 .button.-dark-1:hover {
-  border-color: var(--color-dark-1);
-  background-color: var(--color-dark-1);
+  border-color: #055;
+  background-color: #055;
   color: white !important;
-}
 
+}
+.button.-dark-1{
+  border-radius: 5px;
+  font-weight: bolder;
+}
 .button.-outline-dark-1 {
   border-color: var(--color-dark-1);
 }

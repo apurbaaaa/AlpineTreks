@@ -174,10 +174,25 @@
     overflow-x: hidden;
   }
 
+  .points ul li {
+    color: #333;
+    padding-left: 25px;
+    position: relative;
+  }
+
+  .points ul {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 0px 20px 20px;
+  }
+
   *, ::after, ::before {
     box-sizing: border-box;
   }
-
+  .depature-section .price {
+    display: flex;
+    flex-direction: column;
+  }
   .bottom-menu {
     display: flex;
     justify-content: space-around;
