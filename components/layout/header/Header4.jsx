@@ -59,9 +59,9 @@ export default function Header4() {
                   priority
                 />
             </Link>
-
-            <Menu />
           </div>
+          
+          <Menu />
 
           <div className="headerMobile__right">
             <button
