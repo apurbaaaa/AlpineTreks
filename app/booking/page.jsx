@@ -1,7 +1,10 @@
 import React from "react";
 import NextBreadcrumb from "@/components/common/BreadCrumbs";
 
+
 export default function Page() {
+
+    
     return (
         <div>
             <section data-anim="fade" className="mt-header pt-30 is-in-view">
