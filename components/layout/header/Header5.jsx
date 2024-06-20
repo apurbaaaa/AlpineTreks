@@ -1,14 +1,13 @@
   "use client";
 
   import { useEffect, useState } from "react";
-  import HeaderSerch from "../components/HeaderSerch";
   import Destinations from "../components/Destinations";
-  import Activities from "../components/Activities";
   import Currency from "../components/Currency";
   import MobileMenu from "../components/MobileMenu";
   import Image from "next/image";
   import Link from "next/link";
   import { useRouter } from "next/navigation";
+  import TravelGuide from "../components/TravelGuide";
 
   export default function Header5() {
     const router = useRouter();
@@ -19,7 +18,7 @@
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
     const [addClass, setAddClass] = useState(false);
 
-    // Add a class to the element when scrolled 50px
+    // Add a className to the element when scrolled 50px
     const handleScroll = () => {
       if (window.scrollY >= 50) {
         setAddClass(true);
@@ -92,16 +91,16 @@
               <Destinations />
 
               {/* for travel guide and about*/}
-              <Currency />
+              <TravelGuide/>
               <Currency />
 
-              <div class="desktopNav__item">
+              <div className="desktopNav__item">
                 <Link href="/blog">
                 Blog
                 </Link>
               </div>
 
-              <div class="desktopNav__item">
+              <div className="desktopNav__item">
                 <Link href="/contact">
                 Contact
                 </Link>

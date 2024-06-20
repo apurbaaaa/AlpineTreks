@@ -1,7 +1,7 @@
 import React from "react";
 import Link from "next/link";
 
-const TravelGuideTable = ({ pages }) => {
+const TravelGuideTable = ({ data }) => {
   return (
     <div>
       <section className="layout-pt-md layout-pb-md js-pin-container normal-page tabs -terms js-tabs">
@@ -11,7 +11,7 @@ const TravelGuideTable = ({ pages }) => {
               <div className="d-flex justify-end">
                 <div className="tabs__controls row y-gap-10 js-tabs-controls side-bar">
                   <h2>Travel Guide</h2>
-                  {pages.map((page) => (
+                  {data.pages.map((page) => (
                     <div key={page.slug} className="col-12">
                       <Link
                         href={`/${page.slug}`}

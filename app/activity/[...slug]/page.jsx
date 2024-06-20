@@ -18,7 +18,10 @@ export default function Slug({params}) {
   const [seoDesc, setSeoDesc] = useState("");
 
   useEffect(() => {
+    
+      console.log(slug)
     const fetchData = async () => {
+
       try {
         const response = await axios.get(
           `${process.env.NEXT_PUBLIC_API_BASE_URL}/activity/${slug}`
