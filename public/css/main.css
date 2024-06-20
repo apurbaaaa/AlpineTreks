@@ -79,7 +79,7 @@
 }
 
 :root {
-  /* --font-primary: "DM sans", sans-serif; */
+  --font-primary: "DM sans", sans-serif;
 }
 
 :root {
@@ -529,13 +529,14 @@ html {
 
 body {
   padding: 0;
-  /* font-family: var(--font-primary); */
+  font-family: var(--font-primary) !important;
   width: 100%;
   background-color: white;
   color: var(--color-dark-1);
   font-size: 15px;
   line-height: 1.875;
 }
+
 
 select,
 input:not([type="range"]),
@@ -6803,7 +6804,7 @@ h1, h2, h3, h4, h5, h6 {
 .accordion-icon {
   flex-shrink: 0;
   font-size: 18px;
-  color: #777;
+  color: #ffffff;
 }
 
 .accordion-content {
