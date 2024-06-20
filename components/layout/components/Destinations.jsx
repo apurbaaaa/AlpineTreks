@@ -13,7 +13,7 @@ const buttonData = [
   "Regions",
 ];
 
-const tabContent = [
+export const tabContent = [
   {
     heading: "Europe",
     tours: [

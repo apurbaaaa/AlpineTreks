@@ -1,10 +1,12 @@
 "use client";
 
 import { homes, pages, tours } from "@/data/menu";
+import { tabContent } from "./Destinations";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import React from "react";
+import Destinations from "./Destinations";
 
 export default function Menu() {
   const pathname = usePathname();
@@ -21,12 +23,12 @@ export default function Menu() {
               }
               href="#"
             >
-              Home <i className="icon-chevron-down"></i>
+              <Destinations/> <i className="icon-chevron-down"></i>
             </a>
 
             <div className="desktopNavSubnav">
               <div className="desktopNavSubnav__content">
-                {homes.map((elm, i) => (
+                {tabContent.tours.map((elm, i) => (
                   <div key={i} className="desktopNavSubnav__item text-dark-1">
                     <Link
                       className={pathname == elm.href ? "activeMenu" : ""}

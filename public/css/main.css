@@ -2640,6 +2640,7 @@ h1, h2, h3, h4, h5, h6 {
 .header .desktopNav__item {
   position: relative;
   border-radius: 100px;
+  padding: 7px 20px;
 }
 
 .header .desktopNav__item > a {

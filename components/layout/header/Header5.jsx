@@ -9,6 +9,7 @@
   import Image from "next/image";
   import Link from "next/link";
   import { useRouter } from "next/navigation";
+
   export default function Header5() {
     const router = useRouter();
     const pageNavigate = (pageName) => {
@@ -58,15 +59,12 @@
                 <Image
                   width="167"
                   height="32"
-                  src="/img/general/logo-1.svg"
+                  src="https://mountaintrekkingnepal.com/storage/Xk9oUgIpS0YxZBwi7nfodx7zHNPumbqdNahS1603.svg"
                   alt="logo icon"
                   priority
                 />
               </Link>
 
-              <div className="xl:d-none ml-30">
-                <HeaderSerch />
-              </div>
             </div>
 
             <div className="headerMobile__right">
@@ -86,26 +84,29 @@
             </div>
 
             <div className="header__right">
+              {/* For Nepal, tibet, Bhutan, Nepal Trekking, and Spiritual Tours*/}
+              <Destinations /> 
               <Destinations />
-              <Activities />
+              <Destinations />
+              <Destinations />
+              <Destinations />
+
+              {/* for travel guide and about*/}
               <Currency />
-              <Link href="/register" className="ml-10">
-                Sign up
-              </Link>
+              <Currency />
 
-              <Link
-                href="/login"
-                className="button -sm -dark-1 bg-accent-1 rounded-200 text-white ml-30"
-              >
-                Log in
-              </Link>
+              <div class="desktopNav__item">
+                <Link href="/blog">
+                Blog
+                </Link>
+              </div>
 
-              <button
-                onClick={() => setMobileMenuOpen(true)}
-                className="header__menuBtn ml-30 js-menu-button"
-              >
-                <i className="icon-main-menu"></i>
-              </button>
+              <div class="desktopNav__item">
+                <Link href="/contact">
+                Contact
+                </Link>
+              </div>
+
             </div>
           </div>
         </header>
