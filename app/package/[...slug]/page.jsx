@@ -2,7 +2,6 @@
 import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { useParams } from "next/navigation";
-import NextBreadcrumb from '@/components/common/BreadCrumbs';
 import axios from 'axios';
 import Loading from '@/components/homes/others/Loading';
 import Image from 'next/image';
@@ -16,6 +15,8 @@ import Departure from '@/components/package-components/Departure';
 import FAQ from '@/components/layout/components/FAQ';
 import BestSellers from '@/components/homes/tours/TourSlider3';
 import BookCard from '@/components/package-components/BookCard';
+import BottomNav from '@/components/package-components/BottomNav';
+import NextBreadcrumb from '@/components/common/BreadCrumbs';
 
 const Page = () => {
     const [loading, setLoading] = useState(true);
@@ -47,6 +48,23 @@ const Page = () => {
 
     return (
         <div>
+            <BottomNav />
+            <div className='container is-in-view' data-anim='fade'>
+                <div className='row justify-between py-30 mt-80'>
+                    <div className='col-auto'>
+                        <div className='text-14 breadcrumb-text'>
+                        <NextBreadcrumb
+                            homeElement={<span>Home</span>}
+                            containerClasses="text-14 breadcrumb-text"
+                            listClasses=""
+                            activeClasses="active"
+                            capitalizeLinks={true}
+                        />
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
             <section className=" js-pin-container layout-pb-md">
                 <div className="container js-pin-container-inner">
                     <div className="row y-gap-30 justify-between">
@@ -60,10 +78,9 @@ const Page = () => {
                             <div className="line mt-30 mb-20"></div>
                             <Costs data = {data} />
                             <div className="line mt-30 mb-20"></div>
-                            <Departure data = {data}/>
+                            <Departure if data = {data}/>
                             <div className="line mt-30 mb-20"></div>
                             <FAQ data = {data.tour_faq} />
-
                         </div>
                         <BookCard data = {data} />
                         

@@ -563,3 +563,99 @@ ul, li {
 .breadcrumb-active {
   font-weight: bold;
 }
+
+
+.over-view-menu {
+  display: none;
+}
+
+#details .sticky {
+  bottom: 25px;
+  z-index: 15;
+  display: block;
+  position: fixed;
+  width: 100%;
+}
+
+@media (min-width: 1400px) {
+  .container, .container-lg, .container-md, .container-sm, .container-xl, .container-xxl {
+    max-width: 1320px;
+  }
+}
+
+.container, .container-fluid, .container-lg, .container-md, .container-sm, .container-xl, .container-xxl {
+  width: 100%;
+  padding-right: var(--bs-gutter-x,15px);
+  padding-left: var(--bs-gutter-x,15px);
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.bottom-menu {
+  display: flex;
+  justify-content: space-around;
+}
+
+.bottom-menu ul {
+  display: inline-block;
+  background: #005555;
+  border-radius: 50px;
+}
+ul, li {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.bottom-menu ul li {
+  float: left;
+}
+*, ::after, ::before {
+  box-sizing: border-box;
+}
+.bottom-menu ul li a {
+  display: flex;
+  align-items: center;
+}
+.bottom-menu ul li a {
+  display: block;
+  color: #515151;
+  -webkit-transition: all .3s;
+  -moz-transition: all .3s;
+  -ms-transition: all .3s;
+  -o-transition: all .3s;
+  transition: all .3s;
+  padding: 15px 22px;
+  font-size: 15px;
+  position: relative;
+  text-align: center;
+}
+.bottom-menu ul li a {
+  border-right: 1px solid gainsboro;
+}
+a {
+  color: inherit;
+  font-size: inherit;
+  line-height: inherit;
+  font-weight: inherit;
+  transition: color 0.2s ease-in-out;
+  text-decoration: none;
+}
+/* .bottom-menu i {
+  font-size: 20px;
+  padding-right: 10px;
+  text-align: center;
+  color: #fff;
+} */
+
+.bottom-menu h4 {
+  font-size: 13px;  
+  color: #fff;
+  margin: 0px;
+  padding-left: 10px;
+}
+h1, h2, h3, h4, h5, h6 {
+  line-height: 1.5;
+  font-weight: 700;
+  color: var(--color-black);
+  margin: 0;
+}

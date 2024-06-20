@@ -4,7 +4,7 @@ import React from "react";
 export default function FAQ({ data} ) {
 
   return (
-    <section className="layout-pt-lg layout-pb-lg">
+    <section className="layout-pt-lg layout-pb-lg" id="faq">
       <div className="container">
         <div className="row y-gap-10 justify-center items-end">
           <div className="col-10 text-center">
