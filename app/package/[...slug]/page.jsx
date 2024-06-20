@@ -83,9 +83,6 @@ const Page = () => {
                             <FAQ data = {data.tour_faq} />
                         </div>
                         <BookCard data = {data} />
-                        
-
-                        
                     </div>
                 </div>
             </section>
