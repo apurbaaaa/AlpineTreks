@@ -22,7 +22,7 @@ export default function Page() {
     const fetchData = async () => {
       try {
         const responseSettings = await axios.get(`${process.env.NEXT_PUBLIC_API_BASE_URL}/settings`);
-        setDataSettings(responseSettings.data); // Make sure to set the actual data, not the entire response object
+        setDataSettings(responseSettings.data); 
 
         const response = await axios.get(`${process.env.NEXT_PUBLIC_API_BASE_URL}/about-us`);
         setTitle(response?.data?.title);
@@ -112,7 +112,7 @@ export default function Page() {
         </div>
       </section>
 
-      {dataSettings && <WhyUs data={dataSettings} />} {/* Render WhyUs component only when dataSettings is not null */}
+      {dataSettings && <WhyUs data={dataSettings} />} 
       
     </div>
   );

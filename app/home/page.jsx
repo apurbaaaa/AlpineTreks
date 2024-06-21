@@ -83,7 +83,7 @@ export default function page() {
         <BestTibet data = {dataHome}/>
         <HotSelling data = {dataHome}/>
         <CustomerReviews />
-        <FAQ data = {dataSettings.traveller_faq}/>
+        <FAQ data = {dataSettings.traveller_faq} withFaq ={"col-lg-8"} />
         <NewsBlog data = {dataHome}/>
       </main>
     </>

@@ -1,12 +1,12 @@
 "use client";
 import React from "react";
 
-export default function FAQ({ data} ) {
+export default function FAQ({ data, withFaq} ) {
 
   return (
     <section className="layout-pt-lg layout-pb-lg" id="faq">
-      <div className="container">
-        <div className="row y-gap-10 justify-center items-end">
+      <div className="container animated">
+        <div className="row y-gap-10 justify-center items-end is-in-view" data-aos = "fade-up" >
           <div className="col-10 text-center">
             <h2 className="text-30 md:text-24">Frequently Asked Questions by Travelers</h2>
             <p>Join us on our trending adventure this year.</p>
@@ -15,7 +15,7 @@ export default function FAQ({ data} ) {
         {data && data.length > 0 ? (
           data.map((item, i) => (
             <div key={i} className="accordion -simple row y-gap-20 mt-30 js-accordion justify-content-center">
-              <div className="col-lg-8 col-12">
+              <div className={`${withFaq} col-12`}>
                 <input
                   type="checkbox"
                   id={`accordion-checkbox-${i}`}

@@ -80,7 +80,7 @@ const Page = () => {
                             <div className="line mt-30 mb-20"></div>
                             <Departure if data = {data}/>
                             <div className="line mt-30 mb-20"></div>
-                            <FAQ data = {data.tour_faq} />
+                            <FAQ data = {data.tour_faq}  withFaq={null}/>
                         </div>
                         <BookCard data = {data} />
                     </div>

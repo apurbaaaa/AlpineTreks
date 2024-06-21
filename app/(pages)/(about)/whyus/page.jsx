@@ -5,10 +5,11 @@ import NextBreadcrumb from "@/components/common/BreadCrumbs";
 import axios from "axios";
 import Loading from "@/components/homes/others/Loading";
 import WhyUs from "@/components/homes/features/FeaturesOne";
+
 export default function page(){
   const [dataSettings, setDataSettings] = useState(null);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
+  const [error, setError] = useState(null); 
 
   useEffect(() => {
     const fetchData = async () => {
