@@ -1,14 +1,14 @@
-"use client";
+"use client"
 import React, { useEffect, useState } from "react";
 import Image from "next/image";
-import FooterFour from "@/components/layout/footers/FooterFour";
-import FeaturesOne from "@/components/homes/features/FeaturesOne";
-import Header4 from "@/components/layout/header/Header4";
 import axios from "axios";
 import DOMPurify from "dompurify";
 import Link from "next/link";
+import WhyUs from "@/components/homes/features/FeaturesOne";
 
 export default function Page() {
+  const [dataSettings, setDataSettings] = useState(null);
+
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
   const [image, setImage] = useState("");
@@ -18,6 +18,9 @@ export default function Page() {
   useEffect(() => {
     const fetchData = async () => {
       try {
+        const responseSettings = await axios.get(`${process.env.NEXT_PUBLIC_API_BASE_URL}/settings`);
+        setDataSettings(responseSettings.data); // Make sure to set the actual data, not the entire response object
+
         const response = await axios.get(`${process.env.NEXT_PUBLIC_API_BASE_URL}/about-us`);
         setTitle(response?.data?.title);
         setImage(response?.data?.image);
@@ -69,7 +72,7 @@ export default function Page() {
 
             <div data-aos="fade-up" data-aos-delay="400" className="col-lg-5">
               <div className="video relative container">
-                <div className="video__bg" onClick={() => openLinkInNewTab('https://www.youtube.com/watch?v=mS7K-GQcGHw')}>
+                <div className="video__bg" onClick={() => openVideo('https://www.youtube.com/watch?v=mS7K-GQcGHw')}>
                   <Image
                     src={image}
                     alt="image"
@@ -103,6 +106,8 @@ export default function Page() {
         </div>
       </section>
 
+      {dataSettings && <WhyUs data={dataSettings} />} {/* Render WhyUs component only when dataSettings is not null */}
+      
     </div>
   );
 }
