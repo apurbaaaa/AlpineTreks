@@ -684,3 +684,45 @@ input[type="checkbox"] {
 .normal-page p {
   margin-bottom: 20px;
 }
+
+.modal-container {
+  display: none;
+  position: fixed;
+  z-index: 9999;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+.modal-content {
+  background-color: #fefefe;
+  margin: 3% auto;
+  border: 1px solid #888;
+  width: 80%;
+  max-width: 800px;
+  animation-name: modal-slide;
+  animation-duration: 0.3s;
+  position: relative;
+}
+.modal-header, .modal-footer {
+  padding: 25px 20px;
+  background-color: #f1f1f1;
+  text-align: center;
+}
+
+.close {
+  color: #000;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+  position: absolute;
+  top: 0;
+  right: 30px;
+}
+
+.modal-body {
+  padding: 10px 26px;
+}

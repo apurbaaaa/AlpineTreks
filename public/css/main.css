@@ -573,12 +573,39 @@ ul, li {
   list-style: none;
   padding: 0;
   margin: 0;
-}
+} 
 
 p {
   font-size: 15px;
   color: var(--color-dark-1);
   margin: 0;
+}
+
+
+
+.contactForm select, .contactForm input:not([type="range"]), .contactForm textarea {
+  font-size: 15px;
+  line-height: 1.4;
+  height: 55px;
+  border: 1px solid #E7E6E6;
+  border-radius: 12px;
+  padding: 15px;
+  transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+
+.contactForm .form-input label {
+  position: absolute;
+  top: 20px;
+  left: 15px;
+  color: black;
+  z-index: 10;
+  pointer-events: none;
+  transition: all 0.15s ease-out;
+}
+
+.contactForm .form-input {
+  position: relative;
 }
 
 button {
@@ -1586,6 +1613,7 @@ h1, h2, h3, h4, h5, h6 {
   color: var(--color-dark-1);
   margin: 0;
 }
+
 
 .text-8 {
   font-size: var(--text-8) !important;
