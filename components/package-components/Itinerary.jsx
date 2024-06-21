@@ -1,11 +1,23 @@
 import React, { useState } from "react";
 
 export default function Itinerary({ data }) {
-    const [activeIndex, setActiveIndex] = useState(null); // State to track active item index
+    const [activeIndices, setActiveIndices] = useState([0]); // Initialize with the first section active
 
     const toggleAccordion = (index) => {
-        setActiveIndex(activeIndex === index ? null : index); // Toggle active index
+        setActiveIndices((prevActiveIndices) => {
+            if (index === 0) {
+                // Prevent toggling the first section off
+                return prevActiveIndices;
+            }
 
+            if (prevActiveIndices.includes(index)) {
+                // If the index is already active, remove it from the array
+                return prevActiveIndices.filter((i) => i !== index);
+            } else {
+                // If the index is not active, add it to the array
+                return [...prevActiveIndices, index];
+            }
+        });
     };
 
     return (
@@ -14,7 +26,7 @@ export default function Itinerary({ data }) {
             <div className="mt-30">
                 <div className="roadmap accordion -roadmap js-accordion">
                     {data.itinerary.map((item, index) => (
-                        <div key={index} className={`roadmap__item accordion__item js-accordion-item ${activeIndex === index ? 'is-active' : ''}`}>
+                        <div key={index} className={`roadmap__item accordion__item js-accordion-item ${activeIndices.includes(index) ? 'is-active' : ''}`}>
                             <div className="roadmap__iconBig">
                                 <i className="icon-pin"></i>
                             </div>
@@ -22,7 +34,7 @@ export default function Itinerary({ data }) {
                                 <div className="accordion__button d-flex items-center justify-between" onClick={() => toggleAccordion(index)}>
                                     <div className="roadmap__title">{item.title}</div>
                                 </div>
-                                <div className={`accordion__content ${activeIndex === index ? 'is-open' : ''}`}>
+                                <div className={`accordion__content ${activeIndices.includes(index) ? 'is-open' : ''}`}>
                                     <div className="roadmap__content">
                                         {item.content}
                                     </div>
