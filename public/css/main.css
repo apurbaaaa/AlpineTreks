@@ -163,7 +163,7 @@
 [data-anim-child^='slide-'].is-in-view {
   opacity: 1;
   transform: translate3d(0, 0, 0);
-  pointer-events: auto;
+  pointer-events: auto; 
 }
 
 [data-anim^='slide-up'],

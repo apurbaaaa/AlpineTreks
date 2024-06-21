@@ -248,6 +248,11 @@ opacity: 1;
     margin-top: -320px;
   }
   
+.is-open{
+  max-height: 135px;
+}
+
+
   @media (max-width: 991px) {
     .toursingle5 .-top-320 {
       margin-top: 0;
