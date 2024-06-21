@@ -16,7 +16,7 @@ export default function Slug({data, seoDesc, seoTitle}) {
   const [title, setTitle] = useState("");
   const [desc, setDesc] = useState("");
   const [loading, setLoading] = useState(true);
-
+  const [isExpanded, setIsExpanded] = useState(false); // State to track full description visibility
 
   useEffect(() => {
     const fetchData = async () => {
@@ -26,36 +26,48 @@ export default function Slug({data, seoDesc, seoTitle}) {
         );
 
         setPosts(response?.data?.posts);
-        setTitle(response?.data?.title); 
+        setTitle(response?.data?.title);
         const unpurified_desc = response?.data?.description;
         let updatedHtmlString = DOMPurify.sanitize(unpurified_desc);
-        setDesc(updatedHtmlString)
+        setDesc(updatedHtmlString);
       } catch (error) {
         setError(error);
         console.error(error);
-      } finally{
-        setLoading(false)
+      } finally {
+        setLoading(false);
       }
     };
     if (slug) {
       fetchData();
     }
-    if (loading) {
-      setLoading(false);
-    }
-  }, [slug]); 
+  }, [slug]);
+  const ParagraphLimit = 3;
 
   const slugType = (slug) => {
-    if (slug == 'nepal'){
-      return "activity"
-    }
-    else{
-      return "package"
-    }
-  }
+    return slug === "nepal" ? "activity" : "package";
+  };
 
-  if (loading) return <div><Loading /></div>
-  if (error) return <div>Error loading data</div>; 
+  const toggleExpand = () => {
+    setIsExpanded(!isExpanded);
+  };
+
+  if (loading) return <div><Loading /></div>;
+  if (error) return <div>Error loading data</div>;
+
+  // Function to split the HTML content into paragraphs
+  const splitIntoParagraphs = (htmlString) => {
+    const div = document.createElement("div");
+    div.innerHTML = htmlString.trim();
+    return Array.from(div.querySelectorAll("p")).map((p) => p.outerHTML);
+  };
+
+  // Function to truncate paragraphs after a certain limit
+  const truncateParagraphs = (paragraphs, limit) => {
+    return paragraphs.slice(0, limit).join("");
+  };
+
+  // Split HTML content into paragraphs
+  const paragraphs = splitIntoParagraphs(desc);
 
   return (
     
@@ -69,7 +81,7 @@ export default function Slug({data, seoDesc, seoTitle}) {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <div className="menu js-menu">
+      <div className="menu js-menu">  
         <div className="menu__overlay js-menu-button"></div>
         <div className="menu__container">
           <div className="menu__header">
@@ -134,10 +146,10 @@ export default function Slug({data, seoDesc, seoTitle}) {
       </div>    
 
       <section data-aos="fade-up" className="pageHeader -type-3">
-        <div className="container"> 
+        <div className="container">
           <div className="row justify-between">
             <div className="col-auto">
-            <NextBreadcrumb
+              <NextBreadcrumb
                 homeElement={<span>Home</span>}
                 containerClasses="text-14 breadcrumb-text"
                 listClasses=""
@@ -149,8 +161,25 @@ export default function Slug({data, seoDesc, seoTitle}) {
           <div className="row pt-30">
             <div className="col-auto text-collapse">
               <h1 className="pageHeader__title">{title}</h1>
-              <span dangerouslySetInnerHTML={{ __html: desc}}></span>
-              <Link href={`/destination/${slug}`} id="readMore">Read More</Link>
+              <div>
+                {/* Render only first two paragraphs when not expanded */}
+                {!isExpanded ? (
+                  <div
+                    dangerouslySetInnerHTML={{
+                      __html: truncateParagraphs(paragraphs, ParagraphLimit),
+                    }}
+                  ></div>
+                ) : (
+                  // Render all paragraphs when expanded
+                  <div dangerouslySetInnerHTML={{ __html: desc }}></div>
+                )}
+                {/* Show "Read More" link if more than two paragraphs */}
+                {paragraphs.length > ParagraphLimit && (
+                  <Link href="#" onClick={toggleExpand}>
+                    {isExpanded ? "Read Less" : "Read More"}
+                  </Link>
+                )}
+              </div>
             </div>
           </div>
         </div>
