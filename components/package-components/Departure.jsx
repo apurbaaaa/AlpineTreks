@@ -100,7 +100,10 @@ const Departure = ({ data }) => {
                                                     <input type="hidden" name="package_url" value="https://mountaintrekkingnepal.com/package/annapurna-base-camp-trek" />
                                                     <input type="hidden" name="date" value={date} />
                                                     <input type="hidden" name="price" value={price} />
-                                                    <Link href= "/booking">
+                                                    <Link href= {{
+                                                        pathname: '/booking',
+                                                        query: {title: data.title}
+                                                    }}>
                                                     <button type="submit" className="button -sm -dark-1 col-12 border-1">Book Now</button>
                                                     </Link>
                                                 </form>
