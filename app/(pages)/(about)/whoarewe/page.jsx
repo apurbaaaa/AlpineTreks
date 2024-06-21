@@ -3,8 +3,9 @@ import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import axios from "axios";
 import DOMPurify from "dompurify";
-import Link from "next/link";
+import NextBreadcrumb from "@/components/common/BreadCrumbs";
 import WhyUs from "@/components/homes/features/FeaturesOne";
+import Loading from "@/components/homes/others/Loading";
 
 export default function Page() {
   const [dataSettings, setDataSettings] = useState(null);
@@ -14,6 +15,8 @@ export default function Page() {
   const [image, setImage] = useState("");
   const [video, setVideo] = useState("");
   const [error, setError] = useState(null);
+
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -32,9 +35,16 @@ export default function Page() {
         console.error(error);
         setError(error);
       }
+      finally{
+        setLoading(false)
+      }
     };
     fetchData();
   }, []);
+
+  if (loading) {
+    return <div><Loading/></div>;
+  }
 
   if (error) return <div>Error: {error.message}</div>;
 
@@ -47,17 +57,13 @@ export default function Page() {
       <section data-aos="fade-up" data-aos-delay="400" className="mt-header pt-30">
         <div className="container">
           <div className="breadcrumbs mb-30 md:mb-15">
-            <span className="breadcrumbs__item">
-              <Link href="/">Home</Link>
-            </span>
-            <span></span>
-            <span className="breadcrumbs__item">
-              <Link href="/whoarewe">About</Link>
-            </span>
-            <span></span>
-            <span className="breadcrumbs__item">
-              <Link href="/whoarewe">{title}</Link>
-            </span>
+          <NextBreadcrumb
+                                homeElement={<span>Home</span>}
+                                containerClasses="text-14 breadcrumb-text"
+                                listClasses=""
+                                activeClasses="active"
+                                capitalizeLinks={true}
+                            />
           </div>
           <h1 className="text-30">{title}</h1>
         </div>
