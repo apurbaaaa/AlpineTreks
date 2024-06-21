@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useRef } from "react";
 
-const travelGuide = [
+const About = [
   { title: "Alpine treks", url: "/whoarewe" },
   { title: "Our Team", url: "/team" },
   { title: "Why Us", url: "/whyus" },
@@ -44,7 +44,7 @@ export default function TravelGuide({ parentClass }) {
       className={`${parentClass ? parentClass : "headerDropdown  js-form-dd"}`}
     >
       <div
-        className="headerDropdown__button"
+        className="headerDropdown__button" data-x-click = "header-currency"
         onClick={() =>
           setCurrentdd((prev) => (prev === "currency" ? "" : "currency"))
         }
@@ -60,7 +60,7 @@ export default function TravelGuide({ parentClass }) {
       >
         <div className="headerDropdown">
           <div className="headerDropdown__container">
-            {travelGuide.map((item, index) => (
+            {About.map((item, index) => (
               <div
                 onClick={() => {
                   setCurrentdd("");

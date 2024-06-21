@@ -726,3 +726,24 @@ input[type="checkbox"] {
 .modal-body {
   padding: 10px 26px;
 }
+
+
+.headerDropdown__button {
+  padding: 7px 17px;
+}
+.headerDropdown__button {
+  display: flex;
+  align-items: center;
+}
+.headerDropdown__button {
+  color: #000;
+}
+.headerDropdown__button {
+  cursor: pointer;
+  border-radius: 200px;
+  transition: 0.2s;
+}
+
+.header.-type-1.-page-6 .headerDropdown__button:hover {
+  background-color: rgb(248, 233, 227);
+}

@@ -40,7 +40,7 @@ export default function TravelGuide({ parentClass }) {
       className={`${parentClass ? parentClass : "headerDropdown  js-form-dd"}`}
     >
       <div
-        className="headerDropdown__button"
+        className="headerDropdown__button" data-x-click = "header-currency"
         onClick={() =>
           setCurrentdd((prev) => (prev === "currency" ? "" : "currency"))
         }
