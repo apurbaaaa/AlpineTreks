@@ -19,14 +19,13 @@ const BookCard = () => {
         };
     }, []);
 
-
-
     const makeEnquiryOpen = () => {
         setModalVisible(true);
-        console.log('Open')
-    }
-    
+    };
 
+    const makeEnquiryClose = () => {
+        setModalVisible(false);
+    };
 
     return (
         <>
@@ -66,7 +65,7 @@ const BookCard = () => {
                             </ScrollLink>
                             <button
                                 className="button -md -dark-1 col-12 mt-20 border-1"
-                                onClick={() => makeEnquiryOpen()}
+                                onClick={makeEnquiryOpen}
                             >
                                 Make an Enquiry
                                 <i className="icon-arrow-top-right ml-10"></i>
@@ -85,7 +84,7 @@ const BookCard = () => {
             </div>
 
             {modalVisible && (
-                <MakeAnEnquiry />
+                <MakeAnEnquiry onClose={makeEnquiryClose} />
             )}
 
         </>
