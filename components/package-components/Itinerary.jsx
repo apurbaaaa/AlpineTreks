@@ -1,20 +1,20 @@
 import React, { useState } from "react";
 
 export default function Itinerary({ data }) {
-    const [activeIndices, setActiveIndices] = useState([0]); // Initialize with the first section active
+    const [activeIndices, setActiveIndices] = useState([0]); 
 
     const toggleAccordion = (index) => {
         setActiveIndices((prevActiveIndices) => {
             if (index === 0) {
-                // Prevent toggling the first section off
+                
                 return prevActiveIndices;
             }
 
             if (prevActiveIndices.includes(index)) {
-                // If the index is already active, remove it from the array
+               
                 return prevActiveIndices.filter((i) => i !== index);
             } else {
-                // If the index is not active, add it to the array
+                
                 return [...prevActiveIndices, index];
             }
         });
