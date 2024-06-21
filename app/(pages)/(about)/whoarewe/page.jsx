@@ -41,7 +41,6 @@ export default function Page() {
 
   return (
     <div>
-      <Header4 />
       <section data-aos="fade-up" data-aos-delay="400" className="mt-header pt-30">
         <div className="container">
           <div className="breadcrumbs mb-30 md:mb-15">
@@ -103,8 +102,7 @@ export default function Page() {
           </div>
         </div>
       </section>
-      <FeaturesOne />
-      <FooterFour />
+
     </div>
   );
 }

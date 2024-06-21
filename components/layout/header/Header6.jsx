@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import HeaderSerch from "../components/HeaderSerch";
-import Currency from "../components/Currency";
+import Currency from "../components/About";
 import MobileMenu from "../components/MobileMenu";
 import Image from "next/image";
 import Link from "next/link";

@@ -2,7 +2,7 @@
 
 import React, { useEffect, useState } from "react";
 import Menu from "../components/Menu";
-import Currency from "../components/Currency";
+import Currency from "../components/About";
 import MobileMenu from "../components/MobileMenu";
 import Image from "next/image";
 import Link from "next/link";

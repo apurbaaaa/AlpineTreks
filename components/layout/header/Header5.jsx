@@ -2,7 +2,7 @@
 
   import { useEffect, useState } from "react";
   import Destinations from "../components/Destinations";
-  import Currency from "../components/Currency";
+  import About from "../components/About";
   import MobileMenu from "../components/MobileMenu";
   import Image from "next/image";
   import Link from "next/link";
@@ -92,7 +92,7 @@
 
               {/* for travel guide and about*/}
               <TravelGuide/>
-              <Currency />
+              <About />
 
               <div className="desktopNav__item">
                 <Link href="/blog">

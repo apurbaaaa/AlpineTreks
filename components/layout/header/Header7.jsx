@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 
-import Currency from "../components/Currency";
+import Currency from "../components/About";
 import MobileMenu from "../components/MobileMenu";
 import Menu from "../components/Menu";
 import Image from "next/image";

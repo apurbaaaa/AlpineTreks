@@ -2,21 +2,25 @@
 
 import { useState, useEffect, useRef } from "react";
 
-const currencies = [
-  "USD",
-  "Euro",
-  "British Pound",
-  "Turkish Lira",
-  "Canadian Dollar",
-  "Australian Dollar",
-  "Swiss Franc",
-  "Singapore Dollar",
+const travelGuide = [
+  { title: "Alpine treks", url: "/whoarewe" },
+  { title: "Our Team", url: "/team" },
+  { title: "Why Us", url: "/whyus" },
+  { title: "Terms and Conditions", url: "/team" },
+  { title: "Best Trekking Season", url: "/team" },
+  { title: "How to Make a Payment ", url: "/team" },
+  { title: "How to Book a Trip with us", url: "/team" },
+  { title: "Privacy Policy", url: "/team" },
+  { title: "Sustainable Tourims", url: "/team" },
+  { title: "Legal Documents", url: "/team" },
+  { title: "Risk Free Booking Policy", url: "/team" },
+  { title: "Reviews", url: "/reviews" },
 ];
 
-export default function Currency({ parentClass }) {
+export default function TravelGuide({ parentClass }) {
   const [currentdd, setCurrentdd] = useState("");
-  const [selectedCurrency, setSelectedCurrency] = useState("USD");
   const dropDownContainer = useRef();
+
   useEffect(() => {
     const handleClick = (event) => {
       if (
@@ -33,6 +37,7 @@ export default function Currency({ parentClass }) {
       document.removeEventListener("click", handleClick);
     };
   }, []);
+
   return (
     <div
       ref={dropDownContainer}
@@ -41,30 +46,31 @@ export default function Currency({ parentClass }) {
       <div
         className="headerDropdown__button"
         onClick={() =>
-          setCurrentdd((pre) => (pre == "currency" ? "" : "currency"))
+          setCurrentdd((prev) => (prev === "currency" ? "" : "currency"))
         }
       >
-        {selectedCurrency}
+        About
         <i className="icon-chevron-down text-18"></i>
       </div>
 
       <div
         className={`headerDropdown__content ${
-          currentdd == "currency" ? "is-active" : ""
+          currentdd === "currency" ? "is-active" : ""
         } `}
       >
         <div className="headerDropdown">
           <div className="headerDropdown__container">
-            {currencies.map((elm, i) => (
+            {travelGuide.map((item, index) => (
               <div
                 onClick={() => {
-                  setSelectedCurrency(elm);
                   setCurrentdd("");
                 }}
-                key={i}
+                key={index}
                 className="headerDropdown__item"
               >
-                <button className="">{elm}</button>
+                <a href={item.url} className="">
+                  {item.title}
+                </a>
               </div>
             ))}
           </div>
@@ -73,3 +79,9 @@ export default function Currency({ parentClass }) {
     </div>
   );
 }
+
+
+
+
+
+
