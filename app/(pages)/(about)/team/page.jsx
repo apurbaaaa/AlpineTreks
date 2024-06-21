@@ -6,12 +6,43 @@ import FooterFour from "@/components/layout/footers/FooterFour";
 import Header4 from "@/components/layout/header/Header4";
 import axios from "axios";
 import { useState, useEffect } from "react";
+import Loading from "@/components/homes/others/Loading";
 
 export default function page({data}){
+    const [error, setError] = useState(null)
+    const [loading, setLoading] = useState(true)
+    const [dataAPI, setDataAPI] = useState("")
+    useEffect(() => {
+        const fetchData = async () => {
+            try{
+                const response = await axios.get(`${process.env.NEXT_PUBLIC_API_BASE_URL}/{api to be used}`)
+                setDataAPI(response?.data)
+            }
+            catch(error){
+                setError(error);
+                console.log(error)
+            }
+            finally{
+                setLoading(false)
+            }
+        }; fetchData();
+    }, [])
+
+    if (loading){
+        return (
+            <div> <Loading /> </div>
+        )
+    }
+
     return(
         <div>
 
-            <section data-anim="fade" className="mt-header pt-30">
+            <h1>TEAM PAGE</h1>
+
+            {/* The code is given below: */}
+
+
+            {/* <section data-anim="fade" className="mt-header pt-30">
                 <div className="container">
                     <div className="breadcrumbs mb-30 md:mb-15">
                     <span className="breadcrumbs__item">
@@ -53,7 +84,7 @@ export default function page({data}){
 
                 </div>
             </div>
-            </section>
+            </section> */}
 
         </div>
     )

@@ -1,28 +1,42 @@
-import React from "react";
+"use client"
+import React, { useState, useEffect } from "react";
 import Link from "next/link";
-import Header4 from "@/components/layout/header/Header4";
-import FooterFour from "@/components/layout/footers/FooterFour";
+import NextBreadcrumb from "@/components/common/BreadCrumbs";
 import axios from "axios";
-import FeaturesOne from "@/components/homes/features/FeaturesOne";
+import Loading from "@/components/homes/others/Loading";
+import WhyUs from "@/components/homes/features/FeaturesOne";
 export default function page(){
+  const [dataSettings, setDataSettings] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const responseSettings = await axios.get(`${process.env.NEXT_PUBLIC_API_BASE_URL}/settings`);
+        setDataSettings(responseSettings.data); 
+      } catch (error) {
+        console.error(error);
+        setError(error);
+      }
+      finally{
+        setLoading(false)
+      }
+    };
+    fetchData();
+  }, []);
+
+  if (loading) {
+    return <div><Loading/></div>;
+  }
 
     return(
         <div>
-            <Header4 />
+
              <section data-anim="fade" className="mt-header pt-30">
   <div className="container">
     <div className="breadcrumbs mb-30 md:mb-15">
-      <span className="breadcrumbs__item">
-        <Link href="/">Home</Link>
-      </span>
-      <span> </span>
-      <span className="breadcrumbs__item">
-        <Link href="/whoarewe">About</Link>
-      </span>
-      <span> </span>
-      <span className="breadcrumbs__item">
-        <Link href="/whyus">Why Us</Link>
-      </span>
+      <NextBreadcrumb />
     </div>
 
     
@@ -70,8 +84,7 @@ export default function page(){
 
 </div>
 </section>
-        <FeaturesOne />
-        <FooterFour />
+    {dataSettings && <WhyUs data={dataSettings} />}
         </div>
     )
 }
