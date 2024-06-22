@@ -1,17 +1,18 @@
-'use client'
+// app/layout.js
+
+// Imports
 import ScrollToTop from "@/components/common/ScrollToTop";
-import "../public/css/style.css";
-import { DM_Sans } from "next/font/google";
 import ScrollTopBehaviour from "@/components/common/ScrollTopBehavier";
 import Wrapper from "@/components/layout/Wrapper";
-import { useEffect } from "react";
-import { useState } from "react";
-import axios from "axios";
 import Header4 from "@/components/layout/header/Header4";
 import Header5 from "@/components/layout/header/Header5";
 import FooterFour from "@/components/layout/footers/FooterFour";
-
-
+import "../public/css/style.css";
+import { DM_Sans } from "next/font/google";
+import axios from "axios";
+import { Suspense } from "react";
+import Loading from "@/components/homes/others/Loading";
+// Fonts
 const dmsans = DM_Sans({
   weight: ["400", "500", "700"],
   style: ["normal", "italic"],
@@ -19,46 +20,51 @@ const dmsans = DM_Sans({
   display: "swap",
 });
 
+// RootLayout Component
+export default async function RootLayout({ children }) {
+  // Fetch data server-side
+  let dataSettings = null;
+  let favicon = "";
+  let error = null;
+  let loading = true;
 
-if (typeof window !== "undefined") {
-  import("bootstrap");
-}
+  try {
+    const responseSettings = await axios.get(
+      `${process.env.NEXT_PUBLIC_API_BASE_URL}/settings`
+    );
+    dataSettings = responseSettings?.data || null;
+    favicon = dataSettings?.site_favicon || "";
+  } catch (err) {
+    error = err.message || "An error occurred";
+    console.error(err);
+  }finally{
+    loading = false;
+  }
 
-export default function RootLayout({ children }) {
-
-  const [dataSettings, setDataSettings] = useState(true)
-  const [loading, setLoading] = useState(true)
-  const [favicon,setFavicon] = useState('');
-  const [error,setError] = useState(null);
-
-useEffect(()=>{
-  const fetchData = async () => {
-    try{
-      const responseSettings = await axios.get(`${process.env.NEXT_PUBLIC_API_BASE_URL}/settings`);
-      setDataSettings(responseSettings?.data)
-      setFavicon(responseSettings?.data?.site_favicon);
-    }
-    catch(error){
-      setError(error)
-      console.error(error)
-    } finally {
-      setLoading(false);
-    }
-  }; fetchData();
-},[])
-
+  if (loading){
+    return(
+      <div><Loading /></div>
+    )
+  }
 
   return (
     <html lang="en">
-      <head><link rel="icon" href={favicon} sizes="any" />
+      <head>
+        <link rel="icon" href={favicon} sizes="any" />
       </head>
       <body className={dmsans.className}>
+        {error && (
+          <div className="error-message">
+            <p>Error: {error}</p>
+          </div>
+        )}
         <Header5 />
-        {/* <Header4 /> */}
         <Wrapper>{children}</Wrapper>
         <ScrollToTop />
         <ScrollTopBehaviour />
-        <FooterFour data = {dataSettings} />
+        <Suspense fallback={<div>Loading...</div>}>
+          <FooterFour data={dataSettings} />
+        </Suspense>
       </body>
     </html>
   );
