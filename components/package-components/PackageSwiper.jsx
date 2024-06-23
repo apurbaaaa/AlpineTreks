@@ -8,7 +8,7 @@ export default function PackageSwiper({ data }) {
   return (
     <div className="row justify-center pt-30">
       <div className="col-12">
-        <div className="relative overflow-hidden" style={{ height: "438px" }}>
+        <div className="relative overflow-hidden" style={{ height: "476px" }}>
           <Swiper
             spaceBetween={10}
             className="w-100 overflow-visible"
@@ -25,7 +25,7 @@ export default function PackageSwiper({ data }) {
             {data.gallery && data.gallery.length > 0 ? (
               data.gallery.map((elm, i) => (
                 <SwiperSlide key={i}>
-                  <div className="swiper-slide">
+                  
                     <Image
                       width={850}
                       height={510}
@@ -35,7 +35,7 @@ export default function PackageSwiper({ data }) {
                       placeholder="blur" 
                       blurDataURL={elm} 
                     />
-                  </div>
+                
                 </SwiperSlide>
               ))
             ) : (
