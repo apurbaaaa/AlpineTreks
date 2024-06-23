@@ -51,8 +51,16 @@ export default function TrekkingRegions({data}) {
                             <SwiperSlide key={index}>
                                 <Link href={`/region/${trek.slug}`} passHref>
                                     <div className="featureCard -type-8" aria-label={`Trekking region: ${trek.title}`}>
-                                        <div className="featureCard__image">
-                                            <Image src={trek.image} width={342.7} height={258.5} alt={trek.title} layout="responsive" />
+                                        <div className="featureCard__image -hover-image-scale__image">
+                                        <div style={{ position: 'relative', width: '100%', height: '100%' }}>
+                                            <Image
+                                                src={trek.image}
+                                                alt={trek.title}
+                                                layout="fill"
+                                                objectFit="cover" // You can adjust this to 'contain' or other values based on your needs
+                                            />
+                                        </div>
+
                                         </div>
                                         <div className="featureCard__content">
                                             <h3 className="text-18 fw-500">{trek.title}</h3>
