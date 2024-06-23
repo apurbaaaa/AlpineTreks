@@ -591,6 +591,9 @@ position: fixed;
 width: 100%;
 }
 
+.accordion__item.px-20.py-15.border-1.rounded-12 {
+  width: 100%;
+}
 
 
 .container, .container-fluid, .container-lg, .container-md, .container-sm, .container-xl, .container-xxl {
