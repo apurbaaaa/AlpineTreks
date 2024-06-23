@@ -33,7 +33,7 @@ export default function BestTibet({data}) {
       <div className="container">
         <div className="row y-gap-10 justify-between items-end y-gap-10">
           <div className="col-auto">
-            <h2 data-aos="fade-up" data-aos-delay="400" className="text-30">
+            <h2 data-aos="fade-up" data-aos-delay="" className="text-30">
               {data.tibet_title}
             </h2>
             <p>{data.tibet_short_description}</p>

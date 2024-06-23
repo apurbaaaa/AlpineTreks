@@ -1,8 +1,7 @@
 "use client";
 
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation, Pagination } from "swiper/modules";
-import { useEffect, useState } from "react";
+import { Pagination } from "swiper/modules";
 import { testimonialsOne } from "@/data/testimonials";
 import Image from "next/image";
 export default function  CustomerReviews() {

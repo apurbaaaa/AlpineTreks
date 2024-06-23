@@ -1,6 +1,5 @@
 "use client"
-import React, { useEffect, useState } from "react";
-import axios from "axios";
+import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -24,12 +23,12 @@ export default function Destination({data}) {
             </div>
           </div>
 
-          <div data-aos="fade-up" data-aos-delay="" className="row y-gap-30 pt-40 sm:pt-20">
+          <div data-aos="fade-up" data-aos-delay="" className="row y-gap-30 pt-40 sm:pt-20">  
             {data.choose_destinations.map((elm, i) => (
               <div key={i} className="col-lg-4 col-md-6 is-in-view " data-aos="fade-up" data-aos-delay="400">
                 <Link href={`/destination/${elm.slug}`} className="featureCard-type-6 -hover-image-scale">
                   
-                <div className="blogCard__image ratio ratio-16:9 -hover-image-scale__image rounded-12">
+                <div id = "destination_image"className="featureCard__image ratio ratio-16:9 -hover-image-scale__image rounded-12">
                 <Image src={elm.image} width={750} height={420} alt={elm.title} className="img-ratio rounded-12" />
                 </div>
                 <div className="featuredCard__content"  id="feature">
