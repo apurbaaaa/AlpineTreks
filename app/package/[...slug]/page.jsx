@@ -84,7 +84,10 @@ const Page = () => {
                     </div>
                 </div>
             </section>
-            <BestSellers title = "You might also like..." desc = "" posts = {data.related_posts} />
+            <div id='bestSellers'>
+                <BestSellers title = "You might also like..." desc = "" posts = {data.related_posts} />
+            </div>
+            
         </div>
     );
 };
