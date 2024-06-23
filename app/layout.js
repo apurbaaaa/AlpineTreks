@@ -1,10 +1,7 @@
-// app/layout.js
 
-// Imports
 import ScrollToTop from "@/components/common/ScrollToTop";
 import ScrollTopBehaviour from "@/components/common/ScrollTopBehavier";
 import Wrapper from "@/components/layout/Wrapper";
-import Header4 from "@/components/layout/header/Header4";
 import Header5 from "@/components/layout/header/Header5";
 import FooterFour from "@/components/layout/footers/FooterFour";
 import "../public/css/style.css";
@@ -12,13 +9,21 @@ import { DM_Sans } from "next/font/google";
 import axios from "axios";
 import { Suspense } from "react";
 import Loading from "@/components/homes/others/Loading";
-// Fonts
+
+
 const dmsans = DM_Sans({
   weight: ["400", "500", "700"],
   style: ["normal", "italic"],
   subsets: ["latin"],
   display: "swap",
 });
+
+export const metadata = {
+  title: {
+    default: "Mountain Trekking Nepal"
+
+  },
+}
 
 // RootLayout Component
 export default async function RootLayout({ children }) {
@@ -37,14 +42,6 @@ export default async function RootLayout({ children }) {
   } catch (err) {
     error = err.message || "An error occurred";
     console.error(err);
-  }finally{
-    loading = false;
-  }
-
-  if (loading){
-    return(
-      <div><Loading /></div>
-    )
   }
 
   return (
@@ -62,7 +59,7 @@ export default async function RootLayout({ children }) {
         <Wrapper>{children}</Wrapper>
         <ScrollToTop />
         <ScrollTopBehaviour />
-        <Suspense fallback={<div>Loading...</div>}>
+        <Suspense fallback={<div><Loading /></div>}>
           <FooterFour data={dataSettings} />
         </Suspense>
       </body>
