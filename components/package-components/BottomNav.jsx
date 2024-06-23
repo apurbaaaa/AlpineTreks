@@ -10,25 +10,25 @@ export default function BottomNav() {
               <div className="bottom-menu">
                 <ul>
                   <li>
-                    <a href="#overview" className="" aria-label="Overview">
+                    <a href="#overview" className="border" aria-label="Overview">
                       <i className="fas fa-clipboard-list"></i>
                       <h4>Overview</h4>
                     </a>
                   </li>
                   <li>
-                    <a href="#itinerary" className="" aria-label="Itinerary">
+                    <a href="#itinerary" className="border" aria-label="Itinerary">
                       <i className="fas fa-map"></i>
                       <h4>Itinerary</h4>
                     </a>
                   </li>
                   <li>
-                    <a href="#cost" className="" aria-label="Includes/Excludes">
+                    <a href="#cost" className="border" aria-label="Includes/Excludes">
                       <i className="fas fa-tag"></i>
                       <h4>Includes/Excludes</h4>
                     </a>
                   </li>
                   <li>
-                    <a href="#departure" className="" aria-label="Departure">
+                    <a href="#departure" className="border" aria-label="Departure">
                       <i className="fas fa-calendar-week"></i>
                       <h4>Departure</h4>
                     </a>

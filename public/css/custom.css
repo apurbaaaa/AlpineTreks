@@ -633,9 +633,13 @@ font-size: 15px;
 position: relative;
 text-align: center;
 }
-.bottom-menu ul li a {
+.bottom-menu ul li a.border {
 border-right: 1px solid gainsboro;
 }
+
+
+
+
 a {
 color: inherit;
 font-size: inherit;

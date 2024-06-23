@@ -1,10 +1,8 @@
 "use client";
 import React, { useEffect, useState } from 'react';
-import Link from 'next/link';
 import { useParams } from "next/navigation";
 import axios from 'axios';
 import Loading from '@/components/homes/others/Loading';
-import Image from 'next/image';
 import TitleHeader from '@/components/package-components/TitleHeader';
 import PackageSwiper from '@/components/package-components/PackageSwiper';
 import Details from '@/components/package-components/Details';
