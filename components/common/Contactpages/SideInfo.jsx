@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import axios from 'axios';
+import Loading from '@/components/homes/others/Loading';
 
 const SideInfo = () => {
   const [email, setEmail] = useState('');
@@ -49,7 +50,7 @@ const SideInfo = () => {
   };
 
   if (loading) {
-    return <div>Loading...</div>;
+    return <div><Loading/></div>;
   }
 
   if (error) {
@@ -126,6 +127,9 @@ const SideInfo = () => {
               </div>
             </div>
           </div>
+
+
+          {/* Map and COntact page form*/}
 
           <div className="col-lg-7">
             <iframe

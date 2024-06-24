@@ -34,15 +34,20 @@ export default function page(){
     return(
         <div>
 
-             <section data-anim="fade" className="mt-header pt-30">
-  <div className="container">
-    <div className="breadcrumbs mb-30 md:mb-15">
-      <NextBreadcrumb />
-    </div>
-
-    
-  </div>
-</section>
+             <section className="mt-header pt-30">
+        <div className="container">
+          <div className="breadcrumbs mb-30 md:mb-15">
+          <NextBreadcrumb
+                        homeElement={<span>Home</span>}
+                        containerClasses="text-14 breadcrumb-text"
+                        listClasses=""
+                        activeClasses="active"
+                        capitalizeLinks={true}
+                    />
+          </div>
+          <h1 className="text-30">Why Us</h1>
+        </div>
+      </section>
 <section className="layout-pt-sm layout-pb-md why-us-inner">
   <div data-anim-wrap className="container">
    <div data-aos="fade-up" className="row justify-center">

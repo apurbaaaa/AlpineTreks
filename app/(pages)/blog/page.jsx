@@ -71,7 +71,10 @@ export default function page(){
 
                 <div className="d-flex justify-center flex-column mt-60">
 
-                <div className="pagination justify-center">
+
+                {/* Pagination static v */}    
+
+                {/* <div className="pagination justify-center">
                     <button className="pagination__button button -accent-1 mr-15 -prev">
                     <i className="icon-arrow-left text-15"></i>
                     </button>
@@ -89,7 +92,7 @@ export default function page(){
                     <button className="pagination__button button -accent-1 ml-15 -next">
                     <i className="icon-arrow-right text-15"></i>
                     </button>
-                </div>
+                </div> */}
 
                 </div>
             </div>

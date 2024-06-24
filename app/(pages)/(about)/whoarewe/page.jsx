@@ -6,6 +6,7 @@ import Loading from '@/components/homes/others/Loading';
 import Image from 'next/image';
 import WhyUs from '@/components/homes/features/FeaturesOne';
 import Lightbox from '@/components/homes/others/Lightbox';
+import NextBreadcrumb from '@/components/common/BreadCrumbs';
 
 export default function Page() {
   const [dataSettings, setDataSettings] = useState(null);
@@ -64,7 +65,13 @@ export default function Page() {
       <section className="mt-header pt-30">
         <div className="container">
           <div className="breadcrumbs mb-30 md:mb-15">
-            <span>Home</span>
+          <NextBreadcrumb
+                        homeElement={<span>Home</span>}
+                        containerClasses="text-14 breadcrumb-text"
+                        listClasses=""
+                        activeClasses="active"
+                        capitalizeLinks={true}
+                    />
           </div>
           <h1 className="text-30">{title}</h1>
         </div>

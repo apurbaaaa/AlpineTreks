@@ -1,5 +1,6 @@
 import React from "react";
 import Link from "next/link";
+import NextBreadcrumb from "../BreadCrumbs";
 
 export default function NavInfo() {
     return (
@@ -8,11 +9,13 @@ export default function NavInfo() {
             <div className="container">
                 <nav className="breadcrumbs mb-30 md:mb-15" aria-label="breadcrumb">
                     <span className="breadcrumbs__item">
-                        <Link href="/">Home</Link>
-                    </span>
-                    <span className="breadcrumbs__separator" aria-hidden="true">/</span>
-                    <span className="breadcrumbs__item">
-                        <Link href="/contact" aria-current="page">Contact Us</Link>
+                    <NextBreadcrumb
+                        homeElement={<span>Home</span>}
+                        containerClasses="text-14 breadcrumb-text"
+                        listClasses=""
+                        activeClasses="active"
+                        capitalizeLinks={true}
+                    />
                     </span>
                 </nav>
                 <h1 className="text-30">Contact Us</h1>

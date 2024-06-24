@@ -6,7 +6,6 @@ import { Navigation } from "swiper/modules";
 import Stars from "@/components/common/Stars";
 import Image from "next/image";
 import Link from "next/link";
-import axios from "axios";
 import "swiper/css";
 import "swiper/css/navigation";
 

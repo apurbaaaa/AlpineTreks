@@ -7,6 +7,7 @@ import Header4 from "@/components/layout/header/Header4";
 import axios from "axios";
 import { useState, useEffect } from "react";
 import Loading from "@/components/homes/others/Loading";
+import NextBreadcrumb from "@/components/common/BreadCrumbs";
 
 export default function page({data}){
     const [error, setError] = useState(null)
@@ -37,7 +38,21 @@ export default function page({data}){
     return(
         <div>
 
-            <h1>TEAM PAGE</h1>
+
+<section className="mt-header pt-30">
+        <div className="container">
+          <div className="breadcrumbs mb-30 md:mb-15">
+          <NextBreadcrumb
+                        homeElement={<span>Home</span>}
+                        containerClasses="text-14 breadcrumb-text"
+                        listClasses=""
+                        activeClasses="active"
+                        capitalizeLinks={true}
+                    />
+          </div>
+          <h1 className="text-30">Team Page</h1>
+        </div>
+      </section>
 
             {/* The code is given below: */}
 
@@ -45,15 +60,21 @@ export default function page({data}){
             {/* <section data-anim="fade" className="mt-header pt-30">
                 <div className="container">
                     <div className="breadcrumbs mb-30 md:mb-15">
-                    <span className="breadcrumbs__item">
-                        <Link href="/">Home</Link>
-                    </span>
-                    <span> </span>
-                    <span className="breadcrumbs__item">
-                        <Link href="/whoarewe">About</Link>
-                    </span>
-                     
-                    <span>Our Team</span>
+                    
+             <section className="mt-header pt-30">
+        <div className="container">
+          <div className="breadcrumbs mb-30 md:mb-15">
+          <NextBreadcrumb
+                        homeElement={<span>Home</span>}
+                        containerClasses="text-14 breadcrumb-text"
+                        listClasses=""
+                        activeClasses="active"
+                        capitalizeLinks={true}
+                    />
+          </div>
+          <h1 className="text-30">Why Us</h1>
+        </div>
+      </section>
                     </div>
 
                     <h1 className="text-30">Our Team</h1>

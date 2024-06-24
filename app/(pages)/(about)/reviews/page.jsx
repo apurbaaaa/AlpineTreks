@@ -28,13 +28,13 @@ export default function page(){
             <section data-anim="fade" className="mt-header pt-30">
   <div className="container">
     <div className="breadcrumbs mb-30 md:mb-15">
-      <span className="breadcrumbs__item">
-        <Link href="#">Home</Link>
-      </span>
-      <span> </span>
-      <span className="breadcrumbs__item">
-        <Link href="#">Review</Link>
-      </span>
+      <NextBreadcrumb
+          homeElement={<span>Home</span>}
+          containerClasses="text-14 breadcrumb-text"
+          listClasses=""
+          activeClasses="active"
+          capitalizeLinks={true}
+        />
        
     </div>
 
