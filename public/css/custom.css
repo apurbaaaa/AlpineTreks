@@ -290,7 +290,7 @@ max-height: 135px;
  
 }
 
-@media (max-width: 767px) {
+@media (max-width: 1000px) {
   .tourSingleSidebar {
     width: 100%;
     display: none;
@@ -790,4 +790,58 @@ z-index: 1;
   border-radius: 12px;
   z-index: 1;
 }
+@media (max-width: 998px) {
+  #details .sticky {
+      height: fit-content;
+      top: 60px;
+      background: #005555;
+      bottom: 0;
+      display: flex;
+      overflow: auto;
+  }
+}
+@media (max-width: 998px) {
+  .bottom-menu ul {
+      border-radius: unset;
+      display: flex;
+      justify-content: space-between;
+      overflow: auto;
+  }
+}
 
+@media (max-width: 998px) {
+  .bottom-menu ul li:last-child a.active, .bottom-menu ul li:first-child a.active {
+      border-radius: unset;
+      color: #fff;
+    background-color: #78a22f;
+  }
+  .bottom-menu ul li:first-child a.active {
+    border-radius: 0px 0px  0px 0px;
+  }
+  .bottom-menu ul li:first-child a.active {
+    border-radius: 0px 0px  0px 0px;
+  }
+}
+
+@media (min-width: 999px) {
+  .bottom-menu ul li:first-child a.active {
+    border-radius: 50px 0px 0px 50px;
+  }
+  .bottom-menu ul li:last-child a.active {
+    border-radius: 0px 50px 50px 0px;
+  }
+}
+
+.bottom-menu ul li:last-child a.active {
+  border-radius: 0px 50px 50px 0px;
+}
+
+.bottom-menu ul li a.active, .bottom-menu ul li.hover {
+  color: #fff;
+  background: #78a22f;
+}
+
+.bottom-menu ul li a.active{
+    color: #fff;
+    background: #78a22f;
+}

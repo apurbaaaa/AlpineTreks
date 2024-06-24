@@ -214,18 +214,20 @@ export default function Slug({data, seoDesc, seoTitle}) {
                 <button className="pagination__button button -accent-1 mr-15 -prev">
                   <i className="icon-arrow-left text-15"></i>
                 </button>
-                <div className="pagination__count">
+
+                {/* static pagination commented"*/}
+
+                {/* <div className="pagination__count">
                   <Link href="/" className="is-active">1</Link>
                   <Link href="/">2</Link>
                   <Link href="/">3</Link>
                   <Link href="/">4</Link>
-                  <Link href="/">5</Link>
                   <div>...</div>
                   <Link href="/">20</Link>
-                </div>
-                <button className="pagination__button button -accent-1 ml-15 -next">
+                </div> */}
+                {/* <button className="pagination__button button -accent-1 ml-15 -next">
                   <i className="icon-arrow-right text-15"></i>
-                </button>
+                </button> */}
               </div>
             </div>
         

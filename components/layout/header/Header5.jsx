@@ -53,8 +53,10 @@
               </button>
             </div>
 
-            <div className="header__logo">
-              <a href="/" className="header__logo">
+          
+
+            <div className="headerMobile__right">
+            <a href="/" className="header__logo">
                 <Image
                   width="167"
                   height="32"
@@ -63,23 +65,6 @@
                   priority
                 />
               </a>
-
-            </div>
-
-            <div className="headerMobile__right">
-              <button
-                onClick={() => pageNavigate("/tour-list-1")}
-                className="d-flex"
-              >
-                <i className="icon-search text-18"></i>
-              </button>
-
-              <button
-                onClick={() => pageNavigate("/login")}
-                className="d-flex ml-20"
-              >
-                <i className="icon-person text-18"></i>
-              </button>
             </div>
 
             <div className="header__right">

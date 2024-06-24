@@ -9,7 +9,7 @@ export const menuData = [
   },
   {
     id: 2,
-    label: "Tour",
+    label: "Nepal",
     submenu: [
       { id: 21, label: "Tour list 1", href: "/tour-list-1" },
       { id: 22, label: "Tour list 2", href: "/tour-list-2" },
