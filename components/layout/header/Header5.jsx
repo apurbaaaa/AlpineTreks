@@ -54,7 +54,7 @@
             </div>
 
             <div className="header__logo">
-              <Link href="/" className="header__logo">
+              <a href="/" className="header__logo">
                 <Image
                   width="167"
                   height="32"
@@ -62,7 +62,7 @@
                   alt="logo icon"
                   priority
                 />
-              </Link>
+              </a>
 
             </div>
 

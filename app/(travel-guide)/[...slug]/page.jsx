@@ -23,23 +23,18 @@ export default function Page() {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                // console.log(slugParam.slug.toString())
                 const sslug = slugParam.slug.toString();
                 const response = await axios.get(`${process.env.NEXT_PUBLIC_API_BASE_URL}/${sslug}`);
-                // console.log(response,'res')
-
-                console.log(typeof(response?.data))
+           
 
                 setTitle(response?.data?.title);
                 setSlug(response?.data.slug);
-                console.log(response?.data.slug,'slug')
                 const sanitizedContent = DOMPurify.sanitize(response?.data?.content);
                 setContent(sanitizedContent);
                 setPages(response?.data?.pages);
                 setSeoDesc(response?.data?.seo_description);
                 setSeoTitle(response?.data?.seo_title);
                 setData(response?.data);
-                console.log(data)
             } catch (error) {
                 console.error("Error fetching data:", error);
                 setError(error);

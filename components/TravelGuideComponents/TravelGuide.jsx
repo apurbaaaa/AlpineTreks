@@ -3,10 +3,7 @@ import Link from "next/link";
 
 const TravelGuideTable = ({ data }) => {
   return (
-
-      
-        
-            <div className="col-lg-3">
+                    <div className="col-lg-3">
               <div className="d-flex justify-end">
                 <div className="tabs__controls row y-gap-10 js-tabs-controls side-bar">
                   <h2>Travel Guide</h2>
