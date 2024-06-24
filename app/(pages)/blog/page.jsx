@@ -5,11 +5,13 @@ import Image from "next/image";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import NextBreadcrumb from "@/components/common/BreadCrumbs";
+import Loading from "@/components/homes/others/Loading";
 
 export default function page(){
     const [title, setTitle] = useState("");
     const [posts, setPosts] = useState([]);
     const [error, setError] = useState(null);
+    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         const fetchData = async () => {
@@ -22,9 +24,18 @@ export default function page(){
                 console.error(error)
                 setError(error);
             }
+            finally{
+                setLoading(false);
+            }
         };
         fetchData();
     }, [])
+
+    if (loading){
+        return(
+            <div><Loading/></div>
+        )
+    }
 
     return(
         <div>

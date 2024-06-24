@@ -5,7 +5,7 @@ import Image from "next/image";
 export default function NewsBlog({data}) {
     return (
         <section className="layout-pt-lg bg-light-1">
-            <div data-anim-wrap className="container">
+            <div className="container">
                 <div data-aos="fade-up" className="row justify-between items-end y-gap-10">
                     <div className="col-auto">
                         <h2 className="text-30 md:text-24">News & Blog</h2>

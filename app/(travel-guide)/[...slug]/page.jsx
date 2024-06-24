@@ -20,11 +20,11 @@ export default function Page() {
     const [seoDesc, setSeoDesc] = useState("");
     const [data, setData] = useState(null);
 
-    useEffect(() => {
+    useEffect(() => {   
         const fetchData = async () => {
             try {
-                const sslug = slugParam.slug.toString();
-                const response = await axios.get(`${process.env.NEXT_PUBLIC_API_BASE_URL}/${sslug}`);
+                const slug = slugParam.slug.toString();
+                const response = await axios.get(`${process.env.NEXT_PUBLIC_API_BASE_URL}/${slug}`);
            
 
                 setTitle(response?.data?.title);

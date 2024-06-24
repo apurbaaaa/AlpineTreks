@@ -7,7 +7,8 @@ const TravelGuideTable = ({ data }) => {
               <div className="d-flex justify-end">
                 <div className="tabs__controls row y-gap-10 js-tabs-controls side-bar">
                   <h2>Travel Guide</h2>
-                  {data.pages.map((page) => (
+                  {data.pages && data.pages.lenght> 0 (
+                    data.pages.map((page) => (
                     <div key={page.slug} className="col-12">
                       <Link
                         href={`/${page.slug}`}
@@ -16,7 +17,7 @@ const TravelGuideTable = ({ data }) => {
                         {page.post_title}
                       </Link>
                     </div>
-                  ))}
+                  )))}
                 </div>
               </div>
         </div>

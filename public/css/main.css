@@ -2036,6 +2036,9 @@ h1, h2, h3, h4, h5, h6 {
 
 }
 
+#feature_content{
+  /* color: red; */
+}
 
 .header.-type-1 {
   position: fixed;
@@ -2059,8 +2062,7 @@ h1, h2, h3, h4, h5, h6 {
   }
 }
 
-.header.-type-1 
- {
+.header.-type-1 .header__logo {
   display: flex;
   align-items: center;
 }
@@ -5265,17 +5267,7 @@ a {
   border-radius: 12px;
 }
 
-.featureCard.-type-6 .featureCard__image::after {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.4);
-  border-radius: 12px;
-  z-index: 1;
-}
+
 
 
 
@@ -5285,7 +5277,7 @@ a {
   left: 0;
   display: flex;
   flex-direction: column;
-  bottom: 85px;
+  bottom: 80px;
   justify-content: flex-end;
   align-items: center;
   width: 100%;
@@ -5309,10 +5301,11 @@ a {
   background-color: white;
   border-radius: 12px;
   z-index: 0;
+  pointer-events: auto;
 }
 
 .featureCard.-type-8 .featureCard__image {
-  height: 150px;
+  height: 225px;
 }
 
 .featureCard.-type-8 .featureCard__image img {
@@ -5363,14 +5356,13 @@ a {
   justify-content: flex-end;
   text-align: center;
   height: auto;
-  padding-bottom: 20px;
-  padding-top: 30px;
+  padding: 10px 0px;
 }
 
 @media (max-width: 767px) {
   .featureCard.-type-8 .featureCard__content {
     height: 500px;
-  }
+  } 
 }
 /* Add this CSS to your stylesheet */
 
@@ -12692,51 +12684,21 @@ table.table-4.-border-bottom tbody > tr {
   background-color: white;
 }
 
-.featureCard.-type-6 .featureCard__image::after {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.4);
-  border-radius: 12px;
-  z-index: 1;
-}
-
-@media (max-width: 1000px) {
+@media (max-width: 767px) {
   .tourSingleSidebar {
     width: 100%;
   }
 }
 
-
-
-@media (max-width: 998px) {
-  #details .sticky {
-      height: fit-content;
-      top: 60px;
-      background: #005555;
-      bottom: 0;
-      display: flex;
-      overflow: auto;
-  }
-}
-/* @media (min-width: 768px) {
-  .container, .container-md, .container-sm {
-      max-width: 720px;
-  }
-}
-@media (max-width: 998px) {
-  .bottom-menu ul {
-      border-radius: unset;
-  }
-}
-*/
 .tourSingleSidebar.-top-320 {
   margin-top: -320px;
 }
 
+@media (max-width: 991px) {
+  .tourSingleSidebar.-top-320 {
+    margin-top: 0;
+  }
+}
 
 .tourSingleHero5 {
   position: relative;

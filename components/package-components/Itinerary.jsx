@@ -25,7 +25,8 @@ export default function Itinerary({ data }) {
             <h2>Itinerary</h2>
             <div className="mt-30">
                 <div className="roadmap accordion -roadmap js-accordion">
-                    {data.itinerary.map((item, index) => (
+                    {data.itinerary && data.itinerary.length > 0(
+                        data.itinerary.map((item, index) => (
                         <div key={index} className={`roadmap__item accordion__item js-accordion-item ${activeIndices.includes(index) ? 'is-active' : ''}`}>
                             <div className="roadmap__iconBig">
                                 <i className="icon-pin"></i>
@@ -41,7 +42,11 @@ export default function Itinerary({ data }) {
                                 </div>
                             </div>
                         </div>
-                    ))}
+                        ))
+                    )} : (
+                        <div>No items</div>
+                    )
+                
                 </div>
             </div>
         </div>
