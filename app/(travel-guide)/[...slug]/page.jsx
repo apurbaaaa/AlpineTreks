@@ -29,6 +29,7 @@ export default function Page() {
 
                 setTitle(response?.data?.title);
                 setSlug(response?.data.slug);
+
                 const sanitizedContent = DOMPurify.sanitize(response?.data?.content);
                 setContent(sanitizedContent);
                 setPages(response?.data?.pages);

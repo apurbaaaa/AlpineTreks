@@ -2059,7 +2059,8 @@ h1, h2, h3, h4, h5, h6 {
   }
 }
 
-.header.-type-1 .header__logo {
+.header.-type-1 
+ {
   display: flex;
   align-items: center;
 }
@@ -5284,7 +5285,7 @@ a {
   left: 0;
   display: flex;
   flex-direction: column;
-  bottom: 8px;
+  bottom: 85px;
   justify-content: flex-end;
   align-items: center;
   width: 100%;
