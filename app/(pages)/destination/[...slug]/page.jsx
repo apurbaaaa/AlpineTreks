@@ -22,7 +22,7 @@ export default function Slug({data, seoDesc, seoTitle}) {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          `${process.env.NEXT_PUBLIC_API_BASE_URL}/destination/${slug}`
+          `${process.env.NEXT_PUBLIC_API_BASE_URL}/destination/${slug[0]}`
         );
 
         setPosts(response?.data?.posts);
@@ -37,7 +37,8 @@ export default function Slug({data, seoDesc, seoTitle}) {
         setLoading(false);
       }
     };
-    if (slug) {
+    if (slug && slug.length > 0) {
+      console.log(slug[0]);
       fetchData();
     }
   }, [slug]);
@@ -162,7 +163,6 @@ export default function Slug({data, seoDesc, seoTitle}) {
             <div className="col-auto text-collapse">
               <h1 className="pageHeader__title">{title}</h1>
               <div>
-                {/* Render only first two paragraphs when not expanded */}
                 {!isExpanded ? (
                   <div
                     dangerouslySetInnerHTML={{
@@ -192,7 +192,7 @@ export default function Slug({data, seoDesc, seoTitle}) {
             {posts.map((post, index) => (
             <div className="col-lg-4 col-md-6 d-flex" key={index}>
                 <div className="w-100">
-                <Link href={`/${slugType(slug)}/${post.slug}`}>
+                <Link href={`/${slugType(slug[0])}/${post.slug}`}>
                     <div className="featureCard -type-8 -hover-image-scale">
                     <div className="featureCard__image -hover-image-scale__image">
                         <Image src={post.image} alt="feature" width={750} height={563} />
@@ -233,4 +233,3 @@ export default function Slug({data, seoDesc, seoTitle}) {
     </div>
   );
 }
-

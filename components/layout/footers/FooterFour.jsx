@@ -29,10 +29,10 @@ export default function FooterFour({data}) {
                 </div>  
 
                 <div className="footerSocials__icons text-white" id="footer_svg">
-                  <Link href="#"><Image  src="/img/facebook.svg" width = {30} height = {25} alt=""/> </Link>
-                  <Link href="#"><Image src="/img/instagram.svg" width = {30} height = {25} alt=""/> </Link>
-                  <Link href="#"><Image src="/img/linkedin.svg" width = {30} height = {25} alt=""/> </Link>
-                  <Link href="#"><Image src="/img/x-twitter.svg" width = {30} height = {25} alt=""/> </Link>
+                  <Link href="www.facebook.com"><Image  src="/img/facebook.svg" width = {30} height = {25} alt=""/> </Link>
+                  <Link href="www.instagram.com"><Image src="/img/instagram.svg" width = {30} height = {25} alt=""/> </Link>
+                  <Link href="www.linkedin.com"><Image src="/img/linkedin.svg" width = {30} height = {25} alt=""/> </Link>
+                  <Link href="www.twitter.com"><Image src="/img/x-twitter.svg" width = {30} height = {25} alt=""/> </Link>
                 </div>
               </div>
             </div>
@@ -42,23 +42,23 @@ export default function FooterFour({data}) {
 
               <div className="y-gap-10 mt-20">
 
-                <Link className="d-block fw-500 text-white" href="#">
+                <Link className="d-block fw-500 text-white" href="/team">
                   Our team
                 </Link>
 
-                <Link className="d-block fw-500 text-white" href="#">
+                <Link className="d-block fw-500 text-white" href="/whyus">
                   Why Us
                 </Link>
 
-                <Link className="d-block fw-500 text-white" href="#">
+                <Link className="d-block fw-500 text-white" href="/team">
                  How To make a payment
                </Link>
 
-               <Link className="d-block fw-500 text-white" href="#">
+               <Link className="d-block fw-500 text-white" href="/team">
                 Term and condition
               </Link>
 
-              <Link className="d-block fw-500 text-white" href="#">
+              <Link className="d-block fw-500 text-white" href="/team">
                 Privacy Policy
               </Link>
 
@@ -70,19 +70,19 @@ export default function FooterFour({data}) {
 
             <div className="y-gap-10 mt-20">
 
-              <Link className="d-block fw-500 text-white" href="#">
+              <Link className="d-block fw-500 text-white" href="/contact">
                 Contact
               </Link>
 
-              <Link className="d-block fw-500 text-white" href="#">
+              <Link className="d-block fw-500 text-white" href="/blog">
                 Blog
               </Link>
 
-              <Link className="d-block fw-500 text-white" href="#">
+              <Link className="d-block fw-500 text-white" href="/destination/spiritual-tours">
                 Spiritual Tours
               </Link>
 
-              <Link className="d-block fw-500 text-white" href="#">
+              <Link className="d-block fw-500 text-white" href="/activity/nepal-trekking">
                Nepal Trekking
 
              </Link>
@@ -94,19 +94,19 @@ export default function FooterFour({data}) {
 
           <div className="y-gap-10 mt-20">
 
-            <Link className="d-block fw-500 text-white" href="#">
+            <Link className="d-block fw-500 text-white" href="/destination/nepal">
               Nepal
             </Link>
 
-            <Link className="d-block fw-500 text-white" href="#">
+            <Link className="d-block fw-500 text-white" href="/destination/india">
               India
             </Link>
 
-            <Link className="d-block fw-500 text-white" href="#">
+            <Link className="d-block fw-500 text-white" href="/destination/bhutan">
               Bhutan
             </Link>
 
-            <Link className="d-block fw-500 text-white" href="#">
+            <Link className="d-block fw-500 text-white" href="/destination/tibet">
              Tibet
 
            </Link>
