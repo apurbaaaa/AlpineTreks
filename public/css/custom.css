@@ -845,3 +845,13 @@ z-index: 1;
     color: #fff;
     background: #78a22f;
 }
+
+#cont{
+  position: relative;
+}
+
+#bestSellers{
+  position: relative;
+  z-index: 2;
+}
+
