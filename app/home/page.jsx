@@ -12,13 +12,9 @@ import HotSelling from "../../components/layout/components/HotSelling";
 import Destination from "@/components/homes/articles/ArticlesOne";
 import ActivitiesOffered from "@/components/homes/tourTypes/TourTypes3";
 import TrekkingRegions from "@/components/homes/tours/TrekkingRegions";
-import { cache } from "react";
-import axios from 'axios';
+import fetchData from "@/utils/fetchData";
 
-const fetchData = cache(async (url) => {
-  const response = await axios.get(url);
-  return response.data;
-});
+
 
 
 export async function generateMetadata() {

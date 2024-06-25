@@ -1,29 +1,16 @@
-"use client"
-import React, { useEffect, useState } from "react";
-import Header4 from "@/components/layout/header/Header4";
-import FooterFour from "@/components/layout/footers/FooterFour";
-import Link from "next/link";
+import React from "react";
 import Image from "next/image";
-import axios from "axios";
+
 import NextBreadcrumb from "@/components/common/BreadCrumbs";
 
+export async function generateMetadata() {
+  return {
+    title: "Reviews", 
+    description: "Reviews Description"
+  }
+}
 
 export default function page(){
-    // const [data, setData] = useState([]);
-    // const [error, setError] = useState(null)
-    // useEffect(()=>{
-    //     const fetchData = async () => {
-    //         try{
-    //             const response = await axios.get(`${process.env.NEXT_PUBLIC_API_BASE_URL}/home`)
-    //             setData(response?.data?.whatever) // replace API endpoint and setData
-    //         }
-    //         catch(error){
-    //             console.error(error)
-    //             setError(error)
-    //         }
-    //     }; fetchData();
-    // }, [])
-
     return(
         <div>
             <section data-anim="fade" className="mt-header pt-30">
