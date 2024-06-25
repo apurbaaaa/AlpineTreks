@@ -3,6 +3,7 @@ import Link from 'next/link'
 import NextBreadcrumb from '@/components/common/BreadCrumbs'
 
 export default function DestInfo({ data }) {
+  
   return (
     <div>
       <section> 
@@ -23,10 +24,11 @@ export default function DestInfo({ data }) {
           <h1 className="text-30">Destination</h1>
         </div>
       </section>
-
+      {data && data.length > 0 ? (
+            data.map((elm, i) => (
       <section className="layout-pt-lg layout-pb-lg about-section">
         <div data-anim-wrap="" className="container animated">
-          {data.map((elm, i) => (
+          
             <div key={i} className="row y-gap-20 justify-between">
               <div data-aos="fade-up" className="col-lg-6 is-in-view">
                 <h2>{elm.title}</h2>
@@ -53,10 +55,14 @@ export default function DestInfo({ data }) {
                 </div>
               </div>
             </div>
-          ))}
+          
         </div>
         <br />
       </section>
+      ))
+    ) : (
+      <div className="no-images-placeholder">Nothing to be seen</div>
+    )}
     </div>
   )
 }

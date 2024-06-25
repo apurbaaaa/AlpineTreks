@@ -1,41 +1,19 @@
-"use client"
+
 import React from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { useEffect, useState } from "react";
-import axios from "axios";
 import NextBreadcrumb from "@/components/common/BreadCrumbs";
-import Loading from "@/components/homes/others/Loading";
+import fetchData from "@/utils/fetchData";
 
-export default function page(){
-    const [title, setTitle] = useState("");
-    const [posts, setPosts] = useState([]);
-    const [error, setError] = useState(null);
-    const [loading, setLoading] = useState(true);
-
-    useEffect(() => {
-        const fetchData = async () => {
-            try{
-                const response = await axios.get(`${process.env.NEXT_PUBLIC_API_BASE_URL}/blog`);
-                setTitle(response?.data?.title);
-                setPosts(response?.data?.posts);
-            }
-            catch(error){
-                console.error(error)
-                setError(error);
-            }
-            finally{
-                setLoading(false);
-            }
-        };
-        fetchData();
-    }, [])
-
-    if (loading){
-        return(
-            <div><Loading/></div>
-        )
+export async function generateMetadata() {
+    return {
+      title: "Blog", 
+      description: "Decription data from api"
     }
+  }
+
+export default async function page(){
+    const response = await axios.get(`${process.env.NEXT_PUBLIC_API_BASE_URL}/blog`);
 
     return(
         <div>

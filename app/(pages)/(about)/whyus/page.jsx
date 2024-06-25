@@ -4,7 +4,12 @@ import NextBreadcrumb from "@/components/common/BreadCrumbs";
 import WhyUs from "@/components/homes/features/FeaturesOne";
 import fetchData from "@/utils/fetchData";
 
-
+export async function generateMetadata() {
+  return {
+    title: "Why Us", 
+    description: "Decription data from api"
+  }
+}
 export default async function page(){
   const dataSettings = await fetchData (`${process.env.NEXT_PUBLIC_API_BASE_URL}/settings`)
 
