@@ -20,9 +20,15 @@ const dmsans = DM_Sans({
 
 export const metadata = {
   title: {
-    default: "Mountain Trekking Nepal"
-
+    default: "Mountain Trekking Nepal",
+    template: "%s - Mountain Trekking Nepal"
   },
+  description: "Mountain Trekking Nepal", //Whatever description is to be
+  //default description for specific sites like twitter, facebook, etc. to be defined. Example is as follows
+  twitter: {
+    card: "summary_large_image"
+  }
+
 }
 
 // RootLayout Component
