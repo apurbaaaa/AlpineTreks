@@ -20,8 +20,7 @@ export async function generateMetadata({ params }) {
     description: data.seo_description
   }
 } 
-
-const SlugPage = async ({ params }) => {
+export default async function Page({params}){
   const { slug } = params;
   const response = await fetchData(`${process.env.NEXT_PUBLIC_API_BASE_URL}/region/${slug}`);
 
@@ -32,4 +31,4 @@ const SlugPage = async ({ params }) => {
   );
 };
 
-export default SlugPage;
+

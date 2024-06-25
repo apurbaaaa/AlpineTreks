@@ -27,6 +27,7 @@
     "lru-cache": "^10.2.2",
     "next": "14.0.1",
     "node-cache": "^5.1.2",
+    "punycode": "^2.3.1",
     "react": "^18",
     "react-dom": "^18",
     "react-modal-video": "^2.0.1",
