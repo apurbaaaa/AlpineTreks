@@ -56,8 +56,13 @@ export default function TrekkingRegions({data}) {
                                             <Image
                                                 src={trek.image}
                                                 alt={trek.title}
-                                                layout="fill"
-                                                objectFit="cover" // You can adjust this to 'contain' or other values based on your needs
+                                                fill
+                                                style={{ objectFit: 'cover' }}
+                                                 // You can adjust this to 'contain' or other values based on your needs
+                                                 sizes="(max-width: 1px) 100vw, 
+                                                        (max-width: 1px) 50vw, 
+                                                        33vw"
+                                                        //sizes to be altered
                                             />
                                         </div>
 

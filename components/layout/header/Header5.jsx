@@ -6,19 +6,13 @@
   import MobileMenu from "../components/MobileMenu";
   import Image from "next/image";
   import Link from "next/link";
-  import { useRouter } from "next/navigation";
   import TravelGuide from "../components/TravelGuide";
 
   export default function Header5() {
-    const router = useRouter();
-    const pageNavigate = (pageName) => {
-      router.push(pageName);
-    };
 
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
     const [addClass, setAddClass] = useState(false);
 
-    // Add a className to the element when scrolled 50px
     const handleScroll = () => {
       if (window.scrollY >= 50) {
         setAddClass(true);
@@ -30,7 +24,6 @@
     useEffect(() => {
       window.addEventListener("scroll", handleScroll);
 
-      // Cleanup the event listener when the component unmounts
       return () => {
         window.removeEventListener("scroll", handleScroll);
       };
@@ -53,10 +46,8 @@
               </button>
             </div>
 
-          
-
-            <div className="headerMobile__right">
-            <a href="/" className="header__logo">
+            <div className="header__logo">
+              <a href="/" className="header__logo">
                 <Image
                   width="167"
                   height="32"
@@ -65,7 +56,10 @@
                   priority
                 />
               </a>
+
             </div>
+
+            
 
             <div className="header__right">
               {/* For Nepal, tibet, Bhutan, Nepal Trekking, and Spiritual Tours*/}
