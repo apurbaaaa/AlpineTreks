@@ -3,10 +3,12 @@ import SideInfo from "@/components/common/Contactpages/SideInfo";
 
 import React from "react";
 
-export const metadata = {
-  title: "Contact || ViaTour - Travel & Tour React NextJS Template",
-  description: "ViaTour - Travel & Tour React NextJS Template",
-};
+export async function generateMetadata() {
+  return {
+    title: "Contact", 
+    description: "Decription data from api"
+  }
+}
 
 export default function page() {
   return (
