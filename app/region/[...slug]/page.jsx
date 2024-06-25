@@ -3,12 +3,14 @@ import fetchData from "@/utils/fetchData";
 import RegionContent from "@/components/common/RegionContent";
 
 
-export async function generateStaticParams() {
-  const response = await fetchData(`${process.env.NEXT_PUBLIC_API_BASE_URL}/region`)
-  return response.map((slug) => 
-    slug
-  )
-}
+//the given commented code is to compile region pages before clicking on them individually
+
+// export async function generateStaticParams() {
+//   const response = await fetchData(`${process.env.NEXT_PUBLIC_API_BASE_URL}/region`)
+//   return response.data.regions.map((slug) => 
+//     slug
+//   )
+// }
 
 export async function generateMetadata({ params }) {
   const { slug } = params;
