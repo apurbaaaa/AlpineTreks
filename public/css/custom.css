@@ -860,3 +860,7 @@ z-index: 1;
   height: auto;
 }
 
+.featureCard.-type-8 {
+  border: 1px solid gainsboro;
+}
+

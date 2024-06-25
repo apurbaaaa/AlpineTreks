@@ -1,13 +1,15 @@
 // app/about/page.js
-
-import axios from 'axios';
 import React from 'react';
 import ClientCompAbout from '@/components/common/ClientCompAbout';
+import fetchData from '@/utils/fetchData';
 
-const fetchData = async (url) => {
-  const response = await axios.get(url);
-  return response.data;
-};
+export async function generateMetadata() {
+  const data = await fetchData(`${process.env.NEXT_PUBLIC_API_BASE_URL}/about-us`);
+  return {
+    title: data.seo_title, 
+    description: data.seo_description
+  }
+}
 
 export default async function ServerPage() {
   const dataSettings = await fetchData(`${process.env.NEXT_PUBLIC_API_BASE_URL}/settings`);

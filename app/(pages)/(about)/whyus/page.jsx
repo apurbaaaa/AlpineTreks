@@ -1,35 +1,12 @@
-"use client"
-import React, { useState, useEffect } from "react";
-import Link from "next/link";
+
+import React from "react";
 import NextBreadcrumb from "@/components/common/BreadCrumbs";
-import axios from "axios";
-import Loading from "@/components/homes/others/Loading";
 import WhyUs from "@/components/homes/features/FeaturesOne";
+import fetchData from "@/utils/fetchData";
 
-export default function page(){
-  const [dataSettings, setDataSettings] = useState(null);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null); 
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const responseSettings = await axios.get(`${process.env.NEXT_PUBLIC_API_BASE_URL}/settings`);
-        setDataSettings(responseSettings.data); 
-      } catch (error) {
-        console.error(error);
-        setError(error);
-      }
-      finally{
-        setLoading(false)
-      }
-    };
-    fetchData();
-  }, []);
-
-  if (loading) {
-    return <div><Loading/></div>;
-  }
+export default async function page(){
+  const dataSettings = await fetchData (`${process.env.NEXT_PUBLIC_API_BASE_URL}/settings`)
 
     return(
         <div>
