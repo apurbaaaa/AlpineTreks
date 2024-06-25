@@ -79,7 +79,7 @@
 }
 
 :root {
-  --font-primary: "DM sans", sans-serif;
+  --font-primary: "DM_Sans", sans-serif;
 }
 
 :root {
@@ -3985,7 +3985,7 @@ a {
 
 .hero.-type-6 {
   position: relative;
-  padding-top: 267px;
+  padding-top: 150px;
   padding-bottom: 140px;
   z-index: 5;
 }
@@ -4020,6 +4020,7 @@ a {
   right: 0;
   bottom: 0;
   z-index: -1;
+  top: -60px;
 }
 
 @media (max-width: 991px) {
@@ -4033,7 +4034,7 @@ a {
   height: auto;
 }
 
-.hero.-type-6 .hero__title {
+.hero.-type-6 .hero__title h1{
   font-size: 60px;
   line-height: 1.2;
   font-weight: 600;

@@ -16,6 +16,7 @@ import BookCard from '@/components/package-components/BookCard';
 import BottomNav from '@/components/package-components/BottomNav';
 import NextBreadcrumb from '@/components/common/BreadCrumbs';
 
+
 export default function Page(){
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
