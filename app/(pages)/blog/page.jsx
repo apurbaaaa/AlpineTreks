@@ -13,7 +13,7 @@ export async function generateMetadata() {
   }
 
 export default async function page(){
-    const response = await axios.get(`${process.env.NEXT_PUBLIC_API_BASE_URL}/blog`);
+    const response = await fetchData(`${process.env.NEXT_PUBLIC_API_BASE_URL}/blog`);
 
     return(
         <div>
@@ -30,13 +30,13 @@ export default async function page(){
                     
                     </div>
 
-                    <h1 className="text-30">{title}</h1>
+                    <h1 className="text-30">{response.title}</h1>
                 </div>
             </section>
             <section className="layout-pt-md">
             <div className="container">
                 <div className="row y-gap-10">
-                    {posts.map((elm, i) => (
+                    {response.posts.map((elm, i) => (
                         <div key={i} className="col-lg-4 col-md-6 d-flex">
                         <Link href={`/${elm.slug}`} className="blogCard -type-1 d-block w-100">
                             <div className="blogCard__image">
