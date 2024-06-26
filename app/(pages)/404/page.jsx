@@ -1,9 +1,14 @@
+import FooterOne from "@/components/layout/footers/FooterOne";
+import Header1 from "@/components/layout/header/Header1";
 import Image from "next/image";
-import React from "react";
 
 export const metadata = {
   title: "Not found",
-  description: "Error 404",
+  description: "Nothing found",
+  robots:{
+    index: false,  //wont be shown in google
+    follow: true   //will follow through website
+  }
 };
 
 export default function NotFound() {

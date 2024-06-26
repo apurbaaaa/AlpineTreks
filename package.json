@@ -6,7 +6,7 @@
     "dev": "next dev",
     "start": "next start",
     "lint": "next lint",
-    "build": "babel app -d lib"
+    "build": "next build"
   },
   "dependencies": {
     "@emotion/react": "^11.11.1",
@@ -39,11 +39,5 @@
     "sharp": "^0.33.4",
     "swiper": "^11.0.3",
     "swr": "^2.2.5"
-  },
-  "devDependencies": {
-    "@babel/cli": "^7.0.0",
-    "@babel/core": "^7.0.0",
-    "@babel/preset-env": "^7.0.0",
-    "@babel/preset-react": "^7.24.7"
   }
 }
