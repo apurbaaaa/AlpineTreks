@@ -1,5 +1,4 @@
 import React from "react";
-import Link from "next/link";
 import NextBreadcrumb from "../BreadCrumbs";
 
 export default function NavInfo() {
