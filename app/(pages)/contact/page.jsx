@@ -1,5 +1,6 @@
 import NavInfo from "@/components/common/Contactpages/NavInfo";
 import SideInfo from "@/components/common/Contactpages/SideInfo";
+import fetchData from "@/utils/fetchData";
 
 import React from "react";
 
@@ -10,12 +11,14 @@ export async function generateMetadata() {
   }
 }
 
-export default function page() {
+export default async function page() {
+  const resposne = await fetchData(`${process.env.NEXT_PUBLIC_API_BASE_URL}/settings`);
+
   return (
     <>
       <main>
         <NavInfo />
-        <SideInfo />
+        <SideInfo resposne = {resposne}/>
       </main>
     </>
   );

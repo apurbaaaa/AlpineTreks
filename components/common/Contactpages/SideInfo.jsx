@@ -4,7 +4,7 @@ import Link from 'next/link';
 import axios from 'axios';
 import Loading from '@/components/homes/others/Loading';
 
-const SideInfo = () => {
+const SideInfo = ({response}) => {
   const [email, setEmail] = useState('');
   const [address, setAddress] = useState('');
   const [phone, setPhone] = useState('');
@@ -17,7 +17,6 @@ const SideInfo = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get('https://mountaintrekkingnepal.com/api/settings'); // Set timeout to 5 seconds
         setEmail(response?.data?.email_address);
         setAddress(response?.data?.address);
         setPhone(response?.data?.phone);
@@ -54,7 +53,7 @@ const SideInfo = () => {
   }
 
   if (error) {
-    return <div>Error mf: {error}</div>;
+    return <div>Error: {error}</div>;
   }
 
   return (
