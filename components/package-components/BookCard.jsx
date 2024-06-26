@@ -9,7 +9,7 @@ const BookCard = () => {
     
     useEffect(() => {
         const handleScroll = () => {
-            setIsFixed(window.scrollY > 70);
+            setIsFixed(window.scrollY > 100);
         };
 
         window.addEventListener("scroll", handleScroll);
