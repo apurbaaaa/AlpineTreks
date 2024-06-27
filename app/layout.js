@@ -1,5 +1,6 @@
 
 import ScrollToTop from "@/components/common/ScrollToTop";
+import { SpeedInsights } from "@vercel/speed-insights/next"
 import ScrollTopBehaviour from "@/components/common/ScrollTopBehavier";
 import Wrapper from "@/components/layout/Wrapper";
 import Header5 from "@/components/layout/header/Header5";
