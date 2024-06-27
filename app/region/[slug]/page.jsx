@@ -1,16 +1,18 @@
+// app/region/[slug]/page.jsx
 import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import NextBreadcrumb from '@/components/common/Breadcrumbs';
-import fetchData from '@/utils/fetchData';
+import DOMPurify from 'dompurify';
+import NextBreadcrumb from '@/components/common/BreadCrumbs';
 
 export default async function RegionPage({ params }) {
   const { slug } = params;
 
-  const data = await fetchData(`${process.env.NEXT_PUBLIC_API_BASE_URL}/region/${slug}`)
-    
+  const response = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/region/${slug}`, {
+    next: { revalidate: 60 } // Optional: Caching with ISR
+  });
 
-  if (!data) {
+  if (!response.ok) {
     return (
       <div>
         <p>Error loading data</p>
@@ -18,9 +20,11 @@ export default async function RegionPage({ params }) {
     );
   }
 
+  const data = await response.json();
   const posts = data.packages || [];
   const title = data.title || '';
-  const desc = data.description || '';
+  const unpurified_desc = data.description || '';
+  const desc = DOMPurify.sanitize(unpurified_desc);
 
   return (
     <div>
