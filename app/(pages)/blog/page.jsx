@@ -1,6 +1,6 @@
 
 import React from "react";
-import Link from "next/link";
+import a from "next/link";
 import Image from "next/image";
 import NextBreadcrumb from "@/components/common/BreadCrumbs";
 import fetchData from "@/utils/fetchData";
@@ -38,7 +38,7 @@ export default async function page(){
                 <div className="row y-gap-10">
                     {response.posts.map((elm, i) => (
                         <div key={i} className="col-lg-4 col-md-6 d-flex">
-                        <Link href={`/blog/${elm.slug}`} className="blogCard -type-1 d-block w-100">
+                        <a href={`/blog/${elm.slug}`} className="blogCard -type-1 d-block w-100">
                             <div className="blogCard__image">
                             <Image src={elm.image} alt={elm.title} className="Image-ratio rounded-12" width={600} height={450}/>
                             </div>
@@ -51,7 +51,7 @@ export default async function page(){
 
                             <h3 className="blogCard__title text-18 fw-500 mt-10">{elm.title}</h3>
                             </div>
-                        </Link>
+                        </a>
                         </div>
                     ))}
                         
@@ -69,13 +69,13 @@ export default async function page(){
                     </button>
 
                     <div className="pagination__count">
-                    <Link href="#">1</Link>
-                    <Link href="#" className="is-active">2</Link>
-                    <Link href="#">3</Link>
-                    <Link href="#">4</Link>
-                    <Link href="#">5</Link>
+                    <a href="#">1</a>
+                    <a href="#" className="is-active">2</a>
+                    <a href="#">3</a>
+                    <a href="#">4</a>
+                    <a href="#">5</a>
                     <div>...</div>
-                    <Link href="#">20</Link>
+                    <a href="#">20</a>
                     </div>
 
                     <button className="pagination__button button -accent-1 ml-15 -next">

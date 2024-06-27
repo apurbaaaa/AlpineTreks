@@ -528,7 +528,6 @@
 [data-anim-child*="delay-20"] > * {
   animation-delay: 2s;
 }
-
 html {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
