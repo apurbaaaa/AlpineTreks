@@ -1,30 +1,17 @@
-// app/region/[slug]/page.jsx
-import React from 'react';
-import Link from 'next/link';
-import Image from 'next/image';
-import DOMPurify from 'dompurify';
-import NextBreadcrumb from '@/components/common/BreadCrumbs';
+import React from "react";
+import Link from "next/link";
+import Image from "next/image"; 
+import NextBreadcrumb from "@/components/common/BreadCrumbs";
+import fetchData from "@/utils/fetchData";
 
-export default async function RegionPage({ params }) {
-  const { slug } = params;
 
-  const response = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/region/${slug}`, {
-    next: { revalidate: 60 } // Optional: Caching with ISR
-  });
-
-  if (!response.ok) {
-    return (
-      <div>
-        <p>Error loading data</p>
-      </div>
-    );
-  }
-
-  const data = await response.json();
-  const posts = data.packages || [];
-  const title = data.title || '';
-  const unpurified_desc = data.description || '';
-  const desc = DOMPurify.sanitize(unpurified_desc);
+export default async function Slug({params}) {
+  const { slug } = params
+  const response = await fetchData(`${process.env.NEXT_PUBLIC_API_BASE_URL}/region/${slug}`)
+  console.log(response)
+  const desc = response.description;
+  const title = response.title;
+  const posts = response.packages;
 
   return (
     <div>
@@ -97,46 +84,48 @@ export default async function RegionPage({ params }) {
           <div className="row justify-between">
             <div className="col-auto">
               <div className="text-14 breadcrumb-text">
-                <NextBreadcrumb
-                  homeElement={<span>Home</span>}
-                  containerClasses="text-14 breadcrumb-text"
-                  listClasses=""
-                  activeClasses="active"
-                  capitalizeLinks={true}
-                />
+              <NextBreadcrumb
+                homeElement={<span>Home</span>}
+                containerClasses="text-14 breadcrumb-text"
+                listClasses=""
+                activeClasses="active"
+                capitalizeLinks={true}
+              />
               </div>
             </div>
           </div>
           <div className="row pt-30">
             <div className="col-auto text-collapse">
               <h1 className="pageHeader__title">{title}</h1>
-              <span dangerouslySetInnerHTML={{ __html: desc }}></span>
+              <span dangerouslySetInnerHTML={{ __html: desc}}></span>
             </div>
           </div>
         </div>
       </section>
 
       <section className="layout-pt-md bg-light-1">
-        <div className="container">
-          <div className="row y-gap-30">
+        
+    <div className="container">
+        <div className="row y-gap-30">
             {posts.map((post, index) => (
-              <div className="col-lg-4 col-md-6 d-flex" key={index}>
+            <div className="col-lg-4 col-md-6 d-flex" key={index}>
                 <div className="w-100">
-                  <Link href={`/package/${post.slug}`}>
+                <Link href={`/package/${post.slug}`}>
                     <div className="featureCard -type-8 -hover-image-scale">
-                      <div className="featureCard__image -hover-image-scale__image">
+                    <div className="featureCard__image -hover-image-scale__image">
                         <Image src={post.image} alt="feature" width={750} height={563} />
-                      </div>
-                      <div className="featureCard__content">
-                        <h3 className="text-18 fw-500">{post.title}</h3>
-                      </div>
                     </div>
-                  </Link>
+                    <div className="featureCard__content">
+                        <h3 className="text-18 fw-500">{post.title}</h3>
+                    </div>
+                    </div>
+                </Link>
                 </div>
-              </div>
+            </div>
             ))}
-          </div>
         </div>
+    </div>
+        
       </section>
     </div>
   );
