@@ -43,7 +43,6 @@ export default function Page() {
                 setSeoTitle(response?.data?.seo_title);
                 setData(response?.data);
             } catch (error) {
-                console.error("Error fetching data:", error);
                 setError(error);
             } finally {
                 setLoading(false);

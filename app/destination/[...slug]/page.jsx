@@ -32,7 +32,6 @@ export default function Slug({data, seoDesc, seoTitle}) {
         setDesc(updatedHtmlString);
       } catch (error) {
         setError(error);
-        console.error(error);
       } finally {
         setLoading(false);
       }

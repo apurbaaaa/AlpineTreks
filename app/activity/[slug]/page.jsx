@@ -34,7 +34,6 @@ export default function Slug({params}) {
         setDesc(updatedHtmlString)
       } catch (error) {
         setError(error);
-        console.error(error);
       }
     };
     if (slug) {

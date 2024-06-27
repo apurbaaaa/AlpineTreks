@@ -33,7 +33,6 @@ export default function Page(){
 
             } catch (error) {
                 setError(error);
-                console.error("Error fetching package data:", error);
             } finally {
                 setLoading(false);
             }
