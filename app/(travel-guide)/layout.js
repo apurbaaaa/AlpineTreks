@@ -1,18 +1,12 @@
-"use client"
-
-import { useEffect, useState } from "react";
-import axios from "axios";
+// app/travel-guide-layout/page.jsx
+import React from 'react';
+import axios from 'axios';
 import Loading from "@/components/homes/others/Loading";
 import FAQ from "@/components/layout/components/FAQ";
 import NewsBlog from "@/components/homes/articles/NewsBlog";
-
 import Wrapper from "@/components/layout/Wrapper";
 import Head from "next/head";
 
-// Importing CSS globally
-import "../../public/css/style.css";
-
-// Font loading setup (consider moving to globals.css or _app.js)
 const dmsans = `
   @font-face {
     font-family: 'DM Sans';
@@ -23,36 +17,25 @@ const dmsans = `
   }
 `;
 
-export default function TravelGuideLayout({ children }) {
-  const [dataSettings, setDataSettings] = useState(null);
-  const [dataHome, setDataHome] = useState(null);
-  const [loading, setLoading] = useState(true);
-  const [favicon, setFavicon] = useState('');
-  const [error, setError] = useState(null);
-
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const responseSettings = await axios.get(`${process.env.NEXT_PUBLIC_API_BASE_URL}/settings`);
-        setDataSettings(responseSettings.data);
-        setFavicon(responseSettings.data?.site_favicon);
-
-        const responseHome = await axios.get(`${process.env.NEXT_PUBLIC_API_BASE_URL}/home`);
-        setDataHome(responseHome.data);
-      } catch (error) {
-        setError(error);
-        console.error(error);
-      } finally {
-        setLoading(false);
-      }
+export async function getData() {
+  try {
+    const responseSettings = await axios.get(`${process.env.NEXT_PUBLIC_API_BASE_URL}/settings`);
+    const responseHome = await axios.get(`${process.env.NEXT_PUBLIC_API_BASE_URL}/home`);
+    return {
+      dataSettings: responseSettings.data,
+      dataHome: responseHome.data,
+      favicon: responseSettings.data?.site_favicon,
     };
-
-    fetchData();
-  }, []);
-
-  if (loading) {
-    return <Loading />;
+  } catch (error) {
+    console.error('Error fetching data:', error);
+    return { error };
   }
+}
+
+export default async function TravelGuideLayout({ children }) {
+  const { dataSettings, dataHome, favicon, error } = await getData();
+
+  if (error) return <div>Error loading data. Please try again later.</div>;
 
   return (
     <>

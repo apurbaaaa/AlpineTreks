@@ -1,6 +1,6 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import { useParams } from "next/navigation";
+import { useParams, useRouter } from "next/navigation";
 import axios from "axios";
 import DOMPurify from "dompurify";
 import NextBreadcrumb from "@/components/common/BreadCrumbs";
@@ -20,13 +20,19 @@ export default function Page() {
     const [seoDesc, setSeoDesc] = useState("");
     const [data, setData] = useState(null);
 
+    const router = useRouter()
+
     useEffect(() => {   
         const fetchData = async () => {
             try {
                 const slug = slugParam.slug.toString();
+                console.log(slug)
                 const response = await axios.get(`${process.env.NEXT_PUBLIC_API_BASE_URL}/${slug}`);
-           
-
+                console.log(response?.data)
+                if(response?.data.length == 0){
+                    router.push('/404')
+                }
+                
                 setTitle(response?.data?.title);
                 setSlug(response?.data.slug);
 
