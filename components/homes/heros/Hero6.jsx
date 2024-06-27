@@ -1,17 +1,12 @@
 "use client";
 import { useEffect, useState, useRef } from "react";
-import { useRouter } from "next/navigation";
+import Link from "next/link";
 import Image from "next/image";
 import Calender from "@/components/common/dropdownSearch/Calender";
 import Location from "@/components/common/dropdownSearch/Location";
 import TourType from "@/components/common/dropdownSearch/TourType";
 
-
-
-
 export default function Banner({ data }) {
-  const router = useRouter();
-
   const [currentActiveDD, setCurrentActiveDD] = useState("");
   const [location, setLocation] = useState("");
   const [calender, setCalender] = useState("");
@@ -133,12 +128,11 @@ export default function Banner({ data }) {
                     </div>
 
                     <div className="searchForm__button">
-                      <button
-                        onClick={() => router.push("/tour-list-8")}
-                        className="button -dark-1 size-60 bg-accent-1 rounded-200 text-white"
-                      >
-                        <i className="icon-search text-16"></i>
-                      </button>
+                      <Link href="/tour-list-8" legacyBehavior>
+                        <a className="button -dark-1 size-60 bg-accent-1 rounded-200 text-white">
+                          <i className="icon-search text-16"></i>
+                        </a>
+                      </Link>
                     </div>
                   </div>
                 </div>
