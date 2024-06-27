@@ -31,6 +31,7 @@
       <button
         onClick={() => scrollTop()}
         className={`toTopButton js-top-button ${notHidden ? "" : "is-hidden"} `}
+        title="Scroll to Top"
       >
         <svg
           width="22"

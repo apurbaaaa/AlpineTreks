@@ -126,11 +126,11 @@ export default function BestSellers({title, desc, posts}) {
 
           <div className="navAbsolute">
             <button className="navAbsolute__button bg-white js-slider1-prev">
-              <i className="icon-arrow-left text-14"></i>
+              <i className="icon-arrow-left text-14" title="left"></i>
             </button>
 
             <button className="navAbsolute__button bg-white js-slider1-next">
-              <i className="icon-arrow-right text-14"></i>
+              <i className="icon-arrow-right text-14" title="right"></i>
             </button>
           </div>
         </div>

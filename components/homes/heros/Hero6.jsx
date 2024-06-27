@@ -97,6 +97,7 @@ export default function Banner({ data }) {
                             <h5>When</h5>
                             <div>
                               <span className="js-first-date">
+                                <label htmlFor="calendar"></label>
                                 <Calender active={currentActiveDD === "calender"} />
                               </span>
                               <span className="js-last-date"></span>
@@ -130,7 +131,7 @@ export default function Banner({ data }) {
                     <div className="searchForm__button">
                       <Link href="/tour-list-8" legacyBehavior>
                         <a className="button -dark-1 size-60 bg-accent-1 rounded-200 text-white">
-                          <i className="icon-search text-16"></i>
+                          <i className="icon-search text-16" title="Search"></i>
                         </a>
                       </Link>
                     </div>

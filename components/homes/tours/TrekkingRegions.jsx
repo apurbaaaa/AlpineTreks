@@ -80,10 +80,10 @@ export default function TrekkingRegions({data}) {
 
                     <div className="navAbsolute">
                         <button className="navAbsolute__button bg-white js-slider1-prev-trekking" aria-label="Previous slide">
-                            <i className="icon-arrow-left"></i>
+                            <i className="icon-arrow-left" title="left"></i>
                         </button>
                         <button className="navAbsolute__button bg-white js-slider1-next-trekking" aria-label="Next slide">
-                            <i className="icon-arrow-right"></i>
+                            <i className="icon-arrow-right" title="right"></i>
                         </button>
                     </div>
                 </div>

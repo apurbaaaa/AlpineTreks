@@ -91,10 +91,10 @@ export default function TopTreks({data}) {
           </Swiper>
           <div className="navAbsolute">
             <button className="navAbsolute__button bg-white js-slider2-prev-treks">
-              <i className="icon-arrow-left text-14"></i>
+              <i className="icon-arrow-left text-14" title="left"></i>
             </button>
             <button className="navAbsolute__button bg-white js-slider2-next-treks">
-              <i className="icon-arrow-right text-14"></i>
+              <i className="icon-arrow-right text-14" title="right"></i>
             </button>
           </div>
         </div>

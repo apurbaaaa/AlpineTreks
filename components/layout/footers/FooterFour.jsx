@@ -29,10 +29,10 @@ export default function FooterFour({data}) {
                 </div>  
 
                 <div className="footerSocials__icons text-white" id="footer_svg">
-                  <Link href="www.facebook.com"><Image  src="/img/facebook.svg" width = {30} height = {25} alt=""/> </Link>
-                  <Link href="www.instagram.com"><Image src="/img/instagram.svg" width = {30} height = {25} alt=""/> </Link>
-                  <Link href="www.linkedin.com"><Image src="/img/linkedin.svg" width = {30} height = {25} alt=""/> </Link>
-                  <Link href="www.twitter.com"><Image src="/img/x-twitter.svg" width = {30} height = {25} alt=""/> </Link>
+                  <Link href="www.facebook.com"><Image  src="/img/facebook.svg" width = {30} height = {25} alt="facebook"/> </Link>
+                  <Link href="www.instagram.com"><Image src="/img/instagram.svg" width = {30} height = {25} alt="instagram"/> </Link>
+                  <Link href="www.linkedin.com"><Image src="/img/linkedin.svg" width = {30} height = {25} alt="linkedin"/> </Link>
+                  <Link href="www.twitter.com"><Image src="/img/x-twitter.svg" width = {30} height = {25} alt="twitter"/> </Link>
                 </div>
               </div>
             </div>

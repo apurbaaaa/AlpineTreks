@@ -7,7 +7,7 @@ export default function robots(){
             {
                 userAgent: '*',
                 allow: "/",
-                disallow: ["/404", "/booking"],
+                disallow: ["/404"],
             }
         ], 
         sitemap: `${process.env.NEXT_PUBLIC_API_BASE_URL}/sitemap.xml`
