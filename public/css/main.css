@@ -5226,11 +5226,11 @@ a {
 }
 
 .featureCard.-type-5.-hover-accent-1 {
-  background-color: white;
+  background-color: #FAF9FD;
 }
 
 .featureCard.-type-5.-hover-accent-1 .featureCard__icon {
-  background-color: #FEF7F4;
+  background-color: white;
 }
 
 .featureCard.-type-5.-hover-accent-1:hover {
