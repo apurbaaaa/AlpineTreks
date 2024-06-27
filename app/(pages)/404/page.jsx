@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 
 export const metadata = {
   title: "Not found",
@@ -38,11 +39,13 @@ export default function NotFound() {
                     The page you're looking for isn't available. Try to search
                     again or use the go to.
                   </p>
-
-                  <button className="button -md -dark-1 bg-accent-1 text-white mt-25">
-                    Go back to homepage
-                    <i className="icon-arrow-top-right ml-10"></i>
-                  </button>
+                  <Link href = '/'>
+                    <button className="button -md -dark-1 bg-accent-1 text-white mt-25">
+                      Go back to homepage
+                      <i className="icon-arrow-top-right ml-10"></i>
+                    </button>
+                  </Link>
+                  
                 </div>
               </div>
             </div>
