@@ -7,13 +7,13 @@ import Wrapper from "@/components/layout/Wrapper";
 import Header5 from "@/components/layout/header/Header5";
 import FooterFour from "@/components/layout/footers/FooterFour";
 import "../public/css/style.css";
-import { DM_Sans } from "next/font/google";
+import { Roboto } from "next/font/google";
 import axios from "axios";
 import { Suspense } from "react";
 import Loading from "@/components/homes/others/Loading";
 
 
-const dmsans = DM_Sans({
+const dmsans = Roboto({
   weight: ["400", "500", "700"],
   style: ["normal", "italic"],
   subsets: ["latin"],
@@ -33,9 +33,8 @@ export const metadata = {
 
 }
 
-// RootLayout Component
+
 export default async function RootLayout({ children }) {
-  // Fetch data server-side
   let dataSettings = null;
   let favicon = "";
   let error = null;

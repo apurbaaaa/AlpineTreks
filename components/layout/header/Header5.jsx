@@ -49,8 +49,8 @@
             <div className="header__logo">
               <a href="/" className="header__logo">
                 <Image
-                  width="167"
-                  height="32"
+                  width="231"
+                  height="64"
                   src="https://mountaintrekkingnepal.com/storage/Xk9oUgIpS0YxZBwi7nfodx7zHNPumbqdNahS1603.svg"
                   alt="logo icon"
                   priority
