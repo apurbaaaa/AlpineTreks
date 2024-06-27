@@ -5,8 +5,7 @@ import axios from "axios";
 import Loading from "@/components/homes/others/Loading";
 import FAQ from "@/components/layout/components/FAQ";
 import NewsBlog from "@/components/homes/articles/NewsBlog";
-import Header4 from "@/components/layout/header/Header4";
-import FooterFour from "@/components/layout/footers/FooterFour";
+
 import Wrapper from "@/components/layout/Wrapper";
 import Head from "next/head";
 

@@ -38,7 +38,7 @@ export default async function page(){
                 <div className="row y-gap-10">
                     {response.posts.map((elm, i) => (
                         <div key={i} className="col-lg-4 col-md-6 d-flex">
-                        <Link href={`/${elm.slug}`} className="blogCard -type-1 d-block w-100">
+                        <Link href={`/blog/${elm.slug}`} className="blogCard -type-1 d-block w-100">
                             <div className="blogCard__image">
                             <Image src={elm.image} alt={elm.title} className="Image-ratio rounded-12" width={600} height={450}/>
                             </div>

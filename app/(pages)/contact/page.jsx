@@ -6,19 +6,19 @@ import React from "react";
 
 export async function generateMetadata() {
   return {
-    title: "Contact", 
+    title: "Contact-Us", 
     description: "Decription data from api"
   }
 }
 
 export default async function page() {
-  const resposne = await fetchData(`${process.env.NEXT_PUBLIC_API_BASE_URL}/settings`);
+  const response = await fetchData(`${process.env.NEXT_PUBLIC_API_BASE_URL}/settings`);
 
   return (
     <>
       <main>
         <NavInfo />
-        <SideInfo resposne = {resposne}/>
+        <SideInfo response = {response}/>
       </main>
     </>
   );

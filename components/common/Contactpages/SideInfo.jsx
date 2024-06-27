@@ -5,6 +5,7 @@ import axios from 'axios';
 import Loading from '@/components/homes/others/Loading';
 
 const SideInfo = ({response}) => {
+  console.log(response)
   const [email, setEmail] = useState('');
   const [address, setAddress] = useState('');
   const [phone, setPhone] = useState('');
@@ -17,11 +18,12 @@ const SideInfo = ({response}) => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        setEmail(response?.data?.email_address);
-        setAddress(response?.data?.address);
-        setPhone(response?.data?.phone);
-        setMobile(response?.data?.mobile);
-        setMapURL(response?.data?.map_url);
+        setEmail(response?.email_address);
+        setAddress(response?.address);
+        setPhone(response?.phone);
+        setMobile(response?.mobile);
+        setMapURL(response?.map_url);
+        
       } catch (error) {
         setError(error.message);
         console.error('Error fetching data: sideInfo', error);
@@ -31,6 +33,7 @@ const SideInfo = ({response}) => {
     };
     fetchData();
   }, []);
+
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
