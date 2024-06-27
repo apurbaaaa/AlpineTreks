@@ -5206,7 +5206,7 @@ a {
   background-color: #FAF9FD;
   border-radius: 12px;
   text-align: center;
-  padding: 30px;
+  padding: 10px;
   z-index: 0;
   transition: .2s;
 }
@@ -10189,11 +10189,11 @@ a {
 }
 
 .layout-pt-xl {
-  padding-top: 120px;
+  padding-top: 90px;
 }
 
 .layout-pb-xl {
-  padding-bottom: 120px;
+  padding-bottom: 90px;
 }
 
 .layout-pt-xxl {

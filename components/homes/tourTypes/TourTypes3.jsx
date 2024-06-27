@@ -21,7 +21,7 @@ export default function ActivitiesOffered({data}) {
               <div key={index} className="col-xl-2 col-md-4 col-6">
                 <Link href={`/activity/${activity.slug}`} className="featureCard -type-5 -hover-accent-1">
                   <div className="featureCard__icon">
-                    <Image width="40" height="41" src={activity.image} alt="image" />
+                    <Image width="60" height="60" src={activity.image} alt="image" />
                   </div>
                   <h4 className="text-18 fw-500 mt-20">{activity.title}</h4>
                   <div className="lh-13 mt-5">{activity.count}+ activities</div>
