@@ -14,7 +14,7 @@ import axios from "axios";
 const dmsans = Roboto({
   weight: ["400", "500", "700"],
   style: ["normal", "italic"],
-  subsets: ["latin"],
+  subsets: ["latin"], 
   display: "swap",
 });
 
