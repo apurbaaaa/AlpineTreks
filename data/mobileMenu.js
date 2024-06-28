@@ -31,7 +31,7 @@ export const menuData = [
   },
   {
     id: 3,
-    label: "Dashboard",
+    label: "Tibet",
     submenu: [
       { id: 31, label: "Dashboard", href: "/db-main" },
       { id: 32, label: "Booking", href: "/db-booking" },
@@ -44,7 +44,7 @@ export const menuData = [
   },
   {
     id: 4,
-    label: "Blog",
+    label: "Bhutan",
     submenu: [
       { id: 41, label: "Blog list 1", href: "/blog-list-1" },
       { id: 42, label: "Blog list 2", href: "/blog-list-2" },
@@ -54,7 +54,7 @@ export const menuData = [
   },
   {
     id: 5,
-    label: "Pages",
+    label: "Spiritual Tours",
     submenu: [
       { id: 51, label: "Destinations", href: "/destinations" },
       { id: 52, label: "About", href: "/about" },

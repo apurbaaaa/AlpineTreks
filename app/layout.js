@@ -9,7 +9,6 @@ import FooterFour from "@/components/layout/footers/FooterFour";
 import "../public/css/style.css";
 import { Roboto } from "next/font/google";
 import axios from "axios";
-import { Suspense } from "react";
 
 
 const dmsans = Roboto({

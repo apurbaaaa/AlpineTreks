@@ -4,20 +4,23 @@ import { menuData } from "@/data/mobileMenu";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import React, { useState } from "react";
+
 const socialMediaLinks = [
   { id: 1, class: "icon-facebook", href: "#" },
   { id: 2, class: "icon-twitter", href: "#" },
   { id: 3, class: "icon-instagram", href: "#" },
   { id: 4, class: "icon-linkedin", href: "#" },
 ];
+
 export default function MobileMenu({ mobileMenuOpen, setMobileMenuOpen }) {
   const [activeSub, setActiveSub] = useState("");
   const pathname = usePathname();
+
   return (
     <div
       data-aos="fade"
       data-aos-delay=""
-      className={`menu js-menu ${mobileMenuOpen ? "-is-active" : ""} `}
+      className={`menu js-menu ${mobileMenuOpen ? "-is-active" : ""}`}
       style={
         mobileMenuOpen
           ? { opacity: "1", visibility: "visible" }
@@ -33,7 +36,7 @@ export default function MobileMenu({ mobileMenuOpen, setMobileMenuOpen }) {
         <div className="menu__header">
           <h4>Main Menu</h4>
 
-          <button
+          <button title="mobile"
             onClick={() => setMobileMenuOpen(false)}
             className="js-menu-button"
           >
@@ -50,14 +53,15 @@ export default function MobileMenu({ mobileMenuOpen, setMobileMenuOpen }) {
               <li key={i} className="menuNav__item -has-submenu js-has-submenu">
                 <a
                   onClick={() =>
-                    setActiveSub((pre) => (pre == elm.label ? "" : elm.label))
+                    setActiveSub((pre) => (pre === elm.label ? "" : elm.label))
                   }
                 >
                   <span
                     className={
                       elm.submenu.some(
-                        (elm) =>
-                          elm.href.split("/")[1] == pathname?.split("/")[1],
+                        (subElm) =>
+                          subElm.href.split("/")[1] ===
+                          pathname?.split("/")[1]
                       )
                         ? "activeMenu"
                         : ""
@@ -67,7 +71,7 @@ export default function MobileMenu({ mobileMenuOpen, setMobileMenuOpen }) {
                   </span>
                   <i
                     style={
-                      activeSub == elm.label
+                      activeSub === elm.label
                         ? { transform: "rotate(90deg)", transition: "0.3s" }
                         : { transform: "rotate(0deg)", transition: "0.3s" }
                     }
@@ -77,29 +81,34 @@ export default function MobileMenu({ mobileMenuOpen, setMobileMenuOpen }) {
 
                 <ul
                   style={
-                    activeSub == elm.label
+                    activeSub === elm.label
                       ? { maxHeight: "1200px", transition: "0.6s" }
                       : { maxHeight: "0px", transition: "0.6s" }
                   }
                 >
-                  {elm.submenu.map((elm2, i2) => (
-                    <li key={i2} className="">
+                  {elm.submenu.map((subElm, subI) => (
+                    <li key={subI}>
                       <Link
                         className={
-                          pathname.split("/")[1] == elm2.href?.split("/")[1]
+                          pathname.split("/")[1] ===
+                          subElm.href?.split("/")[1]
                             ? "activeMenu"
                             : ""
                         }
                         style={{ paddingLeft: "15px", fontSize: "17px" }}
-                        href={elm2.href}
+                        href={subElm.href}
                       >
-                        {elm2.label}
+                        {subElm.label}
                       </Link>
                     </li>
                   ))}
                 </ul>
               </li>
             ))}
+
+            <li className="menuNav__item">
+              <Link href="/blog">Blog</Link>
+            </li>
 
             <li className="menuNav__item">
               <Link href="/contact">Contact</Link>
