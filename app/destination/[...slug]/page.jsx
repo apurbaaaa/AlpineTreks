@@ -80,41 +80,7 @@ export default function Slug() {
         />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
-      </Head>
-      <div className="menu js-menu">  
-        <div className="menu__overlay js-menu-button"></div>
-        <div className="menu__container">
-          <div className="menu__footer">
-            <i className="icon-headphone text-50"></i>
-            <div className="text-20 lh-12 fw-500 mt-20">
-              <div>Speak to our expert at</div>
-              <div className="text-accent-1">1-800-453-6744</div>
-            </div>
-            <div className="d-flex items-center x-gap-10 pt-30">
-              <div>
-                <Link href="#">
-                  <i className="icon-facebook"></i>
-                </Link>
-              </div>
-              <div>
-                <Link href="#">
-                  <i className="icon-twitter"></i>
-                </Link>
-              </div>
-              <div>
-                <Link href="#">
-                  <i className="icon-instagram"></i>
-                </Link>
-              </div>
-              <div>
-                <Link href="#">
-                  <i className="icon-linkedin"></i>
-                </Link>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>    
+      </Head>   
 
       <section data-aos="fade-up" className="pageHeader -type-3">
         <div className="container">

@@ -1,10 +1,9 @@
 "use client";
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
-import Head from "next/head";
 import { useParams } from "next/navigation";
-import axios from "axios";
-import Image from "next/image";
+import axios from "axios"; 
+import Image from "next/image"; 
 import DOMPurify from "dompurify";
 import NextBreadcrumb from "@/components/common/BreadCrumbs";
 
@@ -14,8 +13,8 @@ export default function Slug() {
   const [error, setError] = useState(null);
   const [title, setTitle] = useState("");
   const [desc, setDesc] = useState("");
-  const [data, setData] = useState("");
   const [isExpanded, setIsExpanded] = useState(false);
+  const [paragraphs, setParagraphs] = useState([]);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -23,50 +22,118 @@ export default function Slug() {
         const response = await axios.get(
           `${process.env.NEXT_PUBLIC_API_BASE_URL}/region/${slug}`
         );
+
         setPosts(response?.data?.packages);
-        setTitle(response?.data?.title);
-        const unpurifiedDesc = response?.data?.description;
-        const sanitizedDesc = DOMPurify.sanitize(unpurifiedDesc);
-        setDesc(sanitizedDesc);
-        setData(response?.data);
+        setTitle(response?.data?.title); 
+        const unpurified_desc = response?.data?.description;
+        let updatedHtmlString = DOMPurify.sanitize(unpurified_desc);
+        setDesc(updatedHtmlString);
       } catch (error) {
         setError(error);
+        console.error(error);
       }
     };
-
     if (slug) {
       fetchData();
     }
-  }, [slug]);
+  }, [slug]); 
 
-  if (error) return <div>Error loading data</div>;
+  useEffect(() => {
+    // Function to split the HTML desc into paragraphs
+    const splitIntoParagraphs = (htmlString) => {
+      const div = document.createElement("div");
+      div.innerHTML = htmlString.trim();
+      return Array.from(div.querySelectorAll("p")).map((p) => p.outerHTML);
+    };
+
+    if (desc) {
+      const paragraphsArray = splitIntoParagraphs(desc);
+      setParagraphs(paragraphsArray);
+    }
+  }, [desc]);
 
   const ParagraphLimit = 2;
 
-  const splitIntoParagraphs = (htmlString) => {
-    const div = document.createElement("div");
-    div.innerHTML = htmlString.trim();
-    return Array.from(div.querySelectorAll("p")).map((p) => p.outerHTML);
+  const slugType = (slug) => {
+    return slug === "nepal" ? "activity" : "package";
   };
-
-  const truncateParagraphs = (paragraphs, limit) => {
-    return paragraphs.slice(0, limit).join("");
-  };
-
-  const paragraphs = splitIntoParagraphs(desc);
 
   const toggleExpand = () => {
     setIsExpanded(!isExpanded);
   };
 
+  // Function to truncate paragraphs after a certain limit
+  const truncateParagraphs = (paragraphs, limit) => {
+    return paragraphs.slice(0, limit).join("");
+  };
+
+  if (error) return <div>Error loading data</div>; 
+
   return (
     <div>
-      <Head>
-        <title>{data.seo_title}</title>
-        <meta name="description" content={data.seo_description} />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
+      <div className="menu js-menu">
+        <div className="menu__overlay js-menu-button"></div>
+        <div className="menu__container">
+          <div className="menu__header">
+            <h4>Main Menu</h4>
+            <button className="js-menu-button">
+              <i className="icon-cross text-10"></i>
+            </button>
+          </div>
+          <div className="menu__content">
+            <ul className="menuNav js-navList">
+              <li className="menuNav__item">
+                <Link href="/"> 
+                  Home
+                </Link>
+              </li>
+              <li className="menuNav__item -has-submenu js-has-submenu">
+                <Link href="/nepal">
+                  Nepal
+                  <i className="icon-chevron-right"></i>
+                </Link>
+                <ul className="submenu">
+                  <li className="submenu__item js-nav-list-back">
+                    <Link href="/">Back</Link> 
+                  </li>
+                  <li className="submenu__item">
+                    <Link href="/tour-list-1.html">Nepal Trekking</Link>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+          <div className="menu__footer">
+            <i className="icon-headphone text-50"></i>
+            <div className="text-20 lh-12 fw-500 mt-20">
+              <div>Speak to our expert at</div>
+              <div className="text-accent-1">1-800-453-6744</div>
+            </div>
+            <div className="d-flex items-center x-gap-10 pt-30">
+              <div>
+                <Link href="#">
+                  <i className="icon-facebook"></i>
+                </Link>
+              </div>
+              <div>
+                <Link href="#">
+                  <i className="icon-twitter"></i>
+                </Link>
+              </div>
+              <div>
+                <Link href="#">
+                  <i className="icon-instagram"></i>
+                </Link>
+              </div>
+              <div>
+                <Link href="#">
+                  <i className="icon-linkedin"></i>
+                </Link>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>    
 
       <section data-aos="fade-up" className="pageHeader -type-3">
         <div className="container">
