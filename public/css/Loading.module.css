@@ -1,0 +1,45 @@
+.loadingContainer {
+  padding: 20px;
+  background-color: #f0f0f0;
+}
+
+.placeholderHeader {
+  width: 100%;
+  height: 50px;
+  background-color: #ddd;
+  margin-bottom: 20px;
+  border-radius: 8px;
+}
+
+.placeholderSection {
+  display: flex;
+  margin-bottom: 20px;
+  background-color: #fff;
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+}
+
+.placeholderImage {
+  width: 150px;
+  height: 150px;
+  background-color: #ddd;
+  margin-right: 20px;
+  border-radius: 8px;
+}
+
+.placeholderTextBlock {
+  flex: 1;
+}
+
+.placeholderText {
+  width: 100%;
+  height: 20px;
+  background-color: #eee;
+  margin-bottom: 10px;
+  border-radius: 4px;
+}
+
+.placeholderText:last-child {
+  width: 60%;
+}

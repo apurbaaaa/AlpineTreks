@@ -5361,7 +5361,7 @@ a {
 
 @media (max-width: 767px) {
   .featureCard.-type-8 .featureCard__content {
-    height: 500px;
+    /* height: 500px; */
   } 
 }
 /* Add this CSS to your stylesheet */

@@ -864,3 +864,9 @@ z-index: 1;
   border: 1px solid gainsboro;
 }
 
+@media (max-width: 767px) {
+  .navAbsolute {
+      left: -10px;
+      right: -10px;
+  }
+}
