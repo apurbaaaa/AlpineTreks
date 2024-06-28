@@ -14026,3 +14026,44 @@ button.gm-ui-hover-effect::after {
   transition: transform 0.6s ease-in-out;
   overflow: hidden;
 }
+
+@media (min-width: 1400px) {
+  .container, .container-lg, .container-md, .container-sm, .container-xl, .container-xxl {
+      max-width: 1320px;
+  }
+}
+
+@media (max-width: 575px) {
+  .mobile-css-slider {
+      flex-wrap: nowrap;
+      overflow-x: scroll;
+      scroll-snap-type: x mandatory;
+  }
+}
+
+@media (max-width: 575px) {
+  .mobile-css-slider.-w-280 > * {
+      max-width: 280px;
+  }
+}
+
+@media (max-width: 575px) {
+  .mobile-css-slider > * {
+      scroll-snap-align: start;
+  }
+}
+
+@media (max-width: 767px) {
+  .md\:x-gap-20 > * {
+      padding-left: 10px;
+      padding-right: 10px;  
+  }
+}
+
+@media (max-width: 767px) {
+  .searchForm.-type-1 .searchForm__button a {
+      height: 60px;
+      width: 100%;
+      border-radius: 0 0 12px 12px !important;
+  }
+}
