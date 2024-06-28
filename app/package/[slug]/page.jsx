@@ -1,5 +1,6 @@
 "use client";
 import React, { useEffect, useState } from 'react';
+import Head from 'next/head';
 import { useParams } from "next/navigation";
 import axios from 'axios';
 import Loading from '@/components/homes/others/Loading';
@@ -46,7 +47,17 @@ export default function Page(){
 
 
     return (
+        
         <div>
+            <Head>
+      <title>{data.seo_title}</title>
+        <meta
+          name="description"
+          content= {data.seo_description}
+        />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
             <BottomNav />
             <div className='container is-in-view' data-anim='fade'>
                 <div className='row justify-between py-30 mt-80'>

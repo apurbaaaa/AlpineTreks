@@ -8,7 +8,7 @@ import DOMPurify from "dompurify";
 import Head from "next/head";
 import NextBreadcrumb from "@/components/common/BreadCrumbs";
 
-export default function Slug({params}) {
+export default function Slug() {
   const { slug } = useParams();
   const [posts, setPosts] = useState([]);
   const [error, setError] = useState(null);
@@ -31,6 +31,8 @@ export default function Slug({params}) {
         setTitle(response?.data?.title); 
         const unpurified_desc = response?.data?.description;
         let updatedHtmlString = DOMPurify.sanitize(unpurified_desc);
+        setSeoTitle(response?.data?.seo_titile);
+        setSeoDesc(response?.data?.seo_description);
         setDesc(updatedHtmlString)
       } catch (error) {
         setError(error);
@@ -41,19 +43,6 @@ export default function Slug({params}) {
     }
   }, [slug]); 
 
-  useEffect(()=>{
-    const fetchData = async () => {
-      try{
-        const response = await axios.get(`${process.env.NEXT_PUBLIC_API_BASE_URL}/destination/${slug}`);
-        setSeoTitle(response?.data?.seo_titile);
-        setSeoDesc(response?.data?.seo_description);
-      }
-      catch(error){
-        setError(error)
-        console.error(error)
-      }
-    }; fetchData();
-  },[])
 
   const slugType = (slug) => {
     if (slug == 'nepal-trekking'){

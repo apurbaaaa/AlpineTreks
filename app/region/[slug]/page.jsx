@@ -1,6 +1,7 @@
 "use client";
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
+import Head from "next/head";
 import { useParams } from "next/navigation";
 import axios from "axios"; 
 import Image from "next/image"; 
@@ -8,12 +9,13 @@ import DOMPurify from "dompurify";
 import NextBreadcrumb from "@/components/common/BreadCrumbs";
 
 
-export default function Slug({params}) {
+export default function Slug() {
   const { slug } = useParams();
   const [posts, setPosts] = useState([]);
   const [error, setError] = useState(null);
   const [title, setTitle] = useState("");
   const [desc, setDesc] = useState("");
+  const [data, setData] = useState("")
 
   useEffect(() => {
     const fetchData = async () => {
@@ -27,6 +29,7 @@ export default function Slug({params}) {
         const unpurified_desc = response?.data?.description;
         let updatedHtmlString = DOMPurify.sanitize(unpurified_desc);
         setDesc(updatedHtmlString)
+        setData(response?.data)
       } catch (error) {
         setError(error);
         console.error(error);
@@ -40,7 +43,17 @@ export default function Slug({params}) {
   if (error) return <div>Error loading data</div>; 
 
   return (
+    
     <div>
+       <Head>
+      <title>{data.seo_title}</title>
+        <meta
+          name="description"
+          content= {data.seo_description}
+        />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
       <div className="menu js-menu">
         <div className="menu__overlay js-menu-button"></div>
         <div className="menu__container">
