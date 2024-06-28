@@ -4,7 +4,13 @@ import Image from "next/image";
 import NextBreadcrumb from "@/components/common/BreadCrumbs";
 import fetchData from "@/utils/fetchData";
 
-
+export async function generateMetadata() {
+  const dataHome = await fetchData(`${process.env.NEXT_PUBLIC_API_BASE_URL}/region/${slug}`);
+  return {
+    title: dataHome.seo_title, 
+    description: dataHome.seo_description
+  }
+}
 export default async function Slug({params}) {
   const { slug } = params
   const response = await fetchData(`${process.env.NEXT_PUBLIC_API_BASE_URL}/region/${slug}`)
