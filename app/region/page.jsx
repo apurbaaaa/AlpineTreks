@@ -16,6 +16,8 @@ const Page = () => {
     const [error, setError] = useState(null); 
     const [seoTitle, setSeoTitle] = useState("");
     const [seoDesc, setSeoDesc] = useState("");
+    const [isExpanded, setIsExpanded] = useState(false);
+    const [paragraphs, setParagraphs] = useState([]);
 
     useEffect(() => {
         const fetchData = async () => {
@@ -27,7 +29,7 @@ const Page = () => {
                 setTitle(response?.data?.title);
                 setRegion(response?.data?.regions);
 
-                setSeoTitle(response?.data?.seo_titile);
+                setSeoTitle(response?.data?.seo_titile); 
                 setSeoDesc(response?.data?.seo_description);
 
             } catch (error) {
@@ -37,6 +39,36 @@ const Page = () => {
         };
         fetchData();
     }, []); 
+
+    useEffect(() => {
+        // Function to split the HTML content into paragraphs
+        const splitIntoParagraphs = (htmlString) => {
+          const div = document.createElement("div");
+          div.innerHTML = htmlString.trim();
+          return Array.from(div.querySelectorAll("p")).map((p) => p.outerHTML);
+        };
+    
+        if (content) {
+          const paragraphsArray = splitIntoParagraphs(content);
+          setParagraphs(paragraphsArray);
+        }
+      }, [content]);
+    
+      const ParagraphLimit = 2;
+    
+      const slugType = (slug) => {
+        return slug === "nepal" ? "activity" : "package";
+      };
+    
+      const toggleExpand = () => {
+        setIsExpanded(!isExpanded);
+      };
+    
+      // Function to truncate paragraphs after a certain limit
+      const truncateParagraphs = (paragraphs, limit) => {
+        return paragraphs.slice(0, limit).join("");
+      };
+    
       
     if (error) return <div>Error: {error.message}</div>;
 
@@ -133,7 +165,22 @@ const Page = () => {
                     <div className="row pt-30">
                         <div className="col-auto text-collapse">
                             <h1 className="pageHeader__title">{title}</h1>
-                            <span dangerouslySetInnerHTML={{ __html: content }}></span>
+                            <div>
+                                {!isExpanded ? (
+                                <div
+                                    dangerouslySetInnerHTML={{
+                                    __html: truncateParagraphs(paragraphs, ParagraphLimit),
+                                    }}
+                                ></div>
+                                ) : (
+                                <div dangerouslySetInnerHTML={{ __html: content }}></div>
+                                )}
+                                {paragraphs.length > ParagraphLimit && (
+                                <Link href="#" onClick={toggleExpand}>
+                                    {isExpanded ? "Read Less" : "Read More"}
+                                </Link>
+                                )}
+                            </div>
                         </div>
                     </div>
                 </div> 
