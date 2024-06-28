@@ -17,9 +17,17 @@ import BottomNav from '@/components/package-components/BottomNav';
 import NextBreadcrumb from '@/components/common/BreadCrumbs';
 import fetchData from '@/utils/fetchData';
 
+export async function generateMetadata() {
+    const response = await fetchData(`${process.env.NEXT_PUBLIC_API_BASE_URL}/package/${slug}`);
+    return {
+      title: response.seo_title, 
+      description: response.seo_description
+    }
+}
+
 
 export default async function Page({ params }){
-    
+
     const { slug } = params
     const data = await fetchData(`${process.env.NEXT_PUBLIC_API_BASE_URL}/package/${slug}`);
 
