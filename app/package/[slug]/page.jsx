@@ -15,21 +15,35 @@ import BestSellers from '@/components/homes/tours/TourSlider3';
 import BookCard from '@/components/package-components/BookCard';
 import BottomNav from '@/components/package-components/BottomNav';
 import NextBreadcrumb from '@/components/common/BreadCrumbs';
-import fetchData from '@/utils/fetchData';
-
-export async function generateMetadata() {
-    const response = await fetchData(`${process.env.NEXT_PUBLIC_API_BASE_URL}/package/${slug}`);
-    return {
-      title: response.seo_title, 
-      description: response.seo_description
-    }
-}
 
 
-export default async function Page({ params }){
+export default function Page(){
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(null);
 
-    const { slug } = params
-    const data = await fetchData(`${process.env.NEXT_PUBLIC_API_BASE_URL}/package/${slug}`);
+    const [data, setData] = useState(null);
+
+    const { slug } = useParams();
+
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const { data: apiData } = await axios.get(`${process.env.NEXT_PUBLIC_API_BASE_URL}/package/${slug}`);
+                setData(apiData);
+
+            } catch (error) {
+                setError(error);
+                console.error("Error fetching package data:", error);
+            } finally {
+                setLoading(false);
+            }
+        };
+        fetchData();
+    }, [slug]);
+
+    if (loading) return <Loading />;
+    if (error) return <div className="error-message">Error loading data: {error.message}</div>;
+
 
     return (
         <div>

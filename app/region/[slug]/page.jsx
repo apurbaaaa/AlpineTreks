@@ -1,23 +1,43 @@
-import React from "react";
+"use client";
+import React, { useState, useEffect } from "react";
 import Link from "next/link";
+import { useParams } from "next/navigation";
+import axios from "axios"; 
 import Image from "next/image"; 
+import DOMPurify from "dompurify";
 import NextBreadcrumb from "@/components/common/BreadCrumbs";
-import fetchData from "@/utils/fetchData";
 
-export async function generateMetadata() {
-  const dataHome = await fetchData(`${process.env.NEXT_PUBLIC_API_BASE_URL}/region/${slug}`);
-  return {
-    title: dataHome.seo_title, 
-    description: dataHome.seo_description
-  }
-}
-export default async function Slug({params}) {
-  const { slug } = params
-  const response = await fetchData(`${process.env.NEXT_PUBLIC_API_BASE_URL}/region/${slug}`)
-  console.log(response)
-  const desc = response.description;
-  const title = response.title;
-  const posts = response.packages;
+
+export default function Slug({params}) {
+  const { slug } = useParams();
+  const [posts, setPosts] = useState([]);
+  const [error, setError] = useState(null);
+  const [title, setTitle] = useState("");
+  const [desc, setDesc] = useState("");
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get(
+          `${process.env.NEXT_PUBLIC_API_BASE_URL}/region/${slug}`
+        );
+
+        setPosts(response?.data?.packages);
+        setTitle(response?.data?.title); 
+        const unpurified_desc = response?.data?.description;
+        let updatedHtmlString = DOMPurify.sanitize(unpurified_desc);
+        setDesc(updatedHtmlString)
+      } catch (error) {
+        setError(error);
+        console.error(error);
+      }
+    };
+    if (slug) {
+      fetchData();
+    }
+  }, [slug]); 
+
+  if (error) return <div>Error loading data</div>; 
 
   return (
     <div>

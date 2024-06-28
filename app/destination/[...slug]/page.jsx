@@ -9,12 +9,14 @@ import Head from "next/head";
 import NextBreadcrumb from "@/components/common/BreadCrumbs";
 import Loading from "@/components/homes/others/Loading";
 
-export default function Slug({data, seoDesc, seoTitle}) {
+export default function Slug() {
   const { slug } = useParams();
   const [posts, setPosts] = useState([]);
   const [error, setError] = useState(null);
   const [title, setTitle] = useState("");
   const [desc, setDesc] = useState("");
+  const [seoTitle, setSeoTile] = useState("");
+  const [seoDesc, setSeoDesc] = useState("")
   const [loading, setLoading] = useState(true);
   const [isExpanded, setIsExpanded] = useState(false); // State to track full description visibility
 
@@ -30,8 +32,13 @@ export default function Slug({data, seoDesc, seoTitle}) {
         const unpurified_desc = response?.data?.description;
         let updatedHtmlString = DOMPurify.sanitize(unpurified_desc);
         setDesc(updatedHtmlString);
+
+        setSeoDesc(response?.data?.seo_description);
+        setSeoTile(response?.data?.seo_titile);
+
       } catch (error) {
         setError(error);
+        console.error(error);
       } finally {
         setLoading(false);
       }
