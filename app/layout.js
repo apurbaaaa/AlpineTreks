@@ -10,7 +10,6 @@ import "../public/css/style.css";
 import { Roboto } from "next/font/google";
 import axios from "axios";
 import { Suspense } from "react";
-import Loading from "@/components/homes/others/Loading";
 
 
 const dmsans = Roboto({
@@ -66,9 +65,8 @@ export default async function RootLayout({ children }) {
         <Wrapper>{children}</Wrapper>
         <ScrollToTop />
         <ScrollTopBehaviour />
-        <Suspense fallback={<div><Loading /></div>}>
           <FooterFour data={dataSettings} />
-        </Suspense>
+
       </body>
     </html>
   );

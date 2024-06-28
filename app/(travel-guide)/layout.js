@@ -1,7 +1,6 @@
 // app/travel-guide-layout/page.jsx
 import React from 'react';
 import axios from 'axios';
-import Loading from "@/components/homes/others/Loading";
 import FAQ from "@/components/layout/components/FAQ";
 import NewsBlog from "@/components/homes/articles/NewsBlog";
 import Wrapper from "@/components/layout/Wrapper";
@@ -27,7 +26,6 @@ export async function getData() {
       favicon: responseSettings.data?.site_favicon,
     };
   } catch (error) {
-    console.error('Error fetching data:', error);
     return { error };
   }
 }

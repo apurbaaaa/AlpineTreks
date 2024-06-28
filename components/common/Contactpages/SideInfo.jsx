@@ -2,17 +2,15 @@
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import axios from 'axios';
-import Loading from '@/components/homes/others/Loading';
+
 
 const SideInfo = ({response}) => {
-  console.log(response)
   const [email, setEmail] = useState('');
   const [address, setAddress] = useState('');
   const [phone, setPhone] = useState('');
   const [mobile, setMobile] = useState('');
   const [error, setError] = useState(null);
   const [mapURL, setMapURL] = useState('');
-  const [loading, setLoading] = useState(true);
   const [form, setForm] = useState({ name: '', phone: '', email: '', message: '' });
 
   useEffect(() => {
@@ -26,10 +24,7 @@ const SideInfo = ({response}) => {
         
       } catch (error) {
         setError(error.message);
-        console.error('Error fetching data: sideInfo', error);
-      } finally {
-        setLoading(false);
-      }
+      } 
     };
     fetchData();
   }, []);
@@ -51,9 +46,6 @@ const SideInfo = ({response}) => {
     }
   };
 
-  if (loading) {
-    return <div><Loading/></div>;
-  }
 
   if (error) {
     return <div>Error: {error}</div>;

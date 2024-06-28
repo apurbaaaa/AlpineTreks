@@ -5,7 +5,6 @@ import axios from "axios";
 import DOMPurify from "dompurify";
 import NextBreadcrumb from "@/components/common/BreadCrumbs";
 import TravelGuideTable from "@/components/TravelGuideComponents/TravelGuide";
-import Loading from "@/components/homes/others/Loading";
 import Head from "next/head";
 
 export default function Page() {
@@ -15,7 +14,6 @@ export default function Page() {
     const [content, setContent] = useState("");
     const [pages, setPages] = useState([]);
     const [error, setError] = useState(null);
-    const [loading, setLoading] = useState(true);
     const [seoTitle, setSeoTitle] = useState("");
     const [seoDesc, setSeoDesc] = useState("");
     const [data, setData] = useState(null);
@@ -44,8 +42,6 @@ export default function Page() {
                 setData(response?.data);
             } catch (error) {
                 setError(error);
-            } finally {
-                setLoading(false);
             }
         };
 
@@ -54,9 +50,7 @@ export default function Page() {
         }
     }, [slugParam]);
 
-    if (loading) {
-        return <Loading />;
-    }
+
 
     return (
         <>

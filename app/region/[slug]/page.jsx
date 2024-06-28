@@ -32,7 +32,6 @@ export default function Slug() {
         setData(response?.data)
       } catch (error) {
         setError(error);
-        console.error(error);
       }
     };
     if (slug) {

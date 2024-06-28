@@ -7,7 +7,6 @@ import Image from "next/image";
 import DOMPurify from "dompurify";
 import Head from "next/head";
 import NextBreadcrumb from "@/components/common/BreadCrumbs";
-import Loading from "@/components/homes/others/Loading";
 
 export default function Slug() {
   const { slug } = useParams();
@@ -17,7 +16,6 @@ export default function Slug() {
   const [desc, setDesc] = useState("");
   const [seoTitle, setSeoTile] = useState("");
   const [seoDesc, setSeoDesc] = useState("")
-  const [loading, setLoading] = useState(true);
   const [isExpanded, setIsExpanded] = useState(false); // State to track full description visibility
 
   useEffect(() => {
@@ -38,13 +36,10 @@ export default function Slug() {
 
       } catch (error) {
         setError(error);
-        console.error(error);
-      } finally {
-        setLoading(false);
       }
     };
     if (slug && slug.length > 0) {
-      console.log(slug[0]);
+
       fetchData();
     }
   }, [slug]);
@@ -57,8 +52,6 @@ export default function Slug() {
   const toggleExpand = () => {
     setIsExpanded(!isExpanded);
   };
-
-  if (loading) return <div><Loading /></div>;
   if (error) return <div>Error loading data</div>;
 
   // Function to split the HTML content into paragraphs
