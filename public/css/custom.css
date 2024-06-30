@@ -870,3 +870,39 @@ z-index: 1;
       right: -10px;
   }
 }
+
+
+.trip-detail .include ul li:before {
+    content: url('https://mountaintrekkingnepal.com/front/img/circle-check.svg');
+    font-family: "Font Awesome 6 Pro";
+    color: #005555;
+    font-size: 20px;
+    margin-right: 8px;
+    width: 18px;
+    top: 0;
+    filter: invert(27%) sepia(17%) saturate(3366%) hue-rotate(140deg) brightness(89%) contrast(102%);
+}
+
+.trip-detail ul li:before {
+  content: url('https://mountaintrekkingnepal.com/front/img/circle-check.svg');
+  font-family: "Font Awesome 6 Pro";
+  color: #005555;
+  font-size: 20px;
+  margin-right: 8px;
+  position: absolute;
+  left: 0;
+  top: -4px;
+  width: 12px;
+  filter: invert(27%) sepia(17%) saturate(3366%) hue-rotate(140deg) brightness(89%) contrast(102%);
+}
+
+.trip-detail .exclude ul li:before {
+  content: url("https://mountaintrekkingnepal.com/front/img/circle-xmark.svg");
+  font-family: "Font Awesome 6 Pro";
+  color: red;
+  font-size: 20px;
+  margin-right: 8px;
+  width: 18px;
+  top: 0;
+  filter: invert(27%) sepia(93%) saturate(6467%) hue-rotate(354deg) brightness(107%) contrast(127%);
+}
