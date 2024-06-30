@@ -62,6 +62,7 @@ export default function BestTibet({data}) {
               <Swiper
                 spaceBetween={30}
                 className="w-100"
+                loop={true}
                 navigation={{
                   prevEl: ".js-slider1-prev-tibet",
                   nextEl: ".js-slider1-next-tibet",

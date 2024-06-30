@@ -35,6 +35,7 @@ export default function TrekkingRegions({data}) {
                     <Swiper
                         spaceBetween={30}
                         modules={[Navigation]}
+                        loop={true}
                         navigation={{
                             prevEl: ".js-slider1-prev-trekking",
                             nextEl: ".js-slider1-next-trekking",

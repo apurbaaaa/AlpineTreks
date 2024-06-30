@@ -34,6 +34,7 @@ export default function BestBhutan({data}) {
         <div className="relative pt-40 sm:pt-20">
           <Swiper
             spaceBetween={30}
+            loop={true}
             navigation={{
               prevEl: ".js-slider1-prev-bhutan",
               nextEl: ".js-slider1-next-bhutan",

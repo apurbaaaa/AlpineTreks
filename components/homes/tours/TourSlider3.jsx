@@ -47,6 +47,7 @@ export default function BestSellers({title, desc, posts}) {
               <Swiper
                 spaceBetween={30}
                 className="w-100"
+                loop={true}
                 navigation={{
                   prevEl: `.js-slider1-prev`,
                   nextEl: `.js-slider1-next`,

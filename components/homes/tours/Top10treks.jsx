@@ -33,6 +33,7 @@ export default function TopTreks({data}) {
         <div className="relative pt-40 sm:pt-20">
           <Swiper
             spaceBetween={30}
+            loop={true}
             navigation={{
               prevEl: ".js-slider2-prev-treks",
               nextEl: ".js-slider2-next-treks",
