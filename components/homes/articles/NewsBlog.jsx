@@ -28,7 +28,7 @@ export default function NewsBlog({data}) {
                     {data.blogs && data.blogs.length > 0 ? (
                         data.blogs.map((elm, i) => (
                         <div key={i} className="col-lg-4 col-md-6">
-                            <Link href={`/${elm.slug}`} key={elm.slug} className="blogCard -type-1">
+                            <Link href={`/blog/${elm.slug}`} key={elm.slug} className="blogCard -type-1">
                                 <div className="blogCard__image ratio ratio-41:30"> 
                                     <Image src={elm.image} alt={elm.image} className="img-ratio rounded-12" width={616} height={451}/>
                                 </div>
