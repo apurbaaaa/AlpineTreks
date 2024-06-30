@@ -1,5 +1,5 @@
 import { userAgent } from "next/server";
-import sitemap from "./sitemap";
+import sitemap from "./sitemap_index";
 
 export default function robots(){
     return {
@@ -10,6 +10,6 @@ export default function robots(){
                 disallow: ["/404"],
             }
         ], 
-        sitemap: `${process.env.NEXT_PUBLIC_API_BASE_URL}/sitemap.xml`
+        sitemap: `${process.env.NEXT_PUBLIC_API_BASE_URL}/sitemap_index.xml`
     }
 }

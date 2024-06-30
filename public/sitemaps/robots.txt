@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://mountaintrekkingnepal.com/api
+
+# Sitemaps
+Sitemap: https://mountaintrekkingnepal.com/api/sitemap.xml
