@@ -9,7 +9,7 @@ export default function PackageSwiper({ data }) {
   return (
     <div className="row justify-center pt-30">
       <div className="col-12">
-        <div className="relative overflow-hidden" style={{ height: "476px" }}>
+        <div className="relative overflow-hidden">
           <Swiper
             spaceBetween={10}
             className="w-100 overflow-visible"
